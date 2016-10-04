@@ -10,12 +10,12 @@ import javax.persistence.Entity;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Products {
+
     private Product[] products;
 
     public Products(){
 
     }
-
 
     public Product[] getProducts() {
         return products;
