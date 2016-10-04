@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Platafina Products:</h1>
+
+<ul th:each="product : ${products}">
+    <li th:text="${product.title}">A product</li>
+</ul>
+
+</body>
+</html>
