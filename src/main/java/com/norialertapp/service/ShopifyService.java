@@ -28,8 +28,8 @@ public class ShopifyService {
     // The resulting JSON is translated into an array of Product objects, which is, in turn, turned into a List.
     public List<Product> listProducts(){
         RestTemplate restTemplate = new RestTemplate();
-       // https://apikey:password@hostname/admin/resource.json
-        Products forObject = restTemplate.getForObject("https://platafina.myshopify.com/admin/products.json?client_id=08f01f4ed31bbc19ed17134527176a54&access_token=d5c07e911caee6aaa59ed1ec2f6e2d2a", Products.class);
+        //https://apikey:password@hostname/admin/resource.json
+        Products forObject = restTemplate.getForObject("https://platafina.myshopify.com/admin/products.json?client_id="+ apiToken + "&access_token="+apiPassword, Products.class);
         return Arrays.asList(forObject.getProducts());
     }
 
