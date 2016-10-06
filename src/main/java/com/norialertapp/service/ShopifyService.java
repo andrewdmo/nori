@@ -1,6 +1,7 @@
 package com.norialertapp.service;
 import com.norialertapp.entity.Product;
 import com.norialertapp.entity.Products;
+import com.norialertapp.entity.Variant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -36,10 +37,12 @@ public class ShopifyService {
         Products productObject = restTemplate.getForObject("https://platafina.myshopify.com/admin/products.json?client_id="+ apiToken + "&access_token="+apiPassword, Products.class);
 
         List<Product> productList = Arrays.asList(productObject.getProducts());
-//
-//        for(Product product : productList) {
-//            productService.saveProduct(product);
-//        }
+
+        for(Product product : productList) {
+            List<Variant> variants = Arrays.asList(product.getVariant());
+            productService.saveProduct(product);
+
+        }
 
         return productList;
     }

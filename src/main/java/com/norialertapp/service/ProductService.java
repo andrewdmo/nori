@@ -7,5 +7,5 @@ import com.norialertapp.entity.Product;
  */
 public interface ProductService {
 
-    public void saveProduct(Product product);
+     void saveProduct(Product product);
 }

@@ -14,6 +14,8 @@ import java.util.List;
 public class Product {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id")
     private Long productID; // 3709610885
 
     private String title; // "Andean Cross | Sterling Silver Earrings with Black Onyx"
