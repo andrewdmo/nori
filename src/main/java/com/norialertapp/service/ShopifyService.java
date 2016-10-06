@@ -1,6 +1,7 @@
 package com.norialertapp.service;
 import com.norialertapp.entity.Product;
 import com.norialertapp.entity.Products;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -24,13 +25,23 @@ public class ShopifyService {
     @Value("${shopify.api.password}")
     private String apiPassword;
 
+    @Autowired
+    private ProductService productService;
+
     // This method uses a class named RestTemplate to make a get request to an API endpoint URL at Shopify.
     // The resulting JSON is translated into an array of Product objects, which is, in turn, turned into a List.
     public List<Product> listProducts(){
         RestTemplate restTemplate = new RestTemplate();
         //https://apikey:password@hostname/admin/resource.json
-        Products forObject = restTemplate.getForObject("https://platafina.myshopify.com/admin/products.json?client_id="+ apiToken + "&access_token="+apiPassword, Products.class);
-        return Arrays.asList(forObject.getProducts());
+        Products productObject = restTemplate.getForObject("https://platafina.myshopify.com/admin/products.json?client_id="+ apiToken + "&access_token="+apiPassword, Products.class);
+
+        List<Product> productList = Arrays.asList(productObject.getProducts());
+//
+//        for(Product product : productList) {
+//            productService.saveProduct(product);
+//        }
+
+        return productList;
     }
 
 }

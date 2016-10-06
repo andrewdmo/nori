@@ -19,13 +19,13 @@ public class Product {
     private String title; // "Andean Cross | Sterling Silver Earrings with Black Onyx"
     private String vendor; // "Platafina"
 
-   // @OneToMany (cascade= CascadeType.ALL)
-    //@JoinColumn(name="productID")
-   // private List<Variant> variants;
+   @OneToMany (cascade= CascadeType.ALL)
+    @JoinColumn(name="productID")
+    private List<Variant> variants;
 
-  //  @OneToMany (cascade= CascadeType.ALL)
-  //  @JoinColumn(name="productID")
-  //  private List<Image> images;
+    @OneToMany (cascade= CascadeType.ALL)
+    @JoinColumn(name="productID")
+    private List<Image> images;
 
     private Variant[] variant; // list of product variants - all products on this store have one variant
 

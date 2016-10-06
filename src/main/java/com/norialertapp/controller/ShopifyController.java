@@ -23,16 +23,16 @@ public class ShopifyController {
     @Autowired
     public ProductRepo productRepo;
 
-    @RequestMapping(path = "/notifications", method = RequestMethod.POST)
-    public String handleOrder()
-    {
-        return"";
-    }
+//    @RequestMapping(path = "/notifications", method = RequestMethod.POST)
+//    public String handleOrder()
+//    {
+//        return"";
+//    }
 
     @RequestMapping(path = "/")
     public String listProducts(Model model){
 
-     //   productRepo.save(new Product(8798765l, "Great Product"));
+     //jjj   productRepo.save(new Product(8798765l, "Great Product"));
 
         model.addAttribute("products", shopifyService.listProducts());
 
