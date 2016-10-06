@@ -1,7 +1,6 @@
 package com.norialertapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.javafx.beans.IDProperty;
 
 import javax.persistence.Id;
 
