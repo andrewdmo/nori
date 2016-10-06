@@ -14,37 +14,29 @@ import java.util.List;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+   // @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id")
-    private Long productID; // 3709610885
+    private Long id; // 3709610885
 
     private String title; // "Andean Cross | Sterling Silver Earrings with Black Onyx"
     private String vendor; // "Platafina"
 
-   @OneToMany (cascade= CascadeType.ALL)
-    @JoinColumn(name="productID")
-    private List<Variant> variants;
+//   @OneToMany (cascade= CascadeType.ALL)
+//    @JoinColumn(name="productID")
+//    private List<Variant> variants;
 
     @OneToMany (cascade= CascadeType.ALL)
     @JoinColumn(name="productID")
     private List<Image> images;
 
-    private Variant[] variant; // list of product variants - all products on this store have one variant
+    private Variant[] variants; // list of product variants - all products on this store have one variant
 
     public Variant[] getVariant() {
-        return variant;
+        return variants;
     }
 
     public void setVariant(Variant[] variant) {
-        this.variant = variant;
-    }
-
-    public Long getProductID() {
-        return productID;
-    }
-
-    public void setProductID(Long productID) {
-        this.productID = productID;
+        this.variants = variant;
     }
 
 
@@ -64,12 +56,33 @@ public class Product {
         this.vendor = vendor;
     }
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
+    public Variant[] getVariants() {
+        return variants;
+    }
+
+    public void setVariants(Variant[] variants) {
+        this.variants = variants;
+    }
+
     public Product(){
 
     }
 
-    public Product(Long id, String title){
-        this.title = title;
-        this.productID = id;
-    }
 }

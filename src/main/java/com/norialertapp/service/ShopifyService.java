@@ -29,6 +29,9 @@ public class ShopifyService {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private VariantService variantService;
+
     // This method uses a class named RestTemplate to make a get request to an API endpoint URL at Shopify.
     // The resulting JSON is translated into an array of Product objects, which is, in turn, turned into a List.
     public List<Product> listProducts(){
@@ -39,8 +42,13 @@ public class ShopifyService {
         List<Product> productList = Arrays.asList(productObject.getProducts());
 
         for(Product product : productList) {
-           /// List<Variant> variants = Arrays.asList(product.getVariant());
+//            List<Variant> variants = Arrays.asList(product.getVariant());
             productService.saveProduct(product);
+
+//            for(Variant variant: variants){
+//                variantService.saveVariant(variant);
+//            }
+
 
         }
 

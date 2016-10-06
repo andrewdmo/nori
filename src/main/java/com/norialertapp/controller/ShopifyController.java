@@ -32,8 +32,6 @@ public class ShopifyController {
     @RequestMapping(path = "/", method=RequestMethod.GET)
     public String listProducts(Model model){
 
-     //jjj   productRepo.save(new Product(8798765l, "Great Product"));
-
         model.addAttribute("products", shopifyService.listProducts());
 
         return "dashboard";
