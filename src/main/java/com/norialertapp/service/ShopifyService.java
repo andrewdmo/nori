@@ -39,7 +39,7 @@ public class ShopifyService {
         List<Product> productList = Arrays.asList(productObject.getProducts());
 
         for(Product product : productList) {
-            List<Variant> variants = Arrays.asList(product.getVariant());
+           /// List<Variant> variants = Arrays.asList(product.getVariant());
             productService.saveProduct(product);
 
         }

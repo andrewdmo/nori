@@ -29,7 +29,7 @@ public class ShopifyController {
 //        return"";
 //    }
 
-    @RequestMapping(path = "/")
+    @RequestMapping(path = "/", method=RequestMethod.GET)
     public String listProducts(Model model){
 
      //jjj   productRepo.save(new Product(8798765l, "Great Product"));
