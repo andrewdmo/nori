@@ -1,6 +1,7 @@
 package com.norialertapp.controller;
 import com.norialertapp.entity.Product;
 import com.norialertapp.repository.ProductRepo;
+import com.norialertapp.service.ProductService;
 import com.norialertapp.service.ShopifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,9 @@ public class ShopifyController {
     @Autowired
     public ProductRepo productRepo;
 
+    @Autowired
+    public ProductService productService;
+
 //    @RequestMapping(path = "/notifications", method = RequestMethod.POST)
 //    public String handleOrder()
 //    {
@@ -32,7 +36,7 @@ public class ShopifyController {
     @RequestMapping(path = "/", method=RequestMethod.GET)
     public String listProducts(Model model){
 
-        model.addAttribute("products", shopifyService.listProducts());
+        model.addAttribute("products", productService.listProducts());
 
         return "dashboard";
     }

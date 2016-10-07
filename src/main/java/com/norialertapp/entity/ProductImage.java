@@ -17,8 +17,6 @@ public class ProductImage implements Serializable {
     @Column(name="id")
     private Long id; // 7814648581
 
-   // @OneToOne (cascade= CascadeType.ALL)
-    private Long product_id; //3709610885
 
     private String src; // https://cdn.shopify.com/s/files/1/0711/7863/products/Andean-Cross-with-Black-Platafina.jpg?v=1455850375",
 
@@ -30,13 +28,6 @@ public class ProductImage implements Serializable {
         this.id = id;
     }
 
-    public Long getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(Long product_id) {
-        this.product_id = product_id;
-    }
 
     public String getSrc() {
         return src;

@@ -16,7 +16,7 @@ public class Variant implements Serializable {
     @Id
     private Long id; // 10909727301
 
-    private Long product_id; // 3709610885
+  //  private Long product_id; // 3709610885
     private Integer inventory_quantity; // 1
 
     public Long getId() {
@@ -27,13 +27,13 @@ public class Variant implements Serializable {
         this.id = id;
     }
 
-    public Long getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(Long product_id) {
-        this.product_id = product_id;
-    }
+//    public Long getProduct_id() {
+//        return product_id;
+//    }
+//
+//    public void setProduct_id(Long product_id) {
+//        this.product_id = product_id;
+//    }
 
     public Integer getInventory_quantity() {
         return inventory_quantity;

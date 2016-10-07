@@ -13,9 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ShopifyNotification {
 
+    // autowire in a service class "myservice"
+
     @RequestMapping (path = "/notification/update")
     public String productUpdate(@RequestBody Product product){
-        return "notification!";
+
+//        myservice.save(product);
+//        myservice.triggerNotifications(productId);
+//
+       return "notification!";
     }
 
     @RequestMapping (path = "/order/creation")

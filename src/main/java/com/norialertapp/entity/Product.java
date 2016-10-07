@@ -19,35 +19,30 @@ public class Product {
 
     private String title; // "Andean Cross | Sterling Silver Earrings with Black Onyx"
     private String vendor; // "Platafina"
-//
-//   @OneToMany (cascade= CascadeType.ALL)
-//    @JoinColumn(name="productID")
-//    private List<Variant> variant;
-//
-//    @OneToMany (cascade= CascadeType.ALL)
-//    @JoinColumn(name="productID")
-//    private List<ProductImage> productImages;
 
-    private Variant[] variants; // list of product variants - all products on this store have one variant
+    @OneToMany (cascade= CascadeType.ALL)
+    @JoinColumn(name="productID")
+    private List<Variant> variants; // list of product variants - all products on this store have one variant
 
-    private ProductImage[] images;
+    @OneToMany (cascade= CascadeType.ALL)
+    @JoinColumn(name="productID")
+    private List<ProductImage> images;
 
-    public ProductImage[] getImages() {
+    public List<ProductImage> getImages() {
         return images;
     }
 
-    public void setImages(ProductImage[] images) {
+    public void setImages(List<ProductImage> images) {
         this.images = images;
     }
 
-    public Variant[] getVariant() {
+    public List<Variant> getVariants() {
         return variants;
     }
 
-    public void setVariant(Variant[] variant) {
-        this.variants = variant;
+    public void setVariants(List<Variant> variants) {
+        this.variants = variants;
     }
-
 
     public String getTitle() {
         return title;
@@ -74,14 +69,6 @@ public class Product {
         this.id = id;
     }
 
-
-    public Variant[] getVariants() {
-        return variants;
-    }
-
-    public void setVariants(Variant[] variants) {
-        this.variants = variants;
-    }
 
     public Product(){
 
