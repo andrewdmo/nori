@@ -14,22 +14,31 @@ import java.util.List;
 public class Product {
 
     @Id
-   // @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id")
     private Long id; // 3709610885
 
     private String title; // "Andean Cross | Sterling Silver Earrings with Black Onyx"
     private String vendor; // "Platafina"
-
+//
 //   @OneToMany (cascade= CascadeType.ALL)
 //    @JoinColumn(name="productID")
-//    private List<Variant> variants;
-
-    @OneToMany (cascade= CascadeType.ALL)
-    @JoinColumn(name="productID")
-    private List<Image> images;
+//    private List<Variant> variant;
+//
+//    @OneToMany (cascade= CascadeType.ALL)
+//    @JoinColumn(name="productID")
+//    private List<ProductImage> productImages;
 
     private Variant[] variants; // list of product variants - all products on this store have one variant
+
+    private ProductImage[] images;
+
+    public ProductImage[] getImages() {
+        return images;
+    }
+
+    public void setImages(ProductImage[] images) {
+        this.images = images;
+    }
 
     public Variant[] getVariant() {
         return variants;
@@ -65,13 +74,6 @@ public class Product {
         this.id = id;
     }
 
-    public List<Image> getImages() {
-        return images;
-    }
-
-    public void setImages(List<Image> images) {
-        this.images = images;
-    }
 
     public Variant[] getVariants() {
         return variants;

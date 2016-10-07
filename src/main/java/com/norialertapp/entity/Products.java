@@ -2,7 +2,6 @@ package com.norialertapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Entity;
 
 /**
  * Created by katherine_celeste on 10/3/16.

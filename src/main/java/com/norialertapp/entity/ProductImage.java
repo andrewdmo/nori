@@ -1,8 +1,8 @@
 package com.norialertapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -11,13 +11,16 @@ import java.io.Serializable;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Variant implements Serializable {
+public class ProductImage implements Serializable {
 
     @Id
-    private Long id; // 10909727301
+    @Column(name="id")
+    private Long id; // 7814648581
 
-    private Long product_id; // 3709610885
-    private Integer inventory_quantity; // 1
+   // @OneToOne (cascade= CascadeType.ALL)
+    private Long product_id; //3709610885
+
+    private String src; // https://cdn.shopify.com/s/files/1/0711/7863/products/Andean-Cross-with-Black-Platafina.jpg?v=1455850375",
 
     public Long getId() {
         return id;
@@ -35,15 +38,16 @@ public class Variant implements Serializable {
         this.product_id = product_id;
     }
 
-    public Integer getInventory_quantity() {
-        return inventory_quantity;
+    public String getSrc() {
+        return src;
     }
 
-    public void setInventory_quantity(Integer inventory_quantity) {
-        this.inventory_quantity = inventory_quantity;
+    public void setSrc(String src) {
+        this.src = src;
     }
 
-    public Variant(){
+
+    public ProductImage(){
 
     }
 }
