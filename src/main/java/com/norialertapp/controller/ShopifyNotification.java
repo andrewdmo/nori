@@ -1,7 +1,9 @@
 package com.norialertapp.controller;
 
-import com.norialertapp.entity.LineItem;
-import com.norialertapp.entity.Product;
+import com.norialertapp.entity.ShopifyOrder;
+import com.norialertapp.service.OrderCreatedService;
+import com.norialertapp.service.ShopifyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,19 +15,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ShopifyNotification {
 
-    // autowire in a service class "myservice"
+    @Autowired
+    public OrderCreatedService orderCreatedService;
 
-    @RequestMapping (path = "/notification/update")
-    public String productUpdate(@RequestBody Product product){
+    @Autowired
+    public ShopifyService shopifyService;
 
+    @RequestMapping (path = "/order/creation")
+    public String orderCreation(@RequestBody ShopifyOrder shopifyOrder) {
+
+          shopifyService.getAndSaveProducts();
+
+        //orderCreatedService.
 //        myservice.save(product);
 //        myservice.triggerNotifications(productId);
 //
-       return "notification!";
-    }
-
-    @RequestMapping (path = "/order/creation")
-    public String orderCreation(@RequestBody LineItem lineItem){
-        return "an order";
+        return "notification!";
     }
 }

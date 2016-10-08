@@ -27,16 +27,12 @@ public class ShopifyController {
     @Autowired
     public ProductService productService;
 
-//    @RequestMapping(path = "/notifications", method = RequestMethod.POST)
-//    public String handleOrder()
-//    {
-//        return"";
-//    }
 
     @RequestMapping(path = "/", method=RequestMethod.GET)
     public String listProducts(Model model){
 
-        model.addAttribute("products", productService.listProducts());
+//        model.addAttribute("products", productService.listProducts());
+        model.addAttribute("products", shopifyService.getAndSaveProducts());
 
         return "dashboard";
     }

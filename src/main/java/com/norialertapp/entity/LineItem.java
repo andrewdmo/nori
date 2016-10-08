@@ -13,9 +13,16 @@ public class LineItem {
 
     @Id
     private Long id;
-    private String title;
     private Integer quantity;
     private Long product_id;
+
+    public Long getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(Long product_id) {
+        this.product_id = product_id;
+    }
 
     public Long getId() {
         return id;
@@ -23,14 +30,6 @@ public class LineItem {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public Integer getQuantity() {
@@ -41,11 +40,5 @@ public class LineItem {
         this.quantity = quantity;
     }
 
-    public Long getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(Long product_id) {
-        this.product_id = product_id;
-    }
+    public LineItem(){}
 }
