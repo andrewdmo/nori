@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 @Configuration
-@ComponentScan(basePackages="com.norialertapp.*")
 @EnableAutoConfiguration
 public class NoriApplication {
 

@@ -37,8 +37,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
+		    <groupId>commons-lang</groupId>
+		    <artifactId>commons-lang</artifactId>
+		    <version>2.3</version>
+		</dependency>
+  		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
@@ -48,35 +52,26 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+	<dependency>
+        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-mail</artifactId>
+	    </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security.oauth</groupId>
-			<artifactId>spring-security-oauth2</artifactId>
-		</dependency>
-		<!-- mail dependency -->
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.7</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-support</artifactId>
-			<version>2.0.6</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.2</version>
-		</dependency>
-
+		 <!--<dependency>-->
+	      <!--<groupId>mysql</groupId>-->
+	      <!--<artifactId>mysql-connector-java</artifactId>-->
+	    <!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-security</artifactId>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.security.oauth</groupId>-->
+			<!--<artifactId>spring-security-oauth2</artifactId>-->
+		<!--</dependency>-->
 	</dependencies>
 
 	<build>
