@@ -13,6 +13,7 @@
 </div>
 <div class="rightMain">
     <h1>Nori</h1> <h4>Inventory Notification System</h4>
+
     <div class="row">
         <div class="productDetail">
             <h2 name="title" id="title" value="product name"></h2>
@@ -33,6 +34,7 @@
             </span>
         </div>
     </div>
+    Hello
     <table><tr id="columns">
         <th>Part#</th>
         <th>Item Name</th>
@@ -42,11 +44,11 @@
         <th>Modify</th>
     </tr>
         <tr th:each="product : ${products}">
-            <td th:text="${product.id}">Product ID</td><br/>
-            <td><a th:text="${product.title}" th:href="@{(${product.id})}" href="product-detail.html">Product Title</a></td><br/>
-            <td th:text="${product.vendor}">Vendor</td><br/>
-            <td th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())} :'NOT SET'">N/A</td><br/>
-            <td th:text="${qty.get(product.getId())}">Qty Available</td><br/>
+            <td th:text="${product.id}">Product ID</td>
+            <td><a th:text="${product.title}" th:href="@{(${product.id})}" href="product-detail.html">Product Title</a></td>
+            <td th:text="${product.vendor}">Vendor</td>
+            <td th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())} :'NOT SET'">N/A</td>
+            <td th:text="${qty.get(product.getId())}">Qty Available</td>
         </tr>
     </table>
 </div>

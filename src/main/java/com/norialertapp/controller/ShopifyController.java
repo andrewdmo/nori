@@ -84,10 +84,12 @@ public class ShopifyController {
                for(Variant variant: product.getVariants()){
                    qty.put(product.getId(), variant.getInventory_quantity());
                    //THIS IS LIKELY INCORRECT. GO BACK AND CHECK (High should be checked before Low, then OutofStock
+
+                   if(level.getQuantity()!=null){ //if user does not input qty for fields
                    if(level.getQuantity()>=variant.getInventory_quantity()){
                        qtyLevels.put(product.getId(), level.getCustomLevel());
                    }
-               }
+               }}
             }
         }
 
@@ -103,6 +105,8 @@ public class ShopifyController {
 
         Product product = productServiceImpl.retrieveProduct(productId);
         Integer productQty = product.getVariants().get(0).getInventory_quantity();
+        String imagePic = product.getImages().get(0).getSrc();
+        model.addAttribute("imagePic", imagePic);
         model.addAttribute("aProduct", product);
         model.addAttribute("productQty", productQty);
 

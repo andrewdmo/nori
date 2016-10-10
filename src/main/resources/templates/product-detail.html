@@ -23,7 +23,7 @@
         </div>
         <div class="pic">
             <img class="productImage"
-                 th:src="@{https://cdn.shopify.com/s/files/1/0711/7863/products/Andean-Cross-Platafina-3.gif?v=1455850375}"
+                 th:src="@{${imagePic}}"
                  src="https://cdn.shopify.com/s/files/1/0711/7863/products/Andean-Cross-Platafina-3.gif?v=1455850375"/>
         </div>
     </div>
@@ -49,9 +49,9 @@
         <label>Qty Level: </label>
         <select id="qty" title="">
             <option value="">Select Level</option>
-            <option th:value="High">High</option>
-            <option th:value="Low">Low</option>
-            <option th:value="Out">Out</option>
+            <option name="high" th:value="High">High</option>
+            <option name="low" th:value="Low">Low</option>
+            <option name="out" th:value="Out">Out</option>
         </select><br/>
         <label id="shopifyTitleText">Shopify Merchant Email Template:</label><br/>
         <select name="levels" title="">
