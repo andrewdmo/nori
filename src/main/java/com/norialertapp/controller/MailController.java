@@ -14,7 +14,7 @@ import javax.mail.MessagingException;
 
 @Controller
 public class MailController {
-
+    //
     @Autowired
     private MailClient mailClient;
 
