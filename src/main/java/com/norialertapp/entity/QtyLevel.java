@@ -13,14 +13,34 @@ public class QtyLevel {
     @GeneratedValue
     private Long id;
 
-    private Long product_id;
+    private Long productid;
 
     @OneToMany(cascade= CascadeType.ALL)
     @JoinColumn(name="qtyLevelID")
-    private List<level> productLevels;
+    private List<Level> productLevels;
 
+    public Long getId() {
+        return id;
+    }
 
- //   private HashMap<String, Integer> levels;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public Long getProductid() {
+        return productid;
+    }
+
+    public void setProductid(Long productid) {
+        this.productid = productid;
+    }
+
+    public List<Level> getProductLevels() {
+        return productLevels;
+    }
+
+    public void setProductLevels(List<Level> productLevels) {
+        this.productLevels = productLevels;
+    }
 
 }

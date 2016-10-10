@@ -1,0 +1,81 @@
+/*-------------Login Pg CSS----------------*/
+html{
+    font-family: Helvetica, sans-serif;
+    background-image:
+            linear-gradient(
+                    to bottom right,
+                    #073763,
+                    white);
+
+    padding: 0%;
+    margin: 0%;
+}
+#leftSeaweed{
+    display: inline-block;
+}
+#rightLogin{
+    color: white;
+    margin: 20% 0 0 5%;
+    vertical-align: top;
+    display: inline-block;
+}
+#norilogintitle{
+    display: inline-block;
+    color: white;
+}
+#username, #password{
+    width: 100%;
+    font-size: 100%;
+    border-radius:5px;
+    padding: 2% 2% 2% 4%;
+    margin-bottom: 5%;
+}
+
+#footerText{
+    margin-left: 32%;
+    color: #073763;
+}
+
+button{
+    max-width: 100%;
+    margin-top: 2%;
+    padding: 2% 8% 2% 8%;
+    font-size: 110%;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    background-color: #3d7dbb;
+    color: white;
+    border-radius: 5px;
+}
+
+::-webkit-input-placeholder {
+    font-size: 14px;
+    color: gray;
+    /*text-transform: uppercase;*/
+    text-align: left;
+    font-weight: bold;
+}
+:-moz-placeholder { /* older Firefox*/
+    font-size:14px;
+    color: gray;
+    /*text-transform: uppercase;*/
+    text-align: left;
+    font-weight: bold;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    font-size: 14px;
+    color: gray;
+    /*text-transform: uppercase;*/
+    text-align: left;
+    font-weight: bold;
+}
+:-ms-input-placeholder {
+    font-size: 14px;
+    color: gray;
+    /*text-transform: uppercase;*/
+    text-align: left;
+    font-weight: bold;
+}
+/*-----------------------------------------*/

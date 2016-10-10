@@ -1,13 +1,32 @@
-<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/login.css}" href="../static/css/login.css"/>
     <title>Admin Login</title>
 </head>
+
 <body>
 
-<input>
-<input>
+<div id="leftSeaweed">
+    <img th:src="@{/images/seaweed.png}"/>
+</div>
 
+<div id="rightLogin">
+    <h1>Nori</h1>
+    <h2>Inventory Notification System</h2>
+
+    <form id="userLogin" action="dashboard.html" th:action="@{/dashboard}" method="post">
+        <br/>
+        <input placeholder="User name" type="text" id="username" name="username" required="required"/>
+        <br/>
+        <input placeholder="Password" type="text" id="password" name="password" required="required"/>
+        <br/>
+        <button>Sign In</button>
+    </form>
+</div>
+<div id="footerText">
+    <span>&copy; Copyright 2016 | Nori | All Rights Reserved | Built by Andy and Kat @ The Iron Yard </span><br/>
+</div>
 </body>
+
 </html>

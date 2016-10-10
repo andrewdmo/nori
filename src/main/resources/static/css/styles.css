@@ -1,0 +1,171 @@
+html, head, body{
+    font-family: Helvetica, sans-serif;
+    background-color: steelblue;
+    padding: 0;
+    margin: 0;
+}
+
+
+h1{
+   color: white;
+    display: inline-block;
+    font-size: 450%;
+    padding: 0.3% 3% 0.2% 0.3%;
+    margin: 0;
+}
+
+h4{
+    color: white;
+    font-size: 200%;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.title {
+    color: white;
+    font-size: 180%;
+    padding-top: 4%;
+    display: inline-block;
+}
+
+input{
+    width: 15%;
+    font-size: 110%;
+}
+
+button{
+    max-width: 45%;
+    font-size: 110%;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+section button:hover {
+    background-color: #ffffff;
+    color: #073763;
+    border-color: #009ac9;
+}
+
+
+select{
+    font-size: 110%;
+}
+
+h2{
+    margin: 0;
+    padding-bottom: 3%;
+}
+
+.productImage{
+    max-height: 250px;
+    max-width: 250px;
+}
+
+
+.productDetail{
+    display: inline-block;
+    max-width: 50%;
+    min-height: 100%;
+    padding-right: 20%;
+    vertical-align: top;
+}
+
+.details{
+    display: inline-block;
+    padding-bottom: 1%;
+    font-style: oblique;
+}
+
+.row{
+    border: 2px solid black;
+    background-color: white;
+    padding: 1%;
+    height: 35%;
+}
+
+.pic{
+    display: inline-block;
+
+}
+
+.leftMain {
+    color: white;
+    width: 15%;
+    border-right: 2px solid black;
+    background-color: #073763;
+    display: inline-block;
+    float: left;
+    height:100%;
+    margin: 0;
+    padding:0;
+
+}
+
+#HomeLink{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 15px;
+    display: inline-block;
+    float: right;
+    padding: 0.5%;
+    margin: 0 0 5% 9%;
+    border: 1px solid white;
+}
+
+#seaweed{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-width: 20%;
+    max-height: 20%;
+    margin: 0 0 1% 1%;
+}
+
+/**{*/
+/*border: 1px dashed #ff0000;*/
+/*}*/
+
+.rightMain{
+    margin: 0 0 0 15%;
+    padding: 0;
+    border-top: 2px solid black;
+}
+
+#low, #high, #out, #qty{
+    margin: 4%;
+    font-size: 100%;
+}
+
+#shopifyTitleText{
+    padding-bottom: 2%;
+    display: inline-block;
+}
+
+#template{
+    margin-top: 18%;
+    display: inline-block;
+}
+
+label{
+    font-size: 120%;
+}
+
+#lowerLeft{
+    display: inline-block;
+    color: white;
+    float: left;
+    min-width: 50%;
+    text-align: center;
+    border-right: thick solid white;
+}
+
+#lowerRight {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    min-width: 40%;
+}

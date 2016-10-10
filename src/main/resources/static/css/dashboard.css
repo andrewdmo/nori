@@ -1,0 +1,151 @@
+html, head, body{
+    font-family: Helvetica, sans-serif;
+    background-color: steelblue;
+    padding: 0;
+    margin: 0;
+}
+
+.row{
+    border: 2px solid black;
+    background-color: white;
+    padding: 1%;
+    height: 20%;
+}
+
+
+h1{
+    color: white;
+    display: inline-block;
+    font-size: 450%;
+    padding: 0.3% 3% 0.2% 0.3%;
+    margin: 0;
+}
+
+h4{
+    color: white;
+    font-size: 200%;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.title {
+    color: white;
+    font-size: 180%;
+    padding-top: 4%;
+    display: inline-block;
+}
+
+input{
+    width: 15%;
+    font-size: 110%;
+}
+
+button{
+    max-width: 55%;
+    font-size: 110%;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+section button:hover {
+    background-color: #ffffff;
+    color: #073763;
+    border-color: #009ac9;
+}
+
+
+select{
+    font-size: 110%;
+}
+
+h2{
+    margin: 0;
+    padding-bottom: 3%;
+}
+
+.column1, .column2, .column3{
+    column-count: 1;
+}
+
+.productDetail{
+    display: inline-block;
+    max-width: 50%;
+    min-height: 100%;
+    padding-right: 20%;
+    vertical-align: top;
+}
+
+.details{
+    display: inline-block;
+    padding-bottom: 1%;
+    font-style: oblique;
+}
+
+.leftMain {
+    color: white;
+    width: 15%;
+    border-right: 2px solid black;
+    background-color: #073763;
+    display: inline-block;
+    float: left;
+    height:100%;
+    margin: 0;
+    padding:0;
+
+}
+
+#HomeLink{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 15px;
+    display: inline-block;
+    float: right;
+    padding: 0.5%;
+    margin: 0 0 5% 9%;
+    border: 1px solid white;
+}
+
+#seaweed{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-width: 20%;
+    max-height: 20%;
+    margin: 0 0 1% 1%;
+}
+
+/**{*/
+/*border: 1px dashed #ff0000;*/
+/*}*/
+
+.rightMain{
+    margin: 0 0 0 15%;
+    border: 1px solid black;
+}
+
+#columns{
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: lightgrey;
+}
+
+table {
+    padding:0;
+    display: inline-block;
+    border-collapse: collapse;
+    border-top: solid lightgrey;
+    margin: 0;
+
+}
+table tr td:first-child{
+    white-space: nowrap;
+}
+table tr th:nth-child(2){
+    width: 100%;
+}

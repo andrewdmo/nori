@@ -6,7 +6,7 @@
     <title>SignUp</title>
 </head>
 <body>
-<p>SingUp Form</p>
+<p>SignUp Form</p>
 
 <div th:if="${error != null}" th:text="${error}"></div>
 <form th:action="@{'/sign-up'}" method="post" th:object="${users}" >

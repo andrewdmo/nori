@@ -26,4 +26,9 @@ public class ProductServiceImpl implements ProductService {
         List<Product> products = productRepo.findAll();
         return products;
     }
+
+    public Product retrieveProduct(Long id){
+        return productRepo.findOne(id);
+    }
+
 }

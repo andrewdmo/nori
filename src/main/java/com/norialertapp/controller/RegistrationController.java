@@ -1,5 +1,4 @@
 //package com.norialertapp.controller;
-//
 //import com.norialertapp.entity.Users;
 //import com.norialertapp.service.UserService;
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +31,7 @@
 //     @RequestMapping(value = "/sign-up",method = RequestMethod.POST)
 //     public String saveUser(@ModelAttribute("users") Users users,Model model) {
 //
-//         //first check for pass or conf pass is match or not
+//         //first check for password or conf pass - see if it matches
 //
 //         if(!users.getPassword().equals(users.getConfirmPassword())) {
 //             model.addAttribute("users",users);
@@ -40,7 +39,7 @@
 //             return "sign-up";
 //         }
 //
-//         //check for email is already exist or not
+//         //check if email exists or not
 //         Users savedUser = userService.findByEmail(users.getEmail());
 //         if(savedUser != null) {
 //             //users is not equal to null meaans user with this email id is already exist
