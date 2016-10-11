@@ -1,6 +1,10 @@
 html, head, body{
     font-family: Helvetica, sans-serif;
-    background-color: steelblue;
+    background-image:
+            linear-gradient(
+                    to top right,
+                    #073763,
+                    lightsteelblue);
     padding: 0;
     margin: 0;
 }
@@ -88,7 +92,11 @@ h2{
     color: white;
     width: 15%;
     border-right: 2px solid black;
-    background-color: #073763;
+    background-image:
+            linear-gradient(
+                    to top left,
+                    grey,
+                    lightgrey);
     display: inline-block;
     float: left;
     height:100%;

@@ -1,6 +1,10 @@
 html, head, body{
     font-family: Helvetica, sans-serif;
-    background-color: steelblue;
+    background-image:
+            linear-gradient(
+                    to top right,
+                    #073763,
+                    lightsteelblue);
     padding: 0;
     margin: 0;
 }
@@ -94,8 +98,12 @@ h2{
 .leftMain {
     color: white;
     width: 15%;
-    border-right: 2px solid black;
-    background-color: #073763;
+    border-right: 2px solid dimgrey;
+    background-image:
+            linear-gradient(
+                    to top left,
+                    grey,
+                    lightgrey);
     display: inline-block;
     float: left;
     height:100%;
@@ -132,7 +140,7 @@ h2{
 .rightMain{
     margin: 0 0 0 15%;
     padding: 0;
-    border-top: 2px solid black;
+    border-top: 2px solid dimgrey ;
 }
 
 #low, #high, #out, #qty{
@@ -159,8 +167,9 @@ label{
     color: white;
     float: left;
     min-width: 50%;
+    min-height:50%;
     text-align: center;
-    border-right: thick solid white;
+    border-right: thin solid white;
 }
 
 #lowerRight {
