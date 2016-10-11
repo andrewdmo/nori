@@ -19,16 +19,33 @@ html{
     vertical-align: top;
     display: inline-block;
 }
+
+#rightLogin2{
+    color: white;
+    margin: 10% 0 0 5%;
+    vertical-align: top;
+    display: inline-block;
+}
+
 #norilogintitle{
     display: inline-block;
     color: white;
 }
-#username, #password{
+
+.loginField{
     width: 100%;
     font-size: 100%;
     border-radius:5px;
     padding: 2% 2% 2% 4%;
     margin-bottom: 5%;
+}
+
+#reqFields{
+    color: #073763;
+    font-style: italic;
+    font-weight: bold;
+    padding: 3% 0 2% 0;
+    font-size: smaller;
 }
 
 #footerText{

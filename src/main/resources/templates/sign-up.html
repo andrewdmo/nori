@@ -1,39 +1,37 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8"/>
-    <title>SignUp</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}" href="../static/css/login.css"/>
+    <title>Create An Account</title>
 </head>
 <body>
-<p>SignUp Form</p>
+<div id="leftSeaweed">
+    <img th:src="@{/images/seaweed.png}"/>
+</div>
 
-<div th:if="${error != null}" th:text="${error}"></div>
-<form th:action="@{'/sign-up'}" method="post" th:object="${users}" >
+<div id="rightLogin2">
 
-    <div>
-        <label>First name</label>
-        <input type="text" th:field="*{firstname}" required="required"/>
-    </div>
-    <div>
-        <label>Last name</label>
-        <input type="text" th:field="*{lastname}" required="required"/>
-    </div>
-    <div>
-        <label>Email</label>
-        <input type="email" th:field="*{lastname}" required="required"/>
-    </div>
-    <div>
-        <label>Password</label>
-        <input type="password" th:field="*{password}" required="required"/>
-    </div>
-    <div>
-        <label>Conrifm password</label>
-        <input type="password" th:field="*{confirmPassword}" required="required"/>
-    </div>
-    <div>
-        <input type="submit" value="Submit"/>
-    </div>
+    <h1>Nori</h1>
+    <h2>Inventory Notification System</h2>
+    <div id="reqFields">* denotes a required field</div>
+<!--<div th:if="${error != null}" th:text="${error}"></div>-->
+<form th:action="@{/sign-up}" th:method="post" >
+        <input placeholder="First name" type="text" name="firstName" class="loginField"/>
+    <br/><br/>
+        <input placeholder="Last name" type="text" name="lastName" class="loginField"/>
+    <br/><br/>
+        <input placeholder="*Email" type="email" name="email" class="loginField" required="required"/>
+    <br/><br/>
+        <input placeholder="*Password" type="password" name="password" class="loginField" required="required"/>
+    <br/><br/>
+        <input placeholder="*Confirm password" type="password" name="confirmPassword" class="loginField" required="required"/>
+    <br/><br/>
+        <button>Create Account</button>
 </form>
+    </div>
+
 </body>
+<div id="footerText">
+    <span>&copy; Copyright 2016 | Nori | All Rights Reserved | Built by Andy and Kat @ The Iron Yard </span><br/>
+</div>
 </html>

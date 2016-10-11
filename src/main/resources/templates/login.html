@@ -1,4 +1,4 @@
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" th:href="@{/css/login.css}" href="../static/css/login.css"/>
@@ -15,13 +15,15 @@
     <h1>Nori</h1>
     <h2>Inventory Notification System</h2>
 
-    <form id="userLogin" action="dashboard.html" th:action="@{/dashboard}" method="post">
+    <form id="userLogin" action="dashboard.html" th:action="@{/userLogin}" th:method="post">
         <br/>
-        <input placeholder="User name" type="text" id="username" name="username" required="required"/>
+        <input placeholder="User name" type="email" class="loginField" name="username" required="required"/>
         <br/>
-        <input placeholder="Password" type="text" id="password" name="password" required="required"/>
+        <input placeholder="Password" type="password" class="loginField" name="password" required="required"/>
         <br/>
-        <button>Sign In</button>
+        <button>Sign In</button><br/><br/>
+        <span>Not a user? Sign up <a th:href="@{/createAccount}" href="sign-up.html">here</a></span>
+
     </form>
 </div>
 <div id="footerText">
