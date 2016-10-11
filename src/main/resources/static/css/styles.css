@@ -84,7 +84,7 @@ h2{
 }
 
 .row{
-    border: 2px solid black;
+    border: 2px solid dimgray;
     background-color: white;
     padding: 1%;
     height: 35%;
@@ -101,7 +101,7 @@ h2{
     border-right: 2px solid dimgrey;
     background-image:
             linear-gradient(
-                    to top left,
+                    to bottom right,
                     grey,
                     lightgrey);
     display: inline-block;
@@ -110,6 +110,9 @@ h2{
     margin: 0;
     padding:0;
 
+}
+a{
+    text-decoration: none;
 }
 
 #HomeLink{
@@ -120,8 +123,10 @@ h2{
     display: inline-block;
     float: right;
     padding: 0.5%;
-    margin: 0 0 5% 9%;
-    border: 1px solid white;
+    margin: 0 0 3% 7.3%;
+    color: dimgray;
+    font-size: medium;
+    border: 1px solid dimgray;
 }
 
 #seaweed{
@@ -169,7 +174,7 @@ label{
     min-width: 50%;
     min-height:50%;
     text-align: center;
-    border-right: thin solid white;
+    border-right: thick solid white;
 }
 
 #lowerRight {

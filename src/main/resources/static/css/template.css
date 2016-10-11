@@ -9,17 +9,6 @@ html, head, body{
     margin: 0;
 }
 
-a{
-    text-decoration: none;
-}
-
-.row{
-    border: 2px solid black;
-    background-color: white;
-    padding: 1%;
-    height: 20%;
-}
-
 
 h1{
     color: white;
@@ -50,7 +39,7 @@ input{
 }
 
 button{
-    max-width: 55%;
+    max-width: 45%;
     font-size: 110%;
     cursor: pointer;
     outline: none;
@@ -70,13 +59,17 @@ select{
 }
 
 h2{
-    margin: 0;
-    padding-bottom: 3%;
+    color: dimgray;
+    font-size: 200%;
+    padding:0;
+    margin: 2% 0 0 2%;
 }
 
-.column1, .column2, .column3{
-    column-count: 1;
+.productImage{
+    max-height: 250px;
+    max-width: 250px;
 }
+
 
 .productDetail{
     display: inline-block;
@@ -86,16 +79,32 @@ h2{
     vertical-align: top;
 }
 
-.details{
-    display: inline-block;
-    padding-bottom: 1%;
-    font-style: oblique;
+
+#email{
+    border: 2px solid dimgray;
+    height: 70%;
+    width: 40%;
+    margin: 3% 0 0 30%;
+}
+
+#special{
+    font-style: italic;
+}
+.row{
+    border: 2px solid dimgray;
+    background-color: white;
+    height: 100%;
+}
+
+#emailContent{
+    
+    margin: 15% 5% 0 10%;
 }
 
 .leftMain {
     color: white;
     width: 15%;
-    border-right: 2px solid black;
+    border-right: 2px solid dimgrey;
     background-image:
             linear-gradient(
                     to bottom right,
@@ -108,9 +117,11 @@ h2{
     padding:0;
 
 }
+a{
+    text-decoration: none;
+}
 
 #HomeLink{
-    color: black;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -139,28 +150,16 @@ h2{
 
 .rightMain{
     margin: 0 0 0 15%;
-    border: 1px solid black;
+    padding: 0;
+    border-top: 2px solid dimgrey ;
 }
 
-#columns{
-    color: white;
-}
 
-table tr:nth-child(even) {
-    background-color: lightgrey;
-}
-
-table {
-    padding:0;
+#template{
+    margin-top: 18%;
     display: inline-block;
-    border-collapse: collapse;
-    border-top: solid lightgrey;
-    margin: 0;
+}
 
-}
-table tr td:first-child{
-    white-space: nowrap;
-}
-table tr th:nth-child(2){
-    width: 100%;
+label{
+    font-size: 120%;
 }

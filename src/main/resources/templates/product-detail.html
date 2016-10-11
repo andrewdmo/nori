@@ -5,11 +5,9 @@
     <title>Title</title>
 </head>
 
-<body>
 <div class="leftMain">
     <img id= "seaweed" th:src="@{/images/seaweed.png}"/>
-    <label id="HomeLink">Home</label>
-
+    <a id="HomeLink" th:href="@{/dashboard.html}" href="dashboard.html">Dashboard</a>
 </div>
 <div class="rightMain">
     <h1>Nori</h1> <h4>Inventory Notification System</h4>
@@ -62,5 +60,4 @@
         <button id="template">Update Merchant Alerts</button>
     </form>
 </div>
-</body>
 </html>
