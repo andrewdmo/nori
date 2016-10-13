@@ -12,5 +12,6 @@ import java.util.List;
 @Repository
 public interface QtyLevelRepo extends JpaRepository<QtyLevel, Long> {
     QtyLevel findByProductid(Long productid);
+
 }
 

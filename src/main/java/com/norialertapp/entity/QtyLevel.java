@@ -1,5 +1,9 @@
 package com.norialertapp.entity;
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import java.util.List;
 
 /**
@@ -11,12 +15,13 @@ public class QtyLevel {
 
     @Id
     @GeneratedValue
+    @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     private Long id;
 
     @Column (unique = true)
     private Long productid;
 
-    @OneToMany(cascade= CascadeType.ALL)
+    @OneToMany(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name="qtyLevelID")
     private List<Level> productLevels;
 

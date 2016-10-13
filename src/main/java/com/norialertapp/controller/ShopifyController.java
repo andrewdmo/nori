@@ -1,6 +1,7 @@
 package com.norialertapp.controller;
 import com.norialertapp.entity.*;
 import com.norialertapp.repository.ImageRepo;
+import com.norialertapp.repository.LevelRepo;
 import com.norialertapp.repository.ProductRepo;
 import com.norialertapp.repository.QtyLevelRepo;
 import com.norialertapp.service.ProductService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -40,6 +42,9 @@ public class ShopifyController {
 
     @Autowired
     public ImageRepo imageRepo;
+
+    @Autowired
+    LevelRepo levelRepo;
 
 //    @RequestMapping(path = "/", method=RequestMethod.GET)
 //    public String listProducts(Model model){
@@ -133,8 +138,12 @@ public class ShopifyController {
 
         productLevels.setProductLevels(levels);
 
-        if(qtyLevelRepo.findOne(id)!=null){
-        qtyLevelRepo.save(productLevels);}
+        if(qtyLevelRepo.findByProductid(id)!=null) { // if levels already exist, we need to override
+            qtyLevelRepo.delete(qtyLevelRepo.findByProductid(id));
+        }
+
+        qtyLevelRepo.save(productLevels);
+
 
         Product product = productServiceImpl.retrieveProduct(id);
         Integer productQty = product.getVariants().get(0).getInventory_quantity();

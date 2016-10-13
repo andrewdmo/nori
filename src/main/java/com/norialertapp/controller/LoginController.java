@@ -1,7 +1,6 @@
 package com.norialertapp.controller;
 
 import com.norialertapp.entity.*;
-import com.norialertapp.repository.QtyLevelRepo;
 import com.norialertapp.service.ProductService;
 import com.norialertapp.service.SearchService;
 import com.norialertapp.service.ShopifyService;

@@ -1,6 +1,6 @@
 package com.norialertapp.controller;
 
-import com.norialertapp.entity.ShopifyOrder;
+import com.norialertapp.entity.CatchHook;
 import com.norialertapp.service.OrderCreatedService;
 import com.norialertapp.service.ShopifyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +21,12 @@ public class ShopifyNotification {
     @Autowired
     public ShopifyService shopifyService;
 
-    @RequestMapping (path = "/order/creation")
-    public String orderCreation(@RequestBody ShopifyOrder shopifyOrder) {
-
-          shopifyService.getAndSaveProducts();
+    @RequestMapping(path = "/order-creation")
+    public String caughtHook(@RequestBody CatchHook catchHook) {
+        return "caughthook";
+    }
 
         //orderCreatedService.
 //        myservice.save(product);
 //        myservice.triggerNotifications(productId);
-//
-        return "notification!";
-    }
 }
