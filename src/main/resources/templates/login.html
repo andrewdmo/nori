@@ -17,7 +17,8 @@
 
     <form id="userLogin" action="dashboard.html" th:action="@{/userLogin}" th:method="post">
         <br/>
-        <input placeholder="User name" type="email" class="loginField" name="username" required="required"/>
+        <!--th:value="${aProduct.getId()}"-->
+        <input placeholder="User name" type="email" class="loginField" name="username" required="required" />
         <br/>
         <input placeholder="Password" type="password" class="loginField" name="password" required="required"/>
         <br/>

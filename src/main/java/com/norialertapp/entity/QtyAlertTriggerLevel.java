@@ -3,6 +3,7 @@ package com.norialertapp.entity;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -11,7 +12,9 @@ import javax.persistence.Id;
 
 @Entity
 public class QtyAlertTriggerLevel {
+
     @Id
+    @GeneratedValue
     private Long id;
 
     private String qtyTrigger;
@@ -19,6 +22,14 @@ public class QtyAlertTriggerLevel {
     private Long productId;
 
     public QtyAlertTriggerLevel() {
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public Long getId() {

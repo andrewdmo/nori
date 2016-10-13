@@ -28,6 +28,7 @@ public class Product {
     @JoinColumn(name="productID")
     private List<ProductImage> images;
 
+
     public List<ProductImage> getImages() {
         return images;
     }
@@ -44,11 +45,13 @@ public class Product {
         this.variants = variants;
     }
 
-    public String getTitle() {
+    public String getTitle(
+    ) {
         return title;
     }
 
     public void setTitle(String title) {
+
         this.title = title;
     }
 

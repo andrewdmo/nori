@@ -13,6 +13,7 @@ public class QtyLevel {
     @GeneratedValue
     private Long id;
 
+    @Column (unique = true)
     private Long productid;
 
     @OneToMany(cascade= CascadeType.ALL)

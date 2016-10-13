@@ -36,20 +36,21 @@
         <input type="text" id="low" name="low" value="" th:value="*{lowLevel}" required="required"/>
         <br/>
         <label>Out:</label>
-        <input type="email" id="out" name="out" value="" th:value="*{outLevel}" required="required"/>
+        <input type="text" id="out" name="out" value="" th:value="*{outLevel}" required="required"/>
         <input type="hidden" name="id" value="" th:value="${aProduct.getId()}"/>
         <br/>
         <button>Update Qty Rules</button>
     </form>
 
     <form id="lowerRight" th:action="@{/mail}" method="post">
+        <input type="hidden" name="id" value="" th:value="${aProduct.getId()}"/>
         <label class="title">Email Alerts When:</label><br/>
         <label>Qty Level: </label>
-        <select id="qty" title="">
+        <select id="qty" name="qty" title="">
             <option value="">Select Level</option>
-            <option name="high" th:value="High">High</option>
-            <option name="low" th:value="Low">Low</option>
-            <option name="out" th:value="Out">Out</option>
+            <option th:value="High">High</option>
+            <option th:value="Low">Low</option>
+            <option th:value="Out">Out</option>
         </select><br/>
         <label id="shopifyTitleText">Shopify Merchant Email Template:</label><br/>
         <select name="levels" title="">
