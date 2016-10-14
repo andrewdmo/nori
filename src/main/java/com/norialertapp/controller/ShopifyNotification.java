@@ -3,7 +3,6 @@ import com.norialertapp.entity.CatchHook;
 import com.norialertapp.entity.LineItem;
 import com.norialertapp.entity.Product;
 import com.norialertapp.entity.Variant;
-import com.norialertapp.repository.CatchHookRepo;
 import com.norialertapp.repository.ProductRepo;
 import com.norialertapp.service.OrderCreatedService;
 import com.norialertapp.service.ShopifyService;
@@ -30,17 +29,9 @@ public class ShopifyNotification {
     @Autowired
     private ProductRepo productRepo;
 
-    @Autowired
-    private CatchHookRepo catchHookRepo;
-
-    //ERROR: updates multiple times! Why?
-    //Possible answer: multiple order possibilities: order fufilled, order paid, etc.
-    @RequestMapping(path = "/order/payment")
+    //Updates db if someone places or cancels an order
+    @RequestMapping(path = "/order")
     public String caughtHook(@RequestBody CatchHook catchHook) {
-
-        // if hook hasn't already been processed (doesn't yet exist in table)...
-        // don't repeat multiple times?
-        if(catchHookRepo.findOne(catchHook.getId())==null) {
 
             List<LineItem> lineItems = catchHook.getLine_items();
 
@@ -59,7 +50,16 @@ public class ShopifyNotification {
                 List<Variant> variant = a.getVariants();
                 Integer qty = variant.get(0).getInventory_quantity();
 
-                Integer updatedQty = qty - product.getValue();
+                Integer updatedQty;
+
+                // If order canceled, add qty back to db
+                if(catchHook.getCancel_reason()!=null)
+                {
+                    updatedQty = qty + product.getValue();
+                }
+                else { //else if it's an order, then subtract qty to unpdate db
+                    updatedQty = qty - product.getValue();
+                }
 
                 Product aProduct = productRepo.getOne(product.getKey());
                 aProduct.getVariants().get(0).setInventory_quantity(updatedQty); // update Product with revised Qty
@@ -67,7 +67,7 @@ public class ShopifyNotification {
                 productRepo.save(aProduct);
 
             }
-        }
+
         return "";
     }
 
