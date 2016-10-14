@@ -8,7 +8,7 @@
 <body>
 <div class="leftMain">
     <img id="seaweed" th:src="@{/images/seaweed.png}"/>
-    <label id="HomeLink">Home</label>
+    <a id="HomeLink" th:href="@{/dashboard.html}" href="dashboard.html">Dashboard</a>
 
 </div>
 <div class="rightMain">
@@ -32,28 +32,29 @@
                         </select>
                 <label class="details">Item Name: </label> <input name="itemName"/>
                  <button>Search</button>
+
             </form>
         </div>
+        <br /><br />
+        <table>
+            <tr id="columns">
+                <th>Part#</th>
+                <th>Item Name</th>
+                <th>Vendor</th>
+                <th>Qty Level</th>
+                <th>Qty Available</th>
+                <th>Modify</th>
+            </tr>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}">Product ID</td>
+                <td><a th:text="${product.title}" th:href="@{(${product.id})}" href="product-detail.html">Product Title</a>
+                </td>
+                <td th:text="${product.vendor}">Vendor</td>
+                <td th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())} :'NOT SET'">N/A</td>
+                <td th:text="${qty.get(product.getId())}">Qty Available</td>
+            </tr>
+        </table>
     </div>
-    Hello
-    <table>
-        <tr id="columns">
-            <th>Part#</th>
-            <th>Item Name</th>
-            <th>Vendor</th>
-            <th>Qty Level</th>
-            <th>Qty Available</th>
-            <th>Modify</th>
-        </tr>
-        <tr th:each="product : ${products}">
-            <td th:text="${product.id}">Product ID</td>
-            <td><a th:text="${product.title}" th:href="@{(${product.id})}" href="product-detail.html">Product Title</a>
-            </td>
-            <td th:text="${product.vendor}">Vendor</td>
-            <td th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())} :'NOT SET'">N/A</td>
-            <td th:text="${qty.get(product.getId())}">Qty Available</td>
-        </tr>
-    </table>
 </div>
 </body>
 </html>

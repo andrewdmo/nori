@@ -8,8 +8,10 @@ import com.norialertapp.repository.ProductRepo;
 import com.norialertapp.repository.QtyLevelRepo;
 import com.norialertapp.repository.QtyTriggerRepo;
 import com.norialertapp.service.MailClient;
+import com.norialertapp.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,6 +29,9 @@ public class MailController {
     private MailClient mailClient;
 
     @Autowired
+    private ProductServiceImpl productServiceImpl;
+
+    @Autowired
     private QtyTriggerRepo qtyTriggerRepo;
 
     @Autowired
@@ -39,7 +44,7 @@ public class MailController {
     private QtyLevelRepo qtyLevelRepo;
 
     @RequestMapping(path="/mail", method= RequestMethod.POST)
-    public String sendMail(String qty, Long id) throws MessagingException {
+    public String sendMail(String qty, Long id, Model model) throws MessagingException {
 
         Product product = productRepo.findOne(id);
 
@@ -56,7 +61,7 @@ public class MailController {
         Integer out = -1;
 
 
-        if(qtyLevel.getProductLevels()!=null) {
+        if(qtyLevel!=null) {
             List <Level> levels = qtyLevel.getProductLevels(); // grab levels list
             Integer triggerQty = 0;
             for (Level level : levels) { //iterate through list to find the triggerQty
@@ -88,9 +93,17 @@ public class MailController {
                     }
 
             }
-            return "success"; // text should read "level set successfully"
         }
-        return "error";  // create error page
+
+        String levelSet = "Level Set Successfully!";
+        Product sameProduct = productServiceImpl.retrieveProduct(id);
+        Integer productQty = product.getVariants().get(0).getInventory_quantity();
+        String imagePic = product.getImages().get(0).getSrc();
+        model.addAttribute("levelSetMessage", levelSet);
+        model.addAttribute("imagePic", imagePic);
+        model.addAttribute("aProduct", sameProduct);
+        model.addAttribute("productQty", productQty);
+        return "product-detail";
     }
 }
 

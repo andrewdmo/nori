@@ -2,10 +2,12 @@ package com.norialertapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Entity;
-        import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
         import javax.persistence.Entity;
-        import javax.persistence.Id;
+import java.util.List;
+
 /**
  * Created by andrewdmo on 10/12/16.
  */
@@ -14,38 +16,27 @@ import javax.persistence.Entity;
 public class CatchHook {
     @Id
     private Long id;
-    private String email;
-    //private LineItem lineItem;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "catchHookID")
+    private List<LineItem> line_items;
+
     public CatchHook() {
     }
+
     public Long getId() {
         return id;
     }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
+
     public void setId(Long id) {
         this.id = id;
     }
+
+    public List<LineItem> getLine_items() {
+        return line_items;
+    }
+
+    public void setLine_items(List<LineItem> line_items) {
+        this.line_items = line_items;
+    }
 }
-//    public CatchHook(long id, String email) {
-//        this.id = id;
-//        this.email = email;
-//        //this.lineItem = lineItem;
-//    }
-//
-//    public long getId() {
-//        //System.out.println(id);
-//        return id;
-//    }
-//
-//    public String getEmail() {
-//        System.out.println(email);
-//        return email;
-//    }
-//        public LineItem getLineItem();
-//            return LineItem;
-//    }
