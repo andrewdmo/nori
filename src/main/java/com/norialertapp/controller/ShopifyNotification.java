@@ -85,6 +85,6 @@ public class ShopifyNotification {
 
     @RequestMapping(path = "/google79ef565d46e8d4f5.html")
     public String googleSiteVerify(HTML html) {
-        return "/google79ef565d46e8d4f5.html";
+        return "google79ef565d46e8d4f5.html";
     }
 }
