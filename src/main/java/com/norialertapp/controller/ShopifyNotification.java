@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.swing.text.html.HTML;
 import java.util.HashMap;
 import java.util.List;
 
@@ -79,5 +81,10 @@ public class ShopifyNotification {
             productRepo.save(product);
 
         return "";
+    }
+
+    @RequestMapping(path = "/google79ef565d46e8d4f5.html")
+    public String googleSiteVerify(HTML html) {
+        return "/google79ef565d46e8d4f5.html";
     }
 }
