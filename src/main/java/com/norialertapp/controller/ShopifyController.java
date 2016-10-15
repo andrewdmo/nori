@@ -74,6 +74,7 @@ public class ShopifyController {
         return "dashboard";
     }
 
+
     @RequestMapping(path = "/{product.id}", method=RequestMethod.GET)
     public String individualProduct(@PathVariable("product.id") final Long productId, Model model){
 
