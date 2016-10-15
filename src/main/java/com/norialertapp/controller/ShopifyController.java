@@ -1,9 +1,6 @@
 package com.norialertapp.controller;
 import com.norialertapp.entity.*;
-import com.norialertapp.repository.ImageRepo;
-import com.norialertapp.repository.LevelRepo;
-import com.norialertapp.repository.ProductRepo;
-import com.norialertapp.repository.QtyLevelRepo;
+import com.norialertapp.repository.*;
 import com.norialertapp.service.ProductService;
 import com.norialertapp.service.ProductServiceImpl;
 import com.norialertapp.service.SearchService;
@@ -51,6 +48,9 @@ public class ShopifyController {
     @Autowired
     SearchService searchService;
 
+    @Autowired
+    QtyTriggerRepo qtyTriggerRepo;
+
     @RequestMapping(path = "/", method=RequestMethod.GET)
     public String listProducts(){
 
@@ -78,13 +78,40 @@ public class ShopifyController {
     @RequestMapping(path = "/{product.id}", method=RequestMethod.GET)
     public String individualProduct(@PathVariable("product.id") final Long productId, Model model){
 
+        QtyLevel productLevels = qtyLevelRepo.findByProductid(productId);
+        String alertTrigger = "";
+        if(qtyTriggerRepo.findByProductId(productId)!=null){
+             alertTrigger = qtyTriggerRepo.findByProductId(productId).getQtyTrigger();}
+
+        List<Level> levels = productLevels.getProductLevels();
+        Integer highLevel = -1;
+        Integer lowLevel = -1;
+        Integer outLevel = -1;
+
+        for(Level level: levels){
+            if(level.getCustomLevel().equals("High")){
+                highLevel = level.getQuantity();
+            }
+            else if (level.getCustomLevel().equals("Low")){
+                lowLevel = level.getQuantity();
+            }
+            else {
+                outLevel = level.getQuantity();
+            }
+        }
+
+        productLevels.setProductLevels(levels);
+
         Product product = productServiceImpl.retrieveProduct(productId);
         Integer productQty = product.getVariants().get(0).getInventory_quantity();
         String imagePic = product.getImages().get(0).getSrc();
+        model.addAttribute("alertTrigger", alertTrigger);
         model.addAttribute("imagePic", imagePic);
         model.addAttribute("aProduct", product);
         model.addAttribute("productQty", productQty);
-
+        model.addAttribute("highLevel", highLevel);
+        model.addAttribute("lowLevel", lowLevel);
+        model.addAttribute("outLevel", outLevel);
         return "product-detail";
     }
 
@@ -121,10 +148,15 @@ public class ShopifyController {
         qtyLevelRepo.save(productLevels);
 
 
+        String alertTrigger = "";
+        if(qtyTriggerRepo.findByProductId(id)!=null){
+            alertTrigger = qtyTriggerRepo.findByProductId(id).getQtyTrigger();}
+
         Product product = productServiceImpl.retrieveProduct(id);
         Integer productQty = product.getVariants().get(0).getInventory_quantity();
         ProductImage image = product.getImages().get(0);
         String imageSrc = image.getSrc();
+        model.addAttribute("alertTrigger", alertTrigger);
         model.addAttribute("qtyRulesMessage", "Rules Set Successfully!");
         model.addAttribute("productQty", productQty);
         model.addAttribute("imagePic", imageSrc);

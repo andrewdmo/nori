@@ -4,12 +4,17 @@ import com.norialertapp.entity.LineItem;
 import com.norialertapp.entity.Product;
 import com.norialertapp.entity.Variant;
 import com.norialertapp.repository.ProductRepo;
+import com.norialertapp.repository.QtyLevelRepo;
+import com.norialertapp.repository.QtyTriggerRepo;
 import com.norialertapp.service.OrderCreatedService;
 import com.norialertapp.service.ShopifyService;
+import com.norialertapp.service.TriggerMailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.mail.MessagingException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -29,9 +34,15 @@ public class ShopifyNotification {
     @Autowired
     private ProductRepo productRepo;
 
+    @Autowired
+    TriggerMailService triggerMailService;
+
+    @Autowired
+    QtyTriggerRepo qtyTriggerRepo;
+
     //Updates db if someone places or cancels an order
     @RequestMapping(path = "/order")
-    public String caughtHook(@RequestBody CatchHook catchHook) {
+    public String caughtHook(@RequestBody CatchHook catchHook) throws MessagingException {
 
             List<LineItem> lineItems = catchHook.getLine_items();
 
@@ -64,6 +75,9 @@ public class ShopifyNotification {
                 Product aProduct = productRepo.getOne(product.getKey());
                 aProduct.getVariants().get(0).setInventory_quantity(updatedQty); // update Product with revised Qty
 
+                // do comparison and see if you have to send out an email alert
+                triggerMailService.triggerEmail(qtyTriggerRepo.findByProductId(product.getKey()).getQtyTrigger(),product.getKey());
+
                 productRepo.save(aProduct);
 
             }
@@ -74,9 +88,13 @@ public class ShopifyNotification {
 
     // If someone manually updates inventory:
     @RequestMapping(path = "/products/update")
-    public String caughtHook(@RequestBody Product product) {
+    public String caughtHook(@RequestBody Product product) throws MessagingException {
 
-            productRepo.save(product);
+        // do comparison and see if you have to send out an email alert
+        String qty = qtyTriggerRepo.findByProductId(product.getId()).getQtyTrigger();
+        triggerMailService.triggerEmail(qty,product.getId());
+
+        productRepo.save(product);
 
         return "";
     }

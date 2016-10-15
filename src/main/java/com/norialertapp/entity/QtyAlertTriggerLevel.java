@@ -2,9 +2,7 @@ package com.norialertapp.entity;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by katherine_celeste on 10/10/16.

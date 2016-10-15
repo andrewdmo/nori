@@ -19,14 +19,11 @@ public class SearchService {
     @Autowired
     QtyLevelRepo qtyLevelRepo;
 
-    HashMap<Long, String> qtyLevels;
+    private HashMap<Long, String> qtyLevels;
 
-    HashMap<Long, Integer> qty;
+    private HashMap<Long, Integer> qty;
 
     public void searchShopifyProductsList(List<Product> products) {
-
-        List listOfInfo = new ArrayList();
-
 
         // productID mapped to quantity levels (determined by user - High/Low/Out)
         qtyLevels = new HashMap<>();
