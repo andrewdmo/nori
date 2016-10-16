@@ -21,10 +21,11 @@ a{
 /*}*/
 
 .row{
-    border: 2px solid black;
+    border: 2px solid dimgray;
     background-color: white;
-    padding: 1%;
+    padding: 0%;
     height: 20%;
+    min-width: 100%;
 }
 
 
@@ -85,24 +86,28 @@ h2{
     column-count: 1;
 }
 
+.box{
+    margin-right: 1.5%;
+}
+
 .productDetail{
-    display: inline-block;
-    max-width: 50%;
-    min-height: 100%;
-    padding-right: 20%;
-    vertical-align: top;
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: 2.5%;
 }
 
 .details{
     display: inline-block;
     padding-bottom: 1%;
+    padding-right: 0.5%;
     font-style: oblique;
+    font-size: 130%;
 }
 
 .leftMain {
     color: white;
     width: 15%;
-    border-right: 2px solid black;
+    border-right: 2px solid dimgray;
     background-image:
             linear-gradient(
                     to bottom right,
@@ -146,7 +151,7 @@ h2{
 
 .rightMain{
     margin: 0 0 0 15%;
-    border: 1px solid black;
+    border: 1px solid dimgray;
 }
 
 #columns{
@@ -158,13 +163,16 @@ table tr:nth-child(even) {
 }
 
 table {
-    padding:0;
+    padding: 0;
     display: inline-block;
     border-collapse: collapse;
     border-top: solid lightgrey;
     margin: 0;
 
 }
+
+th, td { padding: 5px; } /* cellpadding */
+
 table tr td:first-child{
     white-space: nowrap;
 }

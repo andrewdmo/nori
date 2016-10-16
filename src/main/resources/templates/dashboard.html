@@ -19,19 +19,17 @@
 
                 <h2 name="title" id="title" value="product name"></h2>
 
-                <label class="details">Part#: </label> <input name="productID"/> <br/>
-                <label class="details">Vendor: </label> <input name="vendorName"/>
-
-                     <label class="details">Level: </label>
-                    <select id="qty" name="qtyLevel" title="">
+                <label class="details">Part#: </label> <input class="box" name="productID"/>
+                <label class="details">Vendor: </label> <input class="box" name="vendorName"/>
+                <label class="details">Level: </label>
+                    <select id="qty" class="box" name="qtyLevel" title="">
                         <option value="">Select Level</option>
-                         <option th:value="High">High</option>
+                        <option th:value="High">High</option>
                         <option th:value="Low">Low</option>
                         <option th:value="Out">Out</option>
                         </select>
-                <label class="details">Item Name: </label> <input name="itemName"/>
-                 <button>Search</button>
-
+                <label class="details">Item Name: </label><input class="box" name="itemName"/>
+                <button id="searchButton">Search</button>
             </form>
         </div>
         <br /><br />
@@ -42,14 +40,13 @@
                 <th>Vendor</th>
                 <th>Qty Level</th>
                 <th>Qty Available</th>
-                <th>Modify</th>
             </tr>
             <tr th:each="product : ${products}">
                 <td th:text="${product.id}">Product ID</td>
                 <td><a th:text="${product.title}" th:href="@{(${product.id})}" href="product-detail.html">Product Title</a>
                 </td>
                 <td th:text="${product.vendor}">Vendor</td>
-                <td th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())} :'NOT SET'">N/A</td>
+                <td th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())} :'Good'">N/A</td>
                 <td th:text="${qty.get(product.getId())}">Qty Available</td>
             </tr>
         </table>
