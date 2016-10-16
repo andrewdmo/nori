@@ -40,7 +40,7 @@
         <input type="hidden" name="id" value="" th:value="${aProduct.getId()}"/>
         <br/>
         <button>Update Qty Rules</button><br/>
-        <label  th:text="${qtyRulesMessage}"></label>
+        <label th:text="${qtyRulesMessage}"></label>
     </form>
 
     <form id="lowerRight" th:action="@{/mail}" method="post">
@@ -48,18 +48,23 @@
         <label class="title">Email Alerts When:</label><br/>
         <label>Qty Level: </label>
         <select id="qty" name="qty" title="" required="required">
-            <option value="">Select Level</option>
             <option th:value="High">High</option>
             <option th:value="Low">Low</option>
             <option th:value="Out">Out</option>
-            <option th:value="None">None</option>
+            <option th:value="None" th:selected="None">None</option>
         </select><br/>
+        <!--th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())}-->
+        <span>Previously Selected Level: </span>
+        <!--th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())}-->
+        <span th:text = "${alertTrigger} ? ${alertTrigger} :'None'">N/A</span>
+        <br/><br/>
         <label id="shopifyTitleText">Shopify Merchant Email Template:</label><br/>
         <select name="levels" title="" required="required">
             <option value="">Select Template</option>
             <option>Platafina</option>
-            <!--th:value="High"-->
-        </select> <br/>
+        </select><br/>
+        <a th:href="@{/emailTemplate.html}" href="emailTemplate.html">View Email Template</a>
+        <br/>
         <button id="template">Update Merchant Alerts</button> <br/>
         <label class="levelSetMessage" th:text="${levelSetMessage}"></label>
     </form>

@@ -52,6 +52,12 @@ public class MailController {
         levelSelected.setQtyTrigger(qty);
         levelSelected.setProductId(id);
 
+        // can only save one qty alert per product
+        // if qtyTrigger already exists, delete!
+        if(qtyTriggerRepo.findByProductId(id)!=null){
+            qtyTriggerRepo.delete(qtyTriggerRepo.findByProductId(id).getId());
+        }
+
         qtyTriggerRepo.save(levelSelected);
 
         Integer currentInventoryQty = product.getVariants().get(0).getInventory_quantity();
@@ -94,6 +100,36 @@ public class MailController {
 
             }
         }
+
+        QtyLevel productLevels = qtyLevelRepo.findByProductid(id);
+        String alertTrigger = "";
+        if(qtyTriggerRepo.findByProductId(id)!=null){
+            alertTrigger = qtyTriggerRepo.findByProductId(id).getQtyTrigger();}
+
+        List<Level> levels = productLevels.getProductLevels();
+        Integer highLevel = -1;
+        Integer lowLevel = -1;
+        Integer outLevel = -1;
+
+        for(Level level: levels){
+            if(level.getCustomLevel().equals("High")){
+                highLevel = level.getQuantity();
+            }
+            else if (level.getCustomLevel().equals("Low")){
+                lowLevel = level.getQuantity();
+            }
+            else {
+                outLevel = level.getQuantity();
+            }
+        }
+
+        productLevels.setProductLevels(levels);
+
+
+        model.addAttribute("alertTrigger", alertTrigger);
+        model.addAttribute("highLevel", highLevel);
+        model.addAttribute("lowLevel", lowLevel);
+        model.addAttribute("outLevel", outLevel);
 
         String levelSet = "Level Set Successfully!";
         Product sameProduct = productServiceImpl.retrieveProduct(id);

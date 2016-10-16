@@ -23,7 +23,7 @@ public class MailClient {
     public void send (String recipient, String subject, String body){
         MimeMessagePreparator messagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
-            messageHelper.setFrom("kceleste35@gmail.com");
+            messageHelper.setFrom("peruvianplatafinaalerts@gmail.com");
             messageHelper.setTo(recipient);
             messageHelper.setSubject(subject);
             messageHelper.setText(body);

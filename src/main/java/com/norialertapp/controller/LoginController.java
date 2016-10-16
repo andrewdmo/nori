@@ -91,6 +91,6 @@ public class LoginController {
 
     @RequestMapping(value = "/emailTemplate", method = RequestMethod.GET)
     public String emailTemplate(Model model) {
-        return "email-template";
+        return "emailTemplate";
     }
 }
