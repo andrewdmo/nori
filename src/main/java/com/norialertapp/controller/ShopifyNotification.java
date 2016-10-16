@@ -90,11 +90,13 @@ public class ShopifyNotification {
     @RequestMapping(path = "/products/update")
     public String caughtHook(@RequestBody Product product) throws MessagingException {
 
+        //update qty in db first
+        productRepo.save(product);
+
         // do comparison and see if you have to send out an email alert
         String qty = qtyTriggerRepo.findByProductId(product.getId()).getQtyTrigger();
         triggerMailService.triggerEmail(qty,product.getId());
 
-        productRepo.save(product);
 
         return "";
     }
