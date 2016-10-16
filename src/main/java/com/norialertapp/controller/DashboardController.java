@@ -55,18 +55,18 @@ public class DashboardController {
             productListC = new HashSet<>(productRepo.findByTitleIgnoreCaseContaining(search.getItemName()));
         }
 
-        HashMap<Long, String> qtyLevels = searchService.qtyLevels(); // Grab list of products with their qtyLevel (based on current inventory levels)
+//        HashMap<Long, String> qtyLevels = searchService.qtyLevels(); // Grab list of products with their qtyLevel (based on current inventory levels)
 
         List<Long> productIDs = new ArrayList<>(); // initialize blank list of productID's
 
         Set<Product> productListD = new HashSet<>();
 
-        for (HashMap.Entry<Long, String> product : qtyLevels.entrySet()) { //iterate through HashMap and add products to list that
-            if (product.getValue().equals(search.getQtyLevel()))              //match qtyLevel search criteria
-            {
-                productIDs.add(product.getKey());
-            }
-        }
+//        for (HashMap.Entry<Long, String> product : qtyLevels.entrySet()) { //iterate through HashMap and add products to list that
+//            if (product.getValue().equals(search.getQtyLevel()))              //match qtyLevel search criteria
+//            {
+//                productIDs.add(product.getKey());
+//            }
+//        }
 
         for (Long id : productIDs) { // add products to master list
             Product aProduct = productRepo.findOne(id);
@@ -88,7 +88,7 @@ public class DashboardController {
 
         HashMap<Long, Integer> qty = searchService.qty();
 
-        model.addAttribute("qtyLevels", qtyLevels);
+//        model.addAttribute("qtyLevels", qtyLevels);
         model.addAttribute("qty", qty);
 
         if ((productListA.size() > 0) || (!search.getVendorName().equals("")) || (!search.getQtyLevel().equals("")) || (productListD.size() > 0)) {

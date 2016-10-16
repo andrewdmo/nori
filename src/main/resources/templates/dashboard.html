@@ -2,10 +2,15 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" th:href="@{/css/dashboard.css}" href="../static/css/dashboard.css"/>
+    <link rel="stylesheet" th:href="@{/css/normalize.css}" href="../static/css/normalize.css"/>
+    <link rel="stylesheet" th:href="@{/css/skeleton.css}" href="../static/css/skeleton.css"/>
+
     <title>Title</title>
 </head>
 
 <body>
+<div class="container">
+
 <div class="leftMain">
     <img id="seaweed" th:src="@{/images/seaweed.png}"/>
     <label id="HomeLink">Home</label>
@@ -14,46 +19,47 @@
 <div class="rightMain">
     <h1>Nori</h1> <h4>Inventory Notification System</h4>
 
-    <div class="row">
-        <div class="productDetail">
-            <form action="dashboard.html.html" th:action="@{/search}" method="post">
+    <!--<div class="row">-->
+    <div class="productDetail">
+        <form action="dashboard.html" th:action="@{/search}" method="post">
 
-                <h2 name="title" id="title" value="product name"></h2>
+            <h2 name="title" id="title" value="product name"></h2>
 
-                <label class="details">Part#: </label> <input name="productID"/> <br/>
-                <label class="details">Vendor: </label> <input name="vendorName"/>
+            <label class="details">Part#: </label> <input name="productID"/> <br/>
+            <label class="details">Vendor: </label> <input name="vendorName"/>
 
-                     <label class="details">Level: </label>
-                    <select id="qty" name="qtyLevel" title="">
-                        <option value="">Select Level</option>
-                         <option th:value="High">High</option>
-                        <option th:value="Low">Low</option>
-                        <option th:value="Out">Out</option>
-                        </select>
-                <label class="details">Item Name: </label> <input name="itemName"/>
-                 <button>Search</button>
-            </form>
-        </div>
+            <label class="details">Level: </label>
+            <select id="qty" name="qtyLevel" title="">
+                <option value="">Select Level</option>
+                <option th:value="High">High</option>
+                <option th:value="Low">Low</option>
+                <option th:value="Out">Out</option>
+            </select>
+            <label class="details">Item Name: </label> <input name="itemName"/>
+            <button>Search</button>
+        </form>
     </div>
-    Hello
-    <table>
-        <tr id="columns">
-            <th>Part#</th>
-            <th>Item Name</th>
-            <th>Vendor</th>
-            <th>Qty Level</th>
-            <th>Qty Available</th>
-            <th>Modify</th>
-        </tr>
-        <tr th:each="product : ${products}">
-            <td th:text="${product.id}">Product ID</td>
-            <td><a th:text="${product.title}" th:href="@{(${product.id})}" href="product-detail.html">Product Title</a>
-            </td>
-            <td th:text="${product.vendor}">Vendor</td>
-            <td th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())} :'NOT SET'">N/A</td>
-            <td th:text="${qty.get(product.getId())}">Qty Available</td>
-        </tr>
-    </table>
+</div>
+howdy
+<table>
+    <tr id="columns">
+        <th>Part#</th>
+        <th>Item Name</th>
+        <th>Vendor</th>
+        <th>Qty Level</th>
+        <th>Qty Available</th>
+        <th>Modify</th>
+    </tr>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}">Product ID</td>
+        <td><a th:text="${product.title}" th:href="@{(${product.id})}" href="product-detail.html">Product Title</a>
+        </td>
+        <td th:text="${product.vendor}">Vendor</td>
+        <td th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())} :'NOT SET'">N/A</td>
+        <td th:text="${qty.get(product.getId())}">Qty Available</td>
+    </tr>
+</table>
+
 </div>
 </body>
 </html>
