@@ -8,8 +8,9 @@ html, head, body{
     padding: 0;
     margin: 0;
 }
-.backGround {
 
+a{
+    text-decoration: none;
 }
 .leftMain {
     color: black;
@@ -52,8 +53,9 @@ html, head, body{
     z-index: 2;
     opacity: .70;
 }
-/*a{*/
-    /*text-decoration: none;*/
+
+/**{*/
+/*border: 1px dashed #ff0000;*/
 /*}*/
 
 /*.row{*/
@@ -98,6 +100,9 @@ border-top: solid lightgrey;
 margin: 0;
 
 }
+
+th, td { padding: 5px; } /* cellpadding */
+
 table tr td:first-child{
 white-space: nowrap;
 }

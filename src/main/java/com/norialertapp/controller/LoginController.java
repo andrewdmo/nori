@@ -32,9 +32,6 @@ public class LoginController {
     @Autowired
     private SearchService searchService;
 
-//    @RequestParam(value = "error", required = false) String error,
-//    @RequestParam(value = "logout", required = false) String logout,
-
     //Spring Security sees this :
     @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
     public String userLogin(String password, String username, Model model) {
@@ -94,6 +91,6 @@ public class LoginController {
 
     @RequestMapping(value = "/emailTemplate", method = RequestMethod.GET)
     public String emailTemplate(Model model) {
-        return "email-template";
+        return "emailTemplate";
     }
 }

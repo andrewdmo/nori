@@ -1,6 +1,10 @@
 package com.norialertapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.norialertapp.repository.ProductRepo;
+import com.norialertapp.repository.QtyLevelRepo;
+import com.norialertapp.repository.QtyTriggerRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.List;
@@ -27,7 +31,6 @@ public class Product {
     @OneToMany (cascade= CascadeType.ALL)
     @JoinColumn(name="productID")
     private List<ProductImage> images;
-
 
     public List<ProductImage> getImages() {
         return images;

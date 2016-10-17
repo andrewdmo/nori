@@ -8,8 +8,11 @@ import com.norialertapp.repository.ProductRepo;
 import com.norialertapp.repository.QtyLevelRepo;
 import com.norialertapp.repository.QtyTriggerRepo;
 import com.norialertapp.service.MailClient;
+import com.norialertapp.service.ProductServiceImpl;
+import com.norialertapp.service.TriggerMailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,9 +25,9 @@ import java.util.List;
 
 @Controller
 public class MailController {
-    //
+
     @Autowired
-    private MailClient mailClient;
+    private ProductServiceImpl productServiceImpl;
 
     @Autowired
     private QtyTriggerRepo qtyTriggerRepo;
@@ -33,13 +36,13 @@ public class MailController {
     private ProductRepo productRepo;
 
     @Autowired
-    private LevelRepo levelRepo;
-
-    @Autowired
     private QtyLevelRepo qtyLevelRepo;
 
+    @Autowired
+    private TriggerMailService triggerMailService;
+
     @RequestMapping(path="/mail", method= RequestMethod.POST)
-    public String sendMail(String qty, Long id) throws MessagingException {
+    public String sendMail(String qty, Long id, Model model) throws MessagingException {
 
         Product product = productRepo.findOne(id);
 
@@ -47,50 +50,55 @@ public class MailController {
         levelSelected.setQtyTrigger(qty);
         levelSelected.setProductId(id);
 
+        // can only save one qty alert per product
+        // if qtyTrigger already exists, delete!
+        if(qtyTriggerRepo.findByProductId(id)!=null){
+            qtyTriggerRepo.delete(qtyTriggerRepo.findByProductId(id).getId());
+        }
+
         qtyTriggerRepo.save(levelSelected);
 
-        Integer currentInventoryQty = product.getVariants().get(0).getInventory_quantity();
+        triggerMailService.triggerEmail(qty, id);
 
-        QtyLevel qtyLevel = qtyLevelRepo.findByProductid(product.getId()); // grab QtyLevel object
+        QtyLevel productLevels = qtyLevelRepo.findByProductid(id);
+        String alertTrigger = "";
+        if(qtyTriggerRepo.findByProductId(id)!=null){
+            alertTrigger = qtyTriggerRepo.findByProductId(id).getQtyTrigger();}
 
-        Integer out = -1;
+        List<Level> levels = productLevels.getProductLevels();
+        Integer highLevel = -1;
+        Integer lowLevel = -1;
+        Integer outLevel = -1;
 
-
-        if(qtyLevel.getProductLevels()!=null) {
-            List <Level> levels = qtyLevel.getProductLevels(); // grab levels list
-            Integer triggerQty = 0;
-            for (Level level : levels) { //iterate through list to find the triggerQty
-                if (level.getCustomLevel().equals(qty))
-                    triggerQty = level.getQuantity();
-                if (level.getCustomLevel().equals("Out")) {
-                    out = level.getQuantity();
-                }
+        for(Level level: levels){
+            if(level.getCustomLevel().equals("High")){
+                highLevel = level.getQuantity();
             }
-            switch (qty) {
-                case "High":
-                    if (currentInventoryQty >= triggerQty) {
-                        mailClient.send("kceleste35@gmail.com", "Inventory Alert: Items Low/Out of Stock", "You currently have one or more items out" +
-                                "of stock. Cheers! -Nori");
-                    }
-                    break;
-
-                case "Low":
-                    if ((currentInventoryQty <= triggerQty) && (currentInventoryQty > out)) {
-                        mailClient.send("kceleste35@gmail.com", "Inventory Alert: Items Low/Out of Stock", "You currently have one or more items out" +
-                                "of stock. Cheers! -Nori");
-                    }
-                    break;
-                case "Out":
-                    if (currentInventoryQty <= triggerQty) {
-                        mailClient.send("kceleste35@gmail.com", "Inventory Alert: Items Low/Out of Stock", "You currently have one or more items out" +
-                                "of stock. Cheers! -Nori");
-                        break; // optional
-                    }
-
+            else if (level.getCustomLevel().equals("Low")){
+                lowLevel = level.getQuantity();
             }
-            return "success"; // text should read "level set successfully"
+            else {
+                outLevel = level.getQuantity();
+            }
         }
-        return "error";  // create error page
+
+        productLevels.setProductLevels(levels);
+
+
+        model.addAttribute("alertTrigger", alertTrigger);
+        model.addAttribute("highLevel", highLevel);
+        model.addAttribute("lowLevel", lowLevel);
+        model.addAttribute("outLevel", outLevel);
+
+        String levelSet = "Level Set Successfully!";
+        Product sameProduct = productServiceImpl.retrieveProduct(id);
+        Integer productQty = product.getVariants().get(0).getInventory_quantity();
+        String imagePic = product.getImages().get(0).getSrc();
+        model.addAttribute("levelSetMessage", levelSet);
+        model.addAttribute("imagePic", imagePic);
+        model.addAttribute("aProduct", sameProduct);
+        model.addAttribute("productQty", productQty);
+        return "product-detail";
     }
 }
 
