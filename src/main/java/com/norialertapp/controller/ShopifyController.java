@@ -1,4 +1,5 @@
 package com.norialertapp.controller;
+
 import com.norialertapp.entity.*;
 import com.norialertapp.repository.*;
 import com.norialertapp.service.ProductService;
@@ -51,21 +52,21 @@ public class ShopifyController {
     @Autowired
     QtyTriggerRepo qtyTriggerRepo;
 
-    @RequestMapping(path = "/", method=RequestMethod.GET)
-    public String listProducts(){
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public String listProducts() {
 
         return "login";
     }
 
     @RequestMapping(path = "/dashboard")
-    public String dashboard(Model model){
+    public String dashboard(Model model) {
 // load list of products from Shopify
         List<Product> products = shopifyService.getAndSaveProducts();
 
         searchService.searchShopifyProductsList(products);
 
-        HashMap<Long, String> qtyLevels= searchService.qtyLevels();
-        HashMap <Long, Integer> qty = searchService.qty();
+        HashMap<Long, String> qtyLevels = searchService.qtyLevels();
+        HashMap<Long, Integer> qty = searchService.qty();
 
         model.addAttribute("qtyLevels", qtyLevels);
         model.addAttribute("qty", qty);
@@ -75,33 +76,35 @@ public class ShopifyController {
     }
 
 
-    @RequestMapping(path = "/{product.id}", method=RequestMethod.GET)
-    public String individualProduct(@PathVariable("product.id") final Long productId, Model model){
+    @RequestMapping(path = "/{product.id}", method = RequestMethod.GET)
+    public String individualProduct(@PathVariable("product.id") final Long productId, Model model) {
 
         QtyLevel productLevels = qtyLevelRepo.findByProductid(productId);
         String alertTrigger = "";
-        if(qtyTriggerRepo.findByProductId(productId)!=null){
-             alertTrigger = qtyTriggerRepo.findByProductId(productId).getQtyTrigger();}
-
-        List<Level> levels = productLevels.getProductLevels();
-        Integer highLevel = -1;
-        Integer lowLevel = -1;
-        Integer outLevel = -1;
-
-        for(Level level: levels){
-            if(level.getCustomLevel().equals("High")){
-                highLevel = level.getQuantity();
-            }
-            else if (level.getCustomLevel().equals("Low")){
-                lowLevel = level.getQuantity();
-            }
-            else {
-                outLevel = level.getQuantity();
-            }
+        if (qtyTriggerRepo.findByProductId(productId) != null) {
+            alertTrigger = qtyTriggerRepo.findByProductId(productId).getQtyTrigger();
         }
 
-        productLevels.setProductLevels(levels);
+        if (productLevels != null) {
+            List<Level> levels = productLevels.getProductLevels();
+            Integer highLevel = -1;
+            Integer lowLevel = -1;
+            Integer outLevel = -1;
 
+            for (Level level : levels) {
+                if (level.getCustomLevel().equals("High")) {
+                    highLevel = level.getQuantity();
+                } else if (level.getCustomLevel().equals("Low")) {
+                    lowLevel = level.getQuantity();
+                } else {
+                    outLevel = level.getQuantity();
+                }
+            }
+            model.addAttribute("highLevel", highLevel);
+            model.addAttribute("lowLevel", lowLevel);
+            model.addAttribute("outLevel", outLevel);
+            productLevels.setProductLevels(levels);
+        }
         Product product = productServiceImpl.retrieveProduct(productId);
         Integer productQty = product.getVariants().get(0).getInventory_quantity();
         String imagePic = product.getImages().get(0).getSrc();
@@ -109,14 +112,11 @@ public class ShopifyController {
         model.addAttribute("imagePic", imagePic);
         model.addAttribute("aProduct", product);
         model.addAttribute("productQty", productQty);
-        model.addAttribute("highLevel", highLevel);
-        model.addAttribute("lowLevel", lowLevel);
-        model.addAttribute("outLevel", outLevel);
         return "product-detail";
     }
 
-    @RequestMapping(path = "/storeQty", method=RequestMethod.POST)
-    public String storeQtys(Integer high, Integer low, Integer out, Long id, Model model){
+    @RequestMapping(path = "/storeQty", method = RequestMethod.POST)
+    public String storeQtys(Integer high, Integer low, Integer out, Long id, Model model) {
 
         QtyLevel productLevels = new QtyLevel();
         productLevels.setProductid(id);
@@ -141,7 +141,7 @@ public class ShopifyController {
 
         productLevels.setProductLevels(levels);
 
-        if(qtyLevelRepo.findByProductid(id)!=null) { // if levels already exist, we need to override
+        if (qtyLevelRepo.findByProductid(id) != null) { // if levels already exist, we need to override
             qtyLevelRepo.delete(qtyLevelRepo.findByProductid(id));
         }
 
@@ -149,8 +149,9 @@ public class ShopifyController {
 
 
         String alertTrigger = "";
-        if(qtyTriggerRepo.findByProductId(id)!=null){
-            alertTrigger = qtyTriggerRepo.findByProductId(id).getQtyTrigger();}
+        if (qtyTriggerRepo.findByProductId(id) != null) {
+            alertTrigger = qtyTriggerRepo.findByProductId(id).getQtyTrigger();
+        }
 
         Product product = productServiceImpl.retrieveProduct(id);
         Integer productQty = product.getVariants().get(0).getInventory_quantity();

@@ -9,7 +9,6 @@ import com.norialertapp.repository.QtyLevelRepo;
 import com.norialertapp.repository.QtyTriggerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import javax.mail.MessagingException;
 import java.util.List;
@@ -47,6 +46,7 @@ public class TriggerMailService {
         QtyLevel qtyLevel = qtyLevelRepo.findByProductid(product.getId()); // grab QtyLevel object
 
         Integer out = -1;
+        Integer high = -1;
 
 
         if(qtyLevel!=null) {
@@ -55,6 +55,9 @@ public class TriggerMailService {
             for (Level level : levels) { //iterate through list to find the triggerQty
                 if (level.getCustomLevel().equals(qty))
                     triggerQty = level.getQuantity();
+                if(level.getCustomLevel().equals("High")){
+                    high = level.getQuantity();
+                }
                 if (level.getCustomLevel().equals("Out")) {
                     out = level.getQuantity();
                 }
@@ -63,20 +66,20 @@ public class TriggerMailService {
                 case "High":
                     if (currentInventoryQty >= triggerQty) {
                         mailClient.send("peruvianplatafinaalerts@gmail.com", "Inventory Alert: Items Low/Out of Stock", "You currently have one or more items out" +
-                                "of stock. Cheers! -Nori");
+                                " of stock. Cheers! -Nori");
                     }
                     break;
 
                 case "Low":
                     if ((currentInventoryQty <= triggerQty) && (currentInventoryQty > out)) {
                         mailClient.send("peruvianplatafinaalerts@gmail.com", "Inventory Alert: Items Low/Out of Stock", "You currently have one or more items out" +
-                                "of stock. Cheers! -Nori");
+                                " of stock. Cheers! -Nori");
                     }
                     break;
                 case "Out":
                     if (currentInventoryQty <= triggerQty) {
                         mailClient.send("peruvianplatafinaalerts@gmail.com", "Inventory Alert: Items Low/Out of Stock", "You currently have one or more items out" +
-                                "of stock. Cheers! -Nori");
+                                " of stock. Cheers! -Nori");
                         break; // optional
                     }
 

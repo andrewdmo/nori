@@ -37,9 +37,20 @@ public class SearchService {
             for (Variant variant : product.getVariants()) {
                 qty.put(product.getId(), variant.getInventory_quantity()); // create list of qty's for parts
             }
+
+            Integer outNum = -1;
+            if (!(productLevel == null)) {
+                    for (Level level : productLevel.getProductLevels()) {
+                        if (level.getQuantity() != null) {
+                            if (level.getCustomLevel().equals("Out")) {
+                                outNum = level.getQuantity();
+                            } // find the out qty to use in the loop below:
+                        }
+                    }
+            }
+
             if (!(productLevel == null)) {
                 for (Variant variant : product.getVariants()) {
-                    Integer highNum = -1;
                     for (Level level : productLevel.getProductLevels())
                     //retrieve quantity for each product
                     {
@@ -49,12 +60,10 @@ public class SearchService {
                             {
                                 qtyLevels.put(product.getId(), level.getCustomLevel());
                             }
-                            else if (level.getCustomLevel().equals("High")){
-                            highNum = level.getQuantity();}
 
                             else if (level.getCustomLevel().equals("Low") &&
-                                    ((variant.getInventory_quantity() >= level.getQuantity()) &&
-                                            (variant.getInventory_quantity() < highNum)))
+                                    ((variant.getInventory_quantity() <= level.getQuantity()) &&
+                                            (variant.getInventory_quantity() > outNum)))
                             {
                                 qtyLevels.put(product.getId(), level.getCustomLevel());
                             }
