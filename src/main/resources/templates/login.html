@@ -9,46 +9,46 @@
 
 <body>
 <div class="container">
-
-    <div class="row" id="tbanner">
-        <!--<div class="one column">-->
-        <div class="titlefont">
-            <h1>Nori®</h1>
-            <h2>Inventory Notification System</h2>
-        </div>
-        <!--</div>-->
-    </div> <!--row-->
-
     <div class="row">
-        <div class="one-half column">
+        <!--<div class="one column">-->
+        <div id="titlebanner" class="twelve columns">
+            <h3>Nori®</h3>
+            <h4>Inventory Notification System</h4>
+        </div>
+    </div><!--row-->
+    <br/>
+    <div class="row">
+        <div class="one-half column u-pull-left">
             <img th:src="@{/images/seaweed.png}" class="bigseaweed"/>
         </div>
-        <div class="offset-by-one-half column">
+        <!--<br/>-->
+        <div class="one-half column u-pull-right" >
             <form id="userLogin" class="loginform" action="dashboard.html" th:action="@{/userLogin}" th:method="post">
-                <br/>
                 <div class="formelements">
-                    <input class="u-max-full-width" type="email" placeholder="you@yourmail.mon"/>
+                    <input class="u-full-width" type="email" placeholder="you@yourmail.mon" required="required"/>
                     <!--th:value="${aProduct.getId()}"-->
                     <br/>
-                    <input placeholder="Password" type="password" class="loginField" name="password"
+                    <input placeholder="Password" type="password" class="u-full-width" name="password"
                            required="required"/>
                     <br/>
-                    <input class="button-primary"/>
+                    <input class="button button-primary" type="submit"/>
                     <br/><br/>
                     <span>Not a user? Sign up <a th:href="@{/createAccount}" href="sign-up.html">here</a></span>
                 </div> <!--formelements-->
             </form>
         </div> <!--column-->
-    </div>  <!--row-->
+    </div><!--row-->
+    <br/>
 
 
     <div class="row">
-        <div id="footerText">
+        <div class="twelve columns u-full-width" id="footerText">
             <span>&copy;
                 Copyright 2016 | Nori | All Rights Reserved | Built by Andy and Kat @ The Iron Yard </span><br/>
         </div>
     </div><!--row-->
 </div><!--container-->
+<br/>
 </body>
 
 </html>

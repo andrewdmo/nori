@@ -40,7 +40,7 @@
 .column,
 .columns {
     width: 100%;
-    /*float: left;*/
+    float: left;
     box-sizing: border-box;
 }
 
@@ -298,7 +298,7 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-    color: #1EAEDB;
+    color: #006c3f;
 }
 
 a:hover {
