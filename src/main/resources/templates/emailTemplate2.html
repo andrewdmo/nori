@@ -14,28 +14,25 @@
 
     <div class="row">
         <h2>Store Merchant Template: </h2>
-        <form action="emailTemplate.html" th:action="@{/emailTemplate}" method="post">
+        <form action="emailTemplate.html" th:object="${content}" th:action="@{/emailTemplate}" method="post">
         <div id="email">
             <div id="emailContent">
                 <label>To: </label>
-                <input name="toField"/>
+                <input name="toField" class="emailInput"/>
                 <br/>
 
-                <label>From: (Please enter your username email) </label>
-                <input name="fromField"/>
+                <label>From: </label>
+                <label th:text="*{fromField}"> </label>
+                <input type="hidden" name="fromField" value="" th:value="*{fromField}"/>
                 <br/>
 
                 <label>Subject: </label>
-                <input name="subjectField"/>
-                <br/>
+                <input name="subjectField" class="emailInput"/>
+                <br/><br/><br/>
 
                 <label>Body: </label>
-                <textarea name="bodyField"></textarea>
-                <!--<span>Hey there!</span><br/><br/><br/>-->
-                <!--<span> The following items are low or out of stock. Make sure to restock soon. </span><br/><br/><br/>-->
-                <!--<span>Cheers,</span><br/><br/>-->
-                <!--<span>Nori</span><br/>-->
-                <!--<span id="special">Your Inventory Notification App</span>-->
+                <textarea id="bodyArea" name="bodyField"></textarea>
+                <input type="hidden" name="id" value="" th:value="*{id}"/>
             </div>
         </div>
             <button>Save Template Changes</button>
