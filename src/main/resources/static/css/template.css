@@ -18,6 +18,12 @@ h1{
     margin: 0;
 }
 
+#bodyArea{
+    display: block;
+    width: 95%;
+    height: 45%;
+}
+
 h4{
     color: white;
     font-size: 200%;
@@ -38,6 +44,10 @@ input{
     font-size: 110%;
 }
 
+.emailInput{
+    width: 70%;
+}
+
 button{
     max-width: 45%;
     font-size: 110%;
@@ -53,6 +63,10 @@ section button:hover {
     border-color: #009ac9;
 }
 
+.emailText{
+    color: steelblue;
+    font-style: italic;
+}
 
 select{
     font-size: 110%;

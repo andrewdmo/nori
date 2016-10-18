@@ -59,11 +59,7 @@
         <!--th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())}-->
         <span th:text = "${alertTrigger} ? ${alertTrigger} :'None'">N/A</span>
         <br/><br/>
-        <label id="shopifyTitleText">Shopify Merchant Email Template:</label><br/>
-        <select name="levels" title="" required="required">
-            <option value="">Select Template</option>
-            <option>Platafina</option>
-        </select><br/>
+        <br/>
         <a th:href="@{/emailTemplate.html}" href="emailTemplate.html">View Email Template</a>
         <br/>
         <button id="template">Update Merchant Alerts</button> <br/>
