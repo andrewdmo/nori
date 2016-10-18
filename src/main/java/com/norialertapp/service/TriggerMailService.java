@@ -4,6 +4,7 @@ import com.norialertapp.entity.Level;
 import com.norialertapp.entity.Product;
 import com.norialertapp.entity.QtyAlertTriggerLevel;
 import com.norialertapp.entity.QtyLevel;
+import com.norialertapp.repository.EmailContentRepo;
 import com.norialertapp.repository.ProductRepo;
 import com.norialertapp.repository.QtyLevelRepo;
 import com.norialertapp.repository.QtyTriggerRepo;
@@ -31,6 +32,9 @@ public class TriggerMailService {
 
     @Autowired
     MailClient mailClient;
+
+    @Autowired
+    EmailContentRepo emailContentRepo;
 
     public void triggerEmail(String qty, Long id) throws MessagingException {
 
@@ -65,24 +69,22 @@ public class TriggerMailService {
             switch (qty) {
                 case "High":
                     if (currentInventoryQty >= triggerQty) {
-                        mailClient.send("peruvianplatafinaalerts@gmail.com", "Inventory Alert: Items Low/Out of Stock", "You currently have one or more items out" +
-                                " of stock. Cheers! -Nori");
+                        mailClient.send(emailContentRepo.findAll().get(0).getToField(), emailContentRepo.findAll().get(0).getSubjectField(), emailContentRepo.findAll().get(0).getBodyField());
                     }
                     break;
 
                 case "Low":
                     if ((currentInventoryQty <= triggerQty) && (currentInventoryQty > out)) {
-                        mailClient.send("peruvianplatafinaalerts@gmail.com", "Inventory Alert: Items Low/Out of Stock", "You currently have one or more items out" +
-                                " of stock. Cheers! -Nori");
+                        mailClient.send(emailContentRepo.findAll().get(0).getToField(), emailContentRepo.findAll().get(0).getSubjectField(), emailContentRepo.findAll().get(0).getBodyField());
                     }
                     break;
                 case "Out":
                     if (currentInventoryQty <= triggerQty) {
-                        mailClient.send("peruvianplatafinaalerts@gmail.com", "Inventory Alert: Items Low/Out of Stock", "You currently have one or more items out" +
-                                " of stock. Cheers! -Nori");
+                        mailClient.send(emailContentRepo.findAll().get(0).getToField(), emailContentRepo.findAll().get(0).getSubjectField(), emailContentRepo.findAll().get(0).getBodyField());
+                    }
                         break; // optional
                     }
 
             }
-        }}
+        }
 }

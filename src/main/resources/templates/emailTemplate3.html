@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/template.css}" href="../static/css/template.css"/>
+    <title>Title</title>
+</head>
+
+<div class="leftMain">
+    <img id="seaweed" th:src="@{/images/seaweed.png}"/>
+    <a id="HomeLink" th:href="@{/dashboard.html}" href="dashboard.html">Dashboard</a>
+</div>
+<div class="rightMain">
+    <h1>Nori</h1> <h4>Inventory Notification System</h4>
+
+    <div class="row">
+        <h2>Store Merchant Template: </h2>
+        <form action="emailTemplate2.html" th:action="@{/emailTextModifications}" th:object="${content}" method="post">
+            <div id="email">
+                <div id="emailContent">
+                    <label>To: </label>
+                    <label name="toField" th:text="*{toField}"></label>
+                    <br/>
+
+                    <label>From: (Please enter your username email) </label>
+                    <label name="fromField" th:text="*{fromField}"></label>
+                    <br/>
+
+                    <label>Subject: </label>
+                    <label name="subjectField" th:text="*{subjectField}"></label>
+                    <br/>
+
+                    <label>Body: </label>
+                    <label name="bodyField" th:text="*{bodyField}"></label>
+                    <input type="hidden" name="id" value="" th:value="*{id}"/>
+                    <h1>Saved Successfully!</h1>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</html>
