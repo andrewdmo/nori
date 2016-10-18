@@ -32,14 +32,15 @@
     height: 100%;
     max-width: 960px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 10px;
     box-sizing: border-box;
+
 }
 
 .column,
 .columns {
     width: 100%;
-    float: left;
+    /*float: left;*/
     box-sizing: border-box;
 }
 
@@ -320,7 +321,7 @@ input[type="button"] {
     font-weight: 600;
     line-height: 38px;
     letter-spacing: .1rem;
-    text-transform: uppercase;
+    text-transform: capitalize;
     text-decoration: none;
     white-space: nowrap;
     background-color: transparent;
@@ -351,8 +352,8 @@ input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
     color: #FFF;
-    background-color: #33C3F0;
-    border-color: #33C3F0;
+    background-color: #073763;
+    border-color: #1EAEDB;
 }
 
 .button.button-primary:hover,
@@ -367,7 +368,7 @@ input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
     color: #FFF;
     background-color: #1EAEDB;
-    border-color: #1EAEDB;
+    border-color: #073763;
 }
 
 /* Forms
@@ -386,7 +387,7 @@ select {
     background-color: #fff;
     border: 1px solid #D1D1D1;
     border-radius: 4px;
-    box-shadow: none;
+    box-shadow: seagreen;
     box-sizing: border-box;
 }
 
@@ -535,13 +536,13 @@ p,
 ul,
 ol,
 form {
-    margin-bottom: 2.5rem;
+    /*margin-bottom: 2.5rem;*/
 }
 
 /* Utilities
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .u-full-width {
-    width: 100%;
+    width: 85%;
     box-sizing: border-box;
 }
 

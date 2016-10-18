@@ -1,35 +1,54 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" th:href="@{/css/login.css}" href="../static/css/login.css"/>
-    <title>Admin Login</title>
+    <link rel="stylesheet" th:href="@{/css/normalize.css}" href="../static/css/normalize.css"/>
+    <link rel="stylesheet" th:href="@{/css/skeleton.css}" href="../static/css/skeleton.css"/>
+    <title>User Login</title>
 </head>
 
 <body>
+<div class="container">
 
-<div id="leftSeaweed">
-    <img th:src="@{/images/seaweed.png}"/>
-</div>
+    <div class="row" id="tbanner">
+        <!--<div class="one column">-->
+        <div class="titlefont">
+            <h1>Nori®</h1>
+            <h2>Inventory Notification System</h2>
+        </div>
+        <!--</div>-->
+    </div> <!--row-->
 
-<div id="rightLogin">
-    <h1>Nori</h1>
-    <h2>Inventory Notification System</h2>
+    <div class="row">
+        <div class="one-half column">
+            <img th:src="@{/images/seaweed.png}" class="bigseaweed"/>
+        </div>
+        <div class="offset-by-one-half column">
+            <form id="userLogin" class="loginform" action="dashboard.html" th:action="@{/userLogin}" th:method="post">
+                <br/>
+                <div class="formelements">
+                    <input class="u-max-full-width" type="email" placeholder="you@yourmail.mon"/>
+                    <!--th:value="${aProduct.getId()}"-->
+                    <br/>
+                    <input placeholder="Password" type="password" class="loginField" name="password"
+                           required="required"/>
+                    <br/>
+                    <input class="button-primary"/>
+                    <br/><br/>
+                    <span>Not a user? Sign up <a th:href="@{/createAccount}" href="sign-up.html">here</a></span>
+                </div> <!--formelements-->
+            </form>
+        </div> <!--column-->
+    </div>  <!--row-->
 
-    <form id="userLogin" action="dashboard.html" th:action="@{/userLogin}" th:method="post">
-        <br/>
-        <!--th:value="${aProduct.getId()}"-->
-        <input placeholder="User name" type="email" class="loginField" name="username" required="required" />
-        <br/>
-        <input placeholder="Password" type="password" class="loginField" name="password" required="required"/>
-        <br/>
-        <button>Sign In</button><br/><br/>
-        <span>Not a user? Sign up <a th:href="@{/createAccount}" href="sign-up.html">here</a></span>
 
-    </form>
-</div>
-<div id="footerText">
-    <span>&copy; Copyright 2016 | Nori | All Rights Reserved | Built by Andy and Kat @ The Iron Yard </span><br/>
-</div>
+    <div class="row">
+        <div id="footerText">
+            <span>&copy;
+                Copyright 2016 | Nori | All Rights Reserved | Built by Andy and Kat @ The Iron Yard </span><br/>
+        </div>
+    </div><!--row-->
+</div><!--container-->
 </body>
 
 </html>

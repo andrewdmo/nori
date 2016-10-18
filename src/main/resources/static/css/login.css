@@ -1,46 +1,61 @@
 /*-------------Login Pg CSS----------------*/
-html{
+html, head, body {
     font-family: Helvetica, sans-serif;
-    background-image:
-            linear-gradient(
-                    to bottom right,
-                    #073763,
-                    white);
-
-    padding: 0%;
-    margin: 0%;
-}
-#leftSeaweed{
-    display: inline-block;
-}
-#rightLogin{
-    color: white;
-    margin: 20% 0 0 5%;
-    vertical-align: top;
-    display: inline-block;
+    background: linear-gradient(
+            to top right,
+            #073763,
+            lightsteelblue) no-repeat fixed;
+    z-index: -2;
+    padding: 0;
+    margin: 0;
 }
 
-#rightLogin2{
-    color: white;
-    margin: 10% 0 0 5%;
-    vertical-align: top;
-    display: inline-block;
+
+.bigseaweed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    max-width: 50%;
+    /*padding-bottom: 50%;*/
+    max-height: 50%;
+    margin: 0 0 1% 1%;
+    z-index: 2;
+    opacity: .70;
 }
 
-#norilogintitle{
-    display: inline-block;
-    color: white;
-}
-
-.loginField{
+.row {
+    /*max-height: 100%;*/
+    /*overflow: hidden;*/
     width: 100%;
-    font-size: 100%;
-    border-radius:5px;
-    padding: 2% 2% 2% 4%;
-    margin-bottom: 5%;
 }
 
-#reqFields{
+.container {
+    overflow: visible;
+    margin: auto;
+
+}
+
+.loginform {
+    max-width: 85%;
+    float: left;
+}
+
+.formelements {
+    /*padding: 50%;*/
+}
+
+.titlefont {
+    /*display: inline-block;*/
+    color: white;
+}
+
+#tbanner {
+    max-height: 15%;
+    vertical-align: top;
+
+}
+
+#reqFields {
     color: #073763;
     font-style: italic;
     font-weight: bold;
@@ -48,24 +63,24 @@ html{
     font-size: smaller;
 }
 
-#footerText{
+#footerText {
     margin-left: 32%;
     color: #073763;
 }
 
-button{
-    max-width: 100%;
-    margin-top: 2%;
-    padding: 2% 8% 2% 8%;
-    font-size: 110%;
-    cursor: pointer;
-    outline: none;
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
-    background-color: #3d7dbb;
-    color: white;
-    border-radius: 5px;
-}
+/*button {*/
+    /*max-width: 100%;*/
+    /*margin-top: 2%;*/
+    /*padding: 2% 8% 2% 8%;*/
+    /*font-size: 110%;*/
+    /*cursor: pointer;*/
+    /*outline: none;*/
+    /*overflow: hidden;*/
+    /*transition: all 0.3s ease-in-out;*/
+    /*background-color: #3d7dbb;*/
+    /*color: white;*/
+    /*border-radius: 5px;*/
+/*}*/
 
 ::-webkit-input-placeholder {
     font-size: 14px;
@@ -74,13 +89,15 @@ button{
     text-align: left;
     font-weight: bold;
 }
+
 :-moz-placeholder { /* older Firefox*/
-    font-size:14px;
+    font-size: 14px;
     color: gray;
     /*text-transform: uppercase;*/
     text-align: left;
     font-weight: bold;
 }
+
 ::-moz-placeholder { /* Firefox 19+ */
     font-size: 14px;
     color: gray;
@@ -88,6 +105,7 @@ button{
     text-align: left;
     font-weight: bold;
 }
+
 :-ms-input-placeholder {
     font-size: 14px;
     color: gray;
@@ -95,4 +113,46 @@ button{
     text-align: left;
     font-weight: bold;
 }
+
+.leftMain {
+    color: black;
+    width: 15%;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    background-image: linear-gradient(
+            to bottom right,
+            grey,
+            lightgrey);
+    display: inline-block;
+    float: bottom;
+    height: 90%;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    z-index: 1;
+}
+
+/*#rightLogin2 {*/
+    /*color: white;*/
+    /*margin: 10% 0 0 5%;*/
+    /*vertical-align: top;*/
+    /*display: inline-block;*/
+/*}*/
+/*#rightLogin{*/
+/*color: white;*/
+/*margin: 20% 0 0 5%;*/
+/*vertical-align: top;*/
+/*display: inline-block;*/
+/*}*/
+
+/*.loginField {*/
+    /*width: 100%;*/
+    /*font-size: 100%;*/
+    /*border-radius: 5px;*/
+    /*padding: 2% 2% 2% 4%;*/
+    /*margin-bottom: 5%;*/
+/*}*/
 /*-----------------------------------------*/

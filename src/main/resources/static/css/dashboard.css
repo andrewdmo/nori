@@ -37,7 +37,7 @@ a{
     float: right;
     display: inline-table;
     margin: 15% 0 0 0;
-    padding: 0 0 0 0%;
+padding-bottom: 85%;
     border: 1px solid black;
     z-index: 0;
     /*padding*/
