@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" th:href="@{/css/dashboard.css}" href="../static/css/dashboard.css"/>
-    <title>Title</title>
+    <title>Dashboard</title>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
 
     <div class="row">
         <div class="productDetail">
-            <form action="dashboard.html.html" th:action="@{/search}" method="post">
+            <form action="dashboard.html" th:action="@{/search}" method="post">
 
                 <h2 name="title" id="title" value="product name"></h2>
 
@@ -32,7 +32,7 @@
                 <button id="searchButton">Search</button>
             </form>
         </div>
-        <br /><br />
+        <br/><br/>
         <table>
             <tr id="columns">
                 <th>Part#</th>
@@ -46,7 +46,7 @@
                 <td><a th:text="${product.title}" th:href="@{(${product.id})}" href="product-detail.html">Product Title</a>
                 </td>
                 <td th:text="${product.vendor}">Vendor</td>
-                <td th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())} :'Good'">N/A</td>
+                <td th:class="${qtyLevels.get(product.getId())}" th:value="${qtyLevels.get(product.getId())}" th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())} :'N/A'">N/A</td>
                 <td th:text="${qty.get(product.getId())}">Qty Available</td>
             </tr>
         </table>

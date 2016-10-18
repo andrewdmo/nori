@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/template.css}" href="../static/css/template.css"/>
+    <title>Title</title>
+</head>
+
+<div class="leftMain">
+    <img id="seaweed" th:src="@{/images/seaweed.png}"/>
+    <a id="HomeLink" th:href="@{/dashboard.html}" href="dashboard.html">Dashboard</a>
+</div>
+<div class="rightMain">
+    <h1>Nori</h1> <h4>Inventory Notification System</h4>
+
+    <div class="row">
+        <h2>Store Merchant Template: </h2>
+        <form action="emailTemplate.html" th:action="@{/emailTemplate}" method="post">
+        <div id="email">
+            <div id="emailContent">
+                <label>To: </label>
+                <input name="toField"/>
+                <br/>
+
+                <label>From: (Please enter your username email) </label>
+                <input name="fromField"/>
+                <br/>
+
+                <label>Subject: </label>
+                <input name="subjectField"/>
+                <br/>
+
+                <label>Body: </label>
+                <textarea name="bodyField"></textarea>
+                <!--<span>Hey there!</span><br/><br/><br/>-->
+                <!--<span> The following items are low or out of stock. Make sure to restock soon. </span><br/><br/><br/>-->
+                <!--<span>Cheers,</span><br/><br/>-->
+                <!--<span>Nori</span><br/>-->
+                <!--<span id="special">Your Inventory Notification App</span>-->
+            </div>
+        </div>
+            <button>Save Template Changes</button>
+        </form>
+    </div>
+</div>
+</html>

@@ -171,6 +171,18 @@ table {
 
 }
 
+.low{
+    background-color: #e5e500;
+}
+
+.high{
+    background-color: forestgreen;
+}
+
+.out{
+    background-color: #c81423;
+}
+
 th, td { padding: 5px; } /* cellpadding */
 
 table tr td:first-child{

@@ -30,6 +30,9 @@ public class Users implements Serializable, UserDetails {
 
     private String password;
 
+    @OneToOne (cascade= CascadeType.ALL)
+    EmailContent emailText;
+
     @Transient //don't store in db
     private String confirmPassword;
 
