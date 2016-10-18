@@ -1,8 +1,5 @@
 package com.norialertapp.controller;
-import com.norialertapp.entity.Level;
-import com.norialertapp.entity.Product;
-import com.norialertapp.entity.QtyAlertTriggerLevel;
-import com.norialertapp.entity.QtyLevel;
+import com.norialertapp.entity.*;
 import com.norialertapp.repository.LevelRepo;
 import com.norialertapp.repository.ProductRepo;
 import com.norialertapp.repository.QtyLevelRepo;
@@ -98,6 +95,8 @@ public class MailController {
         model.addAttribute("imagePic", imagePic);
         model.addAttribute("aProduct", sameProduct);
         model.addAttribute("productQty", productQty);
+
+
         return "product-detail";
     }
 }

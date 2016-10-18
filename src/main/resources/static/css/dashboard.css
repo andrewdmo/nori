@@ -15,9 +15,7 @@ a{
 .leftMain {
     color: black;
     width: 15%;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
-    border-top: 2px solid black;
+    border-right: 2px solid dimgray;
     background-image:
             linear-gradient(
                     to bottom right,
@@ -58,15 +56,12 @@ padding-bottom: 85%;
 /*border: 1px dashed #ff0000;*/
 /*}*/
 
-/*.row{*/
-    /*border: 2px solid black;*/
-    /*background-color: white;*/
-    /*padding: 1%;*/
-    /*height: 20%;*/
-/*}*/
+.rightMain{
+    margin: 0 0 0 15%;
+    border: 1px solid dimgray;
+}
 
-
-h1{
+#columns{
     color: white;
     display: inline-block;
     font-size: 450%;
@@ -90,24 +85,37 @@ h4{
 }
 
 table tr:nth-child(even) {
-background-color: lightgrey;
+    background-color: lightgrey;
 }
-table {
-padding:0;
-display: inline-block;
-border-collapse: collapse;
-border-top: solid lightgrey;
-margin: 0;
 
+table {
+    padding: 0;
+    display: inline-block;
+    border-collapse: collapse;
+    border-top: solid lightgrey;
+    margin: 0;
+
+}
+
+.low{
+    background-color: #e5e500;
+}
+
+.high{
+    background-color: forestgreen;
+}
+
+.out{
+    background-color: #c81423;
 }
 
 th, td { padding: 5px; } /* cellpadding */
 
 table tr td:first-child{
-white-space: nowrap;
+    white-space: nowrap;
 }
 table tr th:nth-child(2){
-width: 100%;
+    width: 100%;
 }
 
 table tr td:first-child{

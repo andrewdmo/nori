@@ -12,12 +12,19 @@
 <!--Container should keep everything on page 'together'-->
 <div class="container">
     <img id="seaweed" th:src="@{/images/seaweed.png}"/>
+    <a id="HomeLink" th:href="@{/dashboard.html}" href="dashboard.html">Dashboard</a>
+</div>
+<div class="rightMain">
+    <h1>Nori</h1> <h4>Inventory Notification System</h4>
 
     <div class="leftMain">
 
         <label id="HomeLink">Home</label>
 
         <div class="productDetail u-full-width">
+            <form action="dashboard.html" th:action="@{/search}" method="post">
+    <div class="row">
+        <div class="productDetail">
             <form action="dashboard.html" th:action="@{/search}" method="post">
 
                 <h2 name="title" id="title" value="product name"></h2>
@@ -59,7 +66,7 @@
         <!--<div class="row">-->
 
     </div>
-    howdy
+    <br/><br>
     <table>
         <thead>
         <tr id="columns">

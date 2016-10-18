@@ -14,15 +14,18 @@
 
     <div class="row">
     <h2>Store Merchant Template: </h2>
+        <form action="emailTemplate2.html" th:action="@{/emailTextModifications}" method="post">
+            <button>Modify email template</button>
         <div id="email">
             <div id="emailContent">
-                <span>Hey there!</span><br/><br/><br/>
+                <span >Hey there!</span><br/><br/><br/>
                 <span> The following items are low or out of stock. Make sure to restock soon. </span><br/><br/><br/>
                 <span>Cheers,</span><br/><br/>
                 <span>Nori</span><br/>
                 <span id="special">Your Inventory Notification App</span>
             </div>
         </div>
+            </form>
     </div>
 </div>
 </html>
