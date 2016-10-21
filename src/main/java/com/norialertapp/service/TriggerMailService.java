@@ -69,18 +69,33 @@ public class TriggerMailService {
             switch (qty) {
                 case "High":
                     if (currentInventoryQty >= triggerQty) {
-                        mailClient.send(emailContentRepo.findAll().get(0).getToField(), emailContentRepo.findAll().get(0).getSubjectField(), emailContentRepo.findAll().get(0).getBodyField());
+
+                        mailClient.send(emailContentRepo.findAll().get(0).getToField(),
+                                emailContentRepo.findAll().get(0).getSubjectField(), emailContentRepo.findAll().get(0).getBodyField() +
+                                        "\n\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"+
+                                        "\n\nThe following item has a quantity level that is " + "High:\n\n" + "*" +
+                                        product.getTitle() + " " + " \n"+product.getImages().get(0).getSrc());
                     }
                     break;
 
                 case "Low":
                     if ((currentInventoryQty <= triggerQty) && (currentInventoryQty > out)) {
-                        mailClient.send(emailContentRepo.findAll().get(0).getToField(), emailContentRepo.findAll().get(0).getSubjectField(), emailContentRepo.findAll().get(0).getBodyField());
+                        mailClient.send(emailContentRepo.findAll().get(0).getToField(),
+                                emailContentRepo.findAll().get(0).getSubjectField(),
+                                emailContentRepo.findAll().get(0).getBodyField() +
+                                        "\n\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"+
+                                "\n\nThe following item has a quantity level that is " + "Low:\n\n" + "*" +
+                                product.getTitle() + " " + " \n"+product.getImages().get(0).getSrc());
                     }
                     break;
                 case "Out":
                     if (currentInventoryQty <= triggerQty) {
-                        mailClient.send(emailContentRepo.findAll().get(0).getToField(), emailContentRepo.findAll().get(0).getSubjectField(), emailContentRepo.findAll().get(0).getBodyField());
+                        mailClient.send(emailContentRepo.findAll().get(0).getToField(),
+                                emailContentRepo.findAll().get(0).getSubjectField(),
+                                emailContentRepo.findAll().get(0).getBodyField() +
+                                        "\n\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"+
+                                        "\n\nThe following item has a quantity level that is " + "Out:\n\n" + "*" +
+                                        product.getTitle() + " " + " \n"+product.getImages().get(0).getSrc());
                     }
                         break; // optional
                     }
