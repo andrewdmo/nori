@@ -1,0 +1,185 @@
+html, head, body {
+    font-family: Helvetica, sans-serif;
+    background: linear-gradient(
+            to top right,
+            #073763,
+            lightsteelblue) no-repeat fixed;
+    z-index: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    margin-right: 5%;
+    margin-left: 0%;
+    padding-left: 15%;
+}
+
+.bigseaweed {
+    position: absolute;
+    /*bottom: 0;*/
+    /*left: 0;*/
+    max-width: 100%;
+    /*padding-bottom: 50%;*/
+    max-height: 100%;
+    margin: 0 0 1% 1%;
+    z-index: 0;
+    opacity: .70;
+    float: left;
+}
+
+.noriicon {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    max-width: 20%;
+    max-height: 20%;
+    margin: 0 0 1% 1%;
+    rotation: -15deg;
+    z-index: 3;
+    opacity: .70;
+    float: left;
+    /*transition: all .5s ease-out;*/
+
+    /*transition: <property> <duration> <timing-function> <delay>;*/
+}
+
+.noriicon:hover {
+    max-width: 30%;
+    max-height: 50%;
+    opacity: .30;
+    transform: rotate(-15deg);
+}
+
+.row {
+    max-height: 70%;
+    /*position: absolute;*/
+    overflow: visible;
+    max-width: 100%;
+    /*vertical-align: top;*/
+    box-sizing: border-box;
+    float: left;
+}
+
+.row.details {
+    max-height: 90%
+}
+
+
+table tr:nth-child(even) {
+    background-color: lightgrey;
+}
+
+.leftDash {
+    color: #23563f;
+    max-width: 15%;
+    border-right: 4px outset #43855c;
+    border-top: 4px outset #23563f;
+    /*border-radius: 25%;*/
+    background-image: linear-gradient(
+            to bottom right,
+            grey,
+            lightgrey);
+
+    float: left;
+    height: 90%;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    z-index: 1;
+    opacity: 10;
+}
+
+.rightDash {
+    color: #23563f;
+    max-width: 15%;
+    border-right: 4px outset #43855c;
+    border-top: 4px outset #23563f;
+    /*border-radius: 25%;*/
+    background-image: linear-gradient(
+            to bottom right,
+            grey,
+            lightgrey);
+
+    float: left;
+    height: 90%;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    z-index: 1;
+}
+
+.productSearch {
+    max-width: 100%;
+    /*min-height: 100%;*/
+    /*padding-right: 10%;*/
+    vertical-align: top;
+    float: right;
+}
+
+.loginform {
+    max-width: 100%;
+    z-index: 2;
+    /*float: right;*/
+}
+
+.formelements,
+.input.formelements{
+    /*padding: 50%;*/
+    float: left;
+    /*padding-right: 5%;*/
+    padding: 20% 5% 5%;
+    z-index: 2;
+    position: relative;
+    box-sizing: border-box;
+    /*opacity: 80;*/
+    font-style: oblique;
+    height: 38px;
+    /*padding: 6px 10px; !* The 6px vertically centers text on FF, ignored by Webkit *!*/
+    background-color: #fff;
+    border: 1px solid #23563f;
+    border-radius: 4px;
+    box-shadow: dimgrey;
+    box-sizing: border-box;
+}
+
+.titlebanner {
+    max-height: 15%;
+    color: white;
+    vertical-align: middle;
+    max-width: 85%;
+    padding-top: 2%;
+    box-sizing: border-box;;
+    float: right;
+    position: relative;
+
+}
+
+#reqFields {
+    color: #073763;
+    font-style: italic;
+    font-weight: bold;
+    padding: 3% 0 2% 0;
+    font-size: smaller;
+}
+
+#footerText {
+    margin-left: 0;
+    color: #073763;
+}
+
+.productImage {
+    max-height: 250px;
+    max-width: 250px;
+}
+
+.details {
+    padding-bottom: 1%;
+    font-style: oblique;
+    max-width: 75%;
+}

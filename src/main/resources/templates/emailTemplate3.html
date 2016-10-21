@@ -1,20 +1,31 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" th:href="@{/css/template.css}" href="../static/css/template.css"/>
-    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/normalize.css}" href="../static/css/normalize.css"/>
+    <link rel="stylesheet" th:href="@{/css/skeleton.css}" href="../static/css/skeleton.css"/>
+    <link rel="stylesheet" th:href="@{/css/noriStyle.css}" href="../static/css/noriStyle.css"/>
+    <title th:text="${aProduct.getTitle()}">New email template:</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico"/>
+
 </head>
 
-<div class="leftMain">
-    <img id="seaweed" th:src="@{/images/seaweed.png}"/>
-    <a id="HomeLink" th:href="@{/dashboard.html}" href="dashboard.html">Dashboard</a>
-</div>
-<div class="rightMain">
-    <h1>Nori</h1> <h4>Inventory Notification System</h4>
+<body>
+<div class="container">
+    <br/>
+    <div class="row u-full-width" style="float: right">
+        <!--<div class="one column">-->
+        <div class="twelve columns titlebanner">
+            <h3>Nori®</h3>
+            <h4>Inventory Notification System</h4>
+        </div>
+    </div><!--row-->
 
+
+    <br/>
     <div class="row">
         <h2>Store Merchant Template: </h2>
-        <form action="emailTemplate2.html" th:action="@{/emailTextModifications}" th:object="${content}" method="post">
+        <form action="emailTemplate2.html" class="formelements" th:action="@{/emailTextModifications}"
+              th:object="${content}" method="post">
             <div id="email">
                 <div id="emailContent">
                     <label>To: </label>
@@ -37,5 +48,6 @@
             </div>
         </form>
     </div>
-</div>
+</div><!--container-->
+</body>
 </html>

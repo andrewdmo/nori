@@ -1,37 +1,67 @@
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" th:href="@{/css/login.css}" href="../static/css/login.css"/>
-    <title>Create An Account</title>
+    <link rel="stylesheet" th:href="@{/css/normalize.css}" href="../static/css/normalize.css"/>
+    <link rel="stylesheet" th:href="@{/css/skeleton.css}" href="../static/css/skeleton.css"/>
+    <link rel="stylesheet" th:href="@{/css/noriStyle.css}" href="../static/css/noriStyle.css"/>
+    <title>Join Nori:</title>
 </head>
+
 <body>
-<div id="leftSeaweed">
-    <img th:src="@{/images/seaweed.png}"/>
-</div>
+<div class="container">
+    <br/>
+    <div class="row u-full-width" style="float: right">
+        <!--<div class="one column">-->
+        <div class="twelve columns titlebanner">
+            <h3>Nori®</h3>
+            <h4>Inventory Notification System</h4>
+        </div>
+    </div><!--row-->
 
-<div id="rightLogin2">
 
-    <h1>Nori</h1>
-    <h2>Inventory Notification System</h2>
-    <div id="reqFields">* denotes a required field</div>
-<!--<div th:if="${error != null}" th:text="${error}"></div>-->
-<form th:action="@{/sign-up}" th:method="post" >
-        <input placeholder="First name" type="text" name="firstName" class="loginField"/>
-    <br/><br/>
-        <input placeholder="Last name" type="text" name="lastName" class="loginField"/>
-    <br/><br/>
-        <input placeholder="*Email" type="email" name="email" class="loginField" required="required"/>
-    <br/><br/>
-        <input placeholder="*Password" type="password" name="password" class="loginField" required="required"/>
-    <br/><br/>
-        <input placeholder="*Confirm password" type="password" name="confirmPassword" class="loginField" required="required"/>
-    <br/><br/>
-        <button>Create Account</button>
-</form>
-    </div>
+    <br/>
+    <div class="row">
+        <div class="one-half column u-pull-left">
+            <img th:src="@{/images/seaweed.png}" class="bigseaweed"/>
+        </div>
 
+        <br/>
+
+        <div class="one-half column u-pull-right">
+            <!--<br/>-->
+
+            <form id="userLogin" class="loginform" action="dashboard.html" th:action="@{/sign-up}" th:method="post">
+                <div class="formelements">
+
+                    <input type="text" placeholder="First name"/>
+                    <br/>
+                    <input type="text" placeholder="Last name"/>
+                    <br/>
+                    <input type="email" placeholder="*you@yourmail.mon" required="required"/>
+                    <br/>
+                    <input placeholder="*Password" type="password" name="password" required="required"/>
+                    <br/>
+                    <input placeholder="*Confirm password" type="password" name="confirmPassword" required="required"/>
+                    <br/>
+                    <input class="button-primary" type="submit"/>
+                    <br/>
+                    <span style="visibility: hidden">Not a user? Sign up <a th:href="@{/createAccount}"
+                                                                            href="sign-up.html">here</a></span>
+                    <br/>
+                    <input style="visibility: hidden" type="text" placeholder="*you@yourmail.mon"/>
+                </div> <!--formelements-->
+            </form>
+        </div> <!--column-->
+    </div><!--row-->
+    <br/>
+    <div class="row">
+        <div class="twelve columns u-full-width" id="footerText">
+            <span>&copy;
+                Copyright 2016 | Nori | All Rights Deserved | Built by Andy and Kat @ The Iron Yard </span><br/>
+        </div>
+    </div><!--row-->
+</div><!--container-->
+<br/>
 </body>
-<div id="footerText">
-    <span>&copy; Copyright 2016 | Nori | All Rights Reserved | Built by Andy and Kat @ The Iron Yard </span><br/>
-</div>
+
 </html>
