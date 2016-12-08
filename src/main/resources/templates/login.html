@@ -9,30 +9,34 @@
 
 </head>
 
+
 <body>
-<div class="container">
+<div class="container centered" style="position:relative; z-index: 0">
     <br/>
-    <div class="row u-full-width" style="float: right">
+    <div class="row u-full-width">
         <!--<div class="one column">-->
-        <div class="twelve columns titlebanner">
-            <h3>Nori®</h3>
-            <h4>Inventory Notification System</h4>
+        <div class="three columns titlebanner">
+            <h4>Nori®</h4>
+        </div>
+        <div class="nine columns titlebanner">
+            <h5>Inventory Notification System</h5>
         </div>
     </div><!--row-->
 
 
     <br/>
-    <div class="row">
-        <img th:src="@{/images/seaweed.png}" class="bigseaweed"/>
+    <div class="row u-max-full-width">
+        <div class="one-half column u-pull-left" style="position: absolute">
+            <img th:src="@{/images/seaweed.png}" class="bigseaweed"/>
+        </div>
 
         <br/>
-
-        <div class="one-half column u-pull-right">
+        <div class="one-half column u-pull-right" style="position: relative">
             <!--<br/>-->
 
-            <form id="userLogin" class="loginform" action="dashboard.html" th:action="@{/userLogin}" th:method="post">
-                <div class="formelements">
-
+            <form id="userLogin" class=" u-pull-right" style="padding-right: 15%" action="dashboard.html"
+                  th:action="@{/userLogin}" th:method="post">
+                <fieldset>
                     <input style="visibility: hidden" type="text" placeholder="First name"/>
                     <br/>
                     <input style="visibility: hidden" type="text" placeholder="First name"/>
@@ -45,12 +49,12 @@
                     <input style="visibility: hidden" placeholder="*Confirm password" type="password"
                            name="confirmPassword"/>
                     <br/>
-                    <input class="button-primary" type="submit"/>
+                    <input class="button-primary" type="submit" style=""/>
                     <br/>
                     <span>Not a user? Sign up <a th:href="@{/createAccount}" href="sign-up.html">here</a></span>
                     <br/>
                     <input style="visibility: hidden" type="text" placeholder="*you@yourmail.mon"/>
-                </div> <!--formelements-->
+                </fieldset> <!--formelements-->
             </form>
         </div> <!--column-->
     </div><!--row-->

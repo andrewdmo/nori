@@ -1,5 +1,5 @@
 html, head, body {
-    font-family: Helvetica, sans-serif;
+    font-family: Lato, sans-serif;
     background: linear-gradient(
             to top right,
             #073763,
@@ -7,26 +7,34 @@ html, head, body {
     z-index: 0;
     padding: 0;
     margin: 0;
+    /*transition: all ease-out .5s;*/
+
 }
 
 .container {
     width: 100%;
-    margin-right: 5%;
-    margin-left: 0%;
+    margin: 0;
+    /*margin-left: 0%;*/
     padding-left: 15%;
+    padding-right: 15%
+}
+
+.container.nopad {
+    padding-left: 0%;
 }
 
 .bigseaweed {
-    position: absolute;
+    /*position: absolute;*/
     /*bottom: 0;*/
     /*left: 0;*/
     max-width: 100%;
     /*padding-bottom: 50%;*/
     max-height: 100%;
     margin: 0 0 1% 1%;
-    z-index: 0;
+    /*z-index: 1;*/
     opacity: .70;
     float: left;
+    box-sizing: border-box;
 }
 
 .noriicon {
@@ -36,39 +44,75 @@ html, head, body {
     max-width: 20%;
     max-height: 20%;
     margin: 0 0 1% 1%;
-    rotation: -15deg;
-    z-index: 3;
-    opacity: .70;
-    float: left;
-    /*transition: all .5s ease-out;*/
-
+    /*rotation: 0deg;*/
+    z-index: 4;
+    opacity: .90;
+    /*float: left;*/
+    transition: all .5s ease-out;
     /*transition: <property> <duration> <timing-function> <delay>;*/
 }
 
 .noriicon:hover {
-    max-width: 30%;
-    max-height: 50%;
+    max-width: 15%;
+    max-height: 40%;
     opacity: .30;
-    transform: rotate(-15deg);
+    transform: rotate(-5deg);
+    /*rotation: 15deg;*/
+    transition: all 1s ease-out;
 }
 
 .row {
     max-height: 70%;
-    /*position: absolute;*/
     overflow: visible;
     max-width: 100%;
     /*vertical-align: top;*/
     box-sizing: border-box;
-    float: left;
+    /*float: left;*/
+}
+
+.row.titlebanner {
+    transition: hidden 5s;
+    position: relative;
 }
 
 .row.details {
     max-height: 90%
 }
 
+.details {
+    /*width: 15%;*/
+    padding-bottom: 1%;
+    font-style: oblique;
+    /*max-width: 50%;*/
+    /*opacity: .6;*/
+    box-sizing: border-box;
+    /*z-index: 1;*/
+    /*max-width: 110%;*/
+}
+.details.login{
+    /*z-index: 3;*/
+}
+
 
 table tr:nth-child(even) {
     background-color: lightgrey;
+}
+
+.productImage {
+    max-height: 250px;
+    max-width: 250px;
+}
+
+.low {
+    background-color: #e5e500;
+}
+
+.high {
+    background-color: forestgreen;
+}
+
+.out {
+    background-color: #c81423;
 }
 
 .leftDash {
@@ -81,37 +125,39 @@ table tr:nth-child(even) {
             to bottom right,
             grey,
             lightgrey);
-
     float: left;
-    height: 90%;
+    height: 85%;
     bottom: 0;
     left: 0;
     margin: 0;
     padding: 0;
     position: fixed;
-    z-index: 1;
-    opacity: 10;
+    z-index: 2;
+    /*opacity: .85;*/
+    transition: all .5s;
 }
 
 .rightDash {
     color: #23563f;
-    max-width: 15%;
-    border-right: 4px outset #43855c;
+    border-left: 4px outset #43855c;
     border-top: 4px outset #23563f;
     /*border-radius: 25%;*/
     background-image: linear-gradient(
             to bottom right,
             grey,
             lightgrey);
-
-    float: left;
-    height: 90%;
+    /*float: right;*/
+    height: 85%;
+    width: 15%;
     bottom: 0;
-    left: 0;
+    right: 0;
     margin: 0;
     padding: 0;
     position: fixed;
-    z-index: 1;
+    right: 0;
+    z-index: 2;
+    /*opacity: .85;*/
+    transition: all .5s;
 }
 
 .productSearch {
@@ -129,7 +175,7 @@ table tr:nth-child(even) {
 }
 
 .formelements,
-.input.formelements{
+.input.formelements {
     /*padding: 50%;*/
     float: left;
     /*padding-right: 5%;*/
@@ -145,19 +191,17 @@ table tr:nth-child(even) {
     border: 1px solid #23563f;
     border-radius: 4px;
     box-shadow: dimgrey;
-    box-sizing: border-box;
+
 }
 
 .titlebanner {
     max-height: 15%;
     color: white;
-    vertical-align: middle;
-    max-width: 85%;
-    padding-top: 2%;
+    /*vertical-align: middle;*/
+    /*max-width: 85%;*/
+    /*padding-top: 2%;*/
     box-sizing: border-box;;
-    float: right;
-    position: relative;
-
+    /*position: absolute;*/
 }
 
 #reqFields {
@@ -178,8 +222,3 @@ table tr:nth-child(even) {
     max-width: 250px;
 }
 
-.details {
-    padding-bottom: 1%;
-    font-style: oblique;
-    max-width: 75%;
-}

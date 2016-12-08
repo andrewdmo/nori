@@ -1,6 +1,7 @@
 package com.norialertapp.controller;
 
-import com.norialertapp.entity.*;
+import com.norialertapp.entity.Product;
+import com.norialertapp.entity.Users;
 import com.norialertapp.service.ProductService;
 import com.norialertapp.service.SearchService;
 import com.norialertapp.service.ShopifyService;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -61,6 +63,8 @@ public class LoginController {
 
     }
 
+    @RequestMapping(value = "/login")
+    public String loginPath() {return "login";}
 
     @RequestMapping(value = "/createAccount", method = RequestMethod.GET)
     public String createAccount(Model model) {

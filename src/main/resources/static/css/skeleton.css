@@ -27,7 +27,6 @@
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .container {
-    position: relative;
     width: 100%;
     height: 100%;
     max-width: 960px;
@@ -381,7 +380,7 @@ input[type="button"].button-primary:focus {
             #073763,
             #B0C4DE);
     border-color: #23563f;
-    transform: all;
+    transition: all 1s;
 }
 
 /* Forms
@@ -402,6 +401,8 @@ select {
     border-radius: 4px;
     box-shadow: dimgrey;
     box-sizing: border-box;
+    opacity: .65;
+    max-width: 70%;
 }
 
 /* Removes awkward default styles on some inputs for iOS */

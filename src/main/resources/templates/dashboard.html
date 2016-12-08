@@ -8,73 +8,73 @@
     <title>NoriDash®</title>
 </head>
 
+
 <body>
-<div class="container">
-    <br/>
-    <row class="u-full-width">
+<div class="container" style="margin-right: 0">
+    <div class="row u-max-full-width">
         <!--<div class="one column">-->
-        <div class="twelve columns titlebanner">
-            <h3>Nori®</h3>
-            <h4>Inventory Notification System</h4>
+        <div class="three columns titlebanner">
+            <h4>Nori®</h4>
         </div>
-    </row><!--row-->
+        <div class="nine columns titlebanner">
+            <h5>Inventory Notification System</h5>
+        </div>
+    </div><!--row-->
 
 
-    <!--<br/>-->
-    <div class="row.details">
-        <div class="three columns" style="position: relative">
-            <a th:href="@{/dashboard.html}" href="dashboard.html">
-                <img class="noriicon" name="Seaweed!" alt="Seaweed!" th:src="@{/images/seaweed.png}"
-                     src="/static/images/seaweed.png"/>
-                <!--<h1 class="noriicon">NoriDash</h1>-->
-            </a>
-        </div>
+    <br/>
+    <div class="row u-max-full-width">
+        <!--<div class="three columns" style="position: relative">-->
+        <a th:href="@{/dashboard.html}" href="dashboard.html">
+            <img class="noriicon" name="Seaweed!" alt="Seaweed!" th:src="@{/images/seaweed.png}"
+                 src="/static/images/seaweed.png"/>
+            <!--<h1 class="noriicon">NoriDash</h1>-->
+        </a>
+        <!--</div>-->
 
         <br/>
-        <div class="three columns leftDash">
+        <!--<div class="three columns leftDash">-->
 
-            <!--<div class="productSearch">-->
+        <!--<div class="productSearch">-->
 
-            <form action="dashboard.html" th:action="@{/search}" method="post" class="u-pull-left">
-                <fieldset>
-                    <legend>NoriSearch:</legend>
+        <form action="dashboard.html" th:action="@{/search}" method="post" class="leftDash">
+            <fieldset class="details">
+                <legend>NoriSearch:</legend>
 
-                    <label for="productID">Product ID:</label>
-                    <input name="productID" class="details" type="number" placeholder="0123456789"
-                           id="productID"/>
+                <label for="productID">Product ID:</label>
+                <input name="productID" type="number" placeholder="0123456789"
+                       id="productID"/>
 
-                    <label for="vendorName">Vendor Name:</label>
-                    <input name="vendorName" class="details" type="text" placeholder="WalMart"
-                           id="vendorName"/>
+                <label for="vendorName">Vendor Name:</label>
+                <input name="vendorName" type="text" placeholder="WalMart"
+                       id="vendorName"/>
 
-                    <label for="itemName">Item Name:</label>
-                    <input name="itemName" class="details" type="text" placeholder="Earrings"
-                           id="itemName"/>
-                    <label for="qty">Alert Level: </label>
-                    <select class="details" id="qty" name="qtyLevel" title="">
-                        <option value="">Select Level</option>
-                        <option th:value="High">High</option>
-                        <option th:value="Low">Low</option>
-                        <option th:value="Out">Out</option>
-                    </select>
-                    <br/><br/>
-                    <input class="button.button-primary" type="submit"/>
-                </fieldset>
-            </form>
-            <!--</div>&lt;!&ndash;productSearch&ndash;&gt;-->
-        </div><!--leftDash-->
+                <label for="itemName">Item Name:</label>
+                <input name="itemName" type="text" placeholder="Earrings"
+                       id="itemName"/>
+                <label for="qty">Alert Level: </label>
+                <select id="qty" name="qtyLevel" title="">
+                    <option value="">Select Level</option>
+                    <option th:value="High">High</option>
+                    <option th:value="Low">Low</option>
+                    <option th:value="Out">Out</option>
+                </select>
+                <br/><br/>
+                <input class="button-primary" type="submit"/>
+            </fieldset>
+        </form>
+        <!--</div>&lt;!&ndash;productSearch&ndash;&gt;-->
+        <!--</div>&lt;!&ndash;leftDash&ndash;&gt;-->
 
         <br/>
-        <table class="u-max-full-width u-pull-right">
+        <table class="u-max-full-width u-pull-right" style="margin-left: 1%">
             <thead>
             <tr>
-                <th>     </th>
                 <th>Part#</th>
                 <th>Item Name</th>
                 <th>Vendor</th>
                 <th>Qty Level</th>
                 <th>Qty Available</th>
-                <th>Modify</th>
             </tr>
             </thead>
             <tbody>
@@ -84,20 +84,24 @@
                     Title</a>
                 </td>
                 <td th:text="${product.vendor}">Vendor</td>
-                <td th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())} :'NOT SET'">N/A
+                <td th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())} :'NOT SET'">N/A</td>
+
+                <td th:class="${qtyLevels.get(product.getId())}" th:value="${qtyLevels.get(product.getId())}"
+                    th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())} :'N/A'">N/A
                 </td>
-                <td th:text="${qty.get(product.getId())}">Qty Available</td>
+                <!--<td th:text="${qty.get(product.getId())}">Qty Available</td>-->
+
             </tr>
             </tbody>
         </table>
     </div><!--row-->
+
     <br/>
     <div class="row">
         <div class="twelve columns u-full-width" id="footerText">
-            <span>&copy;
-                Copyright 2016 | Nori | All Rights Deserved | Built by Andy and Kat @ The Iron Yard </span><br/>
+            <span>&copy;Copyright 2016 | Nori | All Rights Deserved | Built by Andy and Kat @ The Iron Yard </span><br/>
         </div>
     </div><!--row-->
-</div> <!--container-->
+</div><!--container-->
 </body>
 </html>
