@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/order-creation").permitAll()
                 .antMatchers("/admin/**").access("hasRole('ROLE_USER')")
                 .and()
-                .formLogin().loginPage("/dashboard").failureUrl("/login?error")
+                .formLogin().loginPage("/dashboard").failureUrl("/error")
                 .usernameParameter("username").passwordParameter("password")
                 .and()
                 .logout().logoutSuccessUrl("/login?logout")

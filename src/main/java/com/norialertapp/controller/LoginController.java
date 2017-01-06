@@ -36,7 +36,7 @@ public class LoginController {
 
     //Spring Security sees this :
     @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
-    public String userLogin(String password, String username, Model model) {
+    public String userLogin(String username, String password, Model model) {
 
         Users user = userService.findByEmail(username); //username = email
          if(userService.passwordMatch(password, user.getPassword())) {

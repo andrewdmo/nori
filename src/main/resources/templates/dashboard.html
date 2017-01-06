@@ -1,6 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" th:href="@{/css/normalize.css}" href="../static/css/normalize.css"/>
     <link rel="stylesheet" th:href="@{/css/skeleton.css}" href="../static/css/skeleton.css"/>
     <link rel="stylesheet" th:href="@{/css/noriStyle.css}" href="../static/css/noriStyle.css"/>
@@ -12,7 +13,6 @@
 <body>
 <div class="container" style="margin-right: 0">
     <div class="row u-max-full-width">
-        <!--<div class="one column">-->
         <div class="three columns titlebanner">
             <h4>Nori®</h4>
         </div>
@@ -24,7 +24,6 @@
 
     <br/>
     <div class="row u-max-full-width">
-        <!--<div class="three columns" style="position: relative">-->
         <a th:href="@{/dashboard.html}" href="dashboard.html">
             <img class="noriicon" name="Seaweed!" alt="Seaweed!" th:src="@{/images/seaweed.png}"
                  src="/static/images/seaweed.png"/>

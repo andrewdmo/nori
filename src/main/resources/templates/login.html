@@ -1,6 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" th:href="@{/css/normalize.css}" href="../static/css/normalize.css"/>
     <link rel="stylesheet" th:href="@{/css/skeleton.css}" href="../static/css/skeleton.css"/>
     <link rel="stylesheet" th:href="@{/css/noriStyle.css}" href="../static/css/noriStyle.css"/>
@@ -12,59 +13,61 @@
 
 <body>
 <div class="container centered" style="position:relative; z-index: 0">
-    <br/>
-    <div class="row u-full-width">
-        <!--<div class="one column">-->
+    <!--<br/>-->
+    <div class="row u-max-full-width" style="height: 15%; padding-top: 3%">
         <div class="three columns titlebanner">
             <h4>Nori®</h4>
         </div>
         <div class="nine columns titlebanner">
             <h5>Inventory Notification System</h5>
         </div>
-    </div><!--row-->
+    </div><!--1st row-->
 
+    <div class="row u-max-full-width" style="height: 70%">
+        <div class="container nopad">
+            <div class="row u-max-full-width" style="position: relative">
+                <div class="six columns u-pull-left" style="position: absolute">
+                    <img th:src="@{/images/seaweed.png}" class="bigseaweed"/>
+                </div>
+                <div class="six columns u-pull-right" style="position: relative">
+                    <!--<br/>-->
+                    <form id="userLogin" class="u-pull-right" style="z-index: 2" action="dashboard.html"
+                          th:action="@{/userLogin}" th:method="post">
+                        <fieldset>
+                            <div class="row">
+                                <br/>
+                                <br/>
+                                <input type="hidden" name="hidden1"/>
+                                <br/>
+                                <input type="hidden" name="hidden2"/>
+                                <br/>
+                                <input type="email" placeholder="*you@mail.com" name="email" required="required"
+                                       id="reqFields"/>
+                                <br/>
+                                <input type="password" placeholder="*Password" name="password"
+                                       required="required" id="reqFields"/>
+                                <br/>
+                                <!--<input placeholder="*Confirm password" type="password" name="confirmPassword"-->
+                                <!--required="required"/>-->
+                                <br/>
+                                <input class="button button-primary" type="submit"/>
+                                <br/>
+                                <br/>
+                                <span>Not yet a user? Sign up <a th:href="@{/createAccount}"
+                                                             href="sign-up.html">here</a></span>
+                            </div><!--row-->
+                        </fieldset>
+                    </form>
+                </div> <!--right six columns-->
+            </div><!--row-->
+        </div><!--container-->
+    </div><!--2nd row-->
 
-    <br/>
-    <div class="row u-max-full-width">
-        <div class="one-half column u-pull-left" style="position: absolute">
-            <img th:src="@{/images/seaweed.png}" class="bigseaweed"/>
-        </div>
-
-        <br/>
-        <div class="one-half column u-pull-right" style="position: relative">
-            <!--<br/>-->
-
-            <form id="userLogin" class=" u-pull-right" style="padding-right: 15%" action="dashboard.html"
-                  th:action="@{/userLogin}" th:method="post">
-                <fieldset>
-                    <input style="visibility: hidden" type="text" placeholder="First name"/>
-                    <br/>
-                    <input style="visibility: hidden" type="text" placeholder="First name"/>
-                    <br/>
-                    <input type="email" placeholder="*you@yourmail.mon" required="required"/>
-                    <br/>
-                    <input placeholder="*Password" type="password" name="password"
-                           required="required"/>
-                    <br/>
-                    <input style="visibility: hidden" placeholder="*Confirm password" type="password"
-                           name="confirmPassword"/>
-                    <br/>
-                    <input class="button-primary" type="submit" style=""/>
-                    <br/>
-                    <span>Not a user? Sign up <a th:href="@{/createAccount}" href="sign-up.html">here</a></span>
-                    <br/>
-                    <input style="visibility: hidden" type="text" placeholder="*you@yourmail.mon"/>
-                </fieldset> <!--formelements-->
-            </form>
-        </div> <!--column-->
-    </div><!--row-->
-    <br/>
-    <div class="row">
-        <div class="twelve columns u-full-width" id="footerText">
+    <div class="row u-max-full-width" style="height: 15%" id="footerText">
             <span>&copy;
                 Copyright 2016 | Nori | All Rights Deserved | Built by Andy and Kat @ The Iron Yard </span><br/>
-        </div>
-    </div><!--row-->
+    </div><!--3rd row-->
+
 </div><!--container-->
 </body>
 </html>
