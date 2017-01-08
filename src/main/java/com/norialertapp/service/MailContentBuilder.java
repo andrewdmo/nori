@@ -14,7 +14,7 @@ public class MailContentBuilder {
     private TemplateEngine templateEngine;
 
     @Autowired
-    public MailContentBuilder(TemplateEngine templateEngine) {
+    public MailContentBuilder(@SuppressWarnings("SpringJavaAutowiringInspection") TemplateEngine templateEngine) {
         this.templateEngine = templateEngine;
     }
 

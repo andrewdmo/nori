@@ -16,7 +16,7 @@ public class MailClient {
     private JavaMailSender mailSender;
 
     @Autowired
-    public MailClient(JavaMailSender mailSender) {
+    public MailClient(@SuppressWarnings("SpringJavaAutowiringInspection") JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
 

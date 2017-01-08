@@ -6,7 +6,7 @@
 	<groupId>com.norialertapp</groupId>
 	<artifactId>nori</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>nori</name>
 	<description>Nori Inventory Alert App</description>
