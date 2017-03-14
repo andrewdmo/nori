@@ -1,0 +1,127 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/css/normalize.css}" href="../static/css/normalize.css"/>
+    <link rel="stylesheet" th:href="@{/css/skeleton.css}" href="../static/css/skeleton.css"/>
+    <link rel="stylesheet" th:href="@{/css/noriStyle.css}" href="../static/css/noriStyle.css"/>
+    <link rel="shortcut icon" href="/static/images/favicon.ico"/>
+    <title th:text="${aProduct.getTitle()}">Product detail</title>
+</head>
+
+
+<body>
+<div class="container">
+    <div class="row titlebanner u-max-full-width">
+        <!--<div class="one column">-->
+        <div class="three columns titlebanner">
+            <h4 class="u-pull-left">Nori®</h4>
+        </div>
+        <div class="nine columns titlebanner">
+            <h5 class="u-pull-right">Inventory Notification System</h5>
+        </div>
+    </div><!--row-->
+
+
+    <br/>
+    <div class="row u-max-full-width">
+        <!--<div class="three columns" style="position: relative">-->
+        <a th:href="@{/templates/dashboard.html}" href="dashboard.html">
+            <img class="noriicon" name="Seaweed!" alt="Seaweed!" th:src="@{/images/seaweed.png}"
+                 src="/static/images/seaweed.png"/>
+            <!--<h1 class="noriicon">NoriDash</h1>-->
+        </a>
+        <!--</div>-->
+
+        <br/>
+        <!--<div class="three columns leftDash">-->
+
+        <!--<div class="productSearch">-->
+
+        <form action="product-detail.html" th:action="@{/storeQty}" method="post" class="leftDash">
+            <fieldset class="details">
+                <legend style="max-width: 70%">Set Quantity Rules:</legend>
+                <!--<br/>-->
+                <input type="hidden" name="id" value="" th:value="${aProduct.getId()}"/>
+
+                <!--text = "" th:text="${highLevel.getQuantity()}"-->
+                <!--<label>High:</label>-->
+                <input style="max-width: 70%" placeholder="High:" type="text" id="high" name="high" value=""
+                       th:value="*{highLevel}"
+                       required="required"/>
+                <!--<label>Low:</label>-->
+                <input style="max-width: 70%" placeholder="Low:" type="text" id="low" name="low" value=""
+                       th:value="*{lowLevel}"
+                       required="required"/>
+                <!--<label>Out:</label>-->
+                <input style="max-width: 70%" placeholder="Out:" type="text" id="out" name="out" value=""
+                       th:value="*{outLevel}"
+                       required="required"/>
+                <input style="max-width: 70%" placeholder="Rule Message:" type="text" th:text="${qtyRulesMessage}"/>
+
+                <input type="submit" placeholder="Update Qty Rules" class="button-primary"/>
+            </fieldset>
+        </form>
+        <!--</div>&lt;!&ndash;leftDash&ndash;&gt;-->
+
+        <br/>
+
+        <!--<br/>-->
+        <div class="six columns" style="margin-left: 0; padding-left: 4%">
+            <h2 name="title" id="title" value="product name" th:text="${aProduct.getTitle()}"></h2>
+            <label class="details" th:text="${'Part#: '+ aProduct.getId()}"></label> <br/>
+            <label class="details" th:text="${'Vendor: '+ aProduct.getVendor()}"></label> <br/>
+            <span class="details" th:text="${'Current Qty: '+ productQty}"></span> <br/>
+        </div>
+
+        <br/>
+        <div class="six columns" style="margin-left: 0; padding-right: 4%">
+            <img class="productImage"
+                 th:src="@{${imagePic}}"
+                 src="https://cdn.shopify.com/s/files/1/0711/7863/products/Andean-Cross-Platafina-3.gif?v=1455850375"/>
+        </div>
+
+        <br/>
+        <form id="lowerRight" class="rightDash" th:action="@{/mail}" method="post">
+            <fieldset class="details u-pull-right" form="lowerRight" style="margin-left: 2px; margin-right: 0;">
+                <div class="u-pull-right" style="right: 0">
+                    <legend>Email Alerts When:</legend>
+                    <!--<br/>-->
+                    <input type="hidden" name="id" value="" th:value="${aProduct.getId()}"/>
+                    <label class="u-pull-right">Qty Level: </label>
+                    <select id="qty" name="qty" title="" required="required">
+                        <option th:value="High">High</option>
+                        <option th:value="Low">Low</option>
+                        <option th:value="Out">Out</option>
+                        <option th:value="None" th:selected="None">None</option>
+                    </select>
+                    <!--th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())}-->
+                    <label class="u-pull-right">Previously Selected Level: </label>
+                    <!--th:text="${qtyLevels.get(product.getId())} ? ${qtyLevels.get(product.getId())}-->
+                    <label th:text="${alertTrigger} ? ${alertTrigger} :'None'">N/A</label>
+                    <!--<br/><br/>-->
+                    <label id="shopifyTitleText">Shopify Merchant Email Template:</label><br/>
+                    <select name="levels" title="" required="required">
+                        <option value="">Select Template</option>
+                        <option>Platafina</option>
+                    </select><br/>
+                    <a th:href="@{/templates/emailTemplate.html}" href="emailTemplate.html">View Email Template</a>
+                    <!--<br/>-->
+                    <input type="submit" class="button button-primary" id="template" placeholder="Update Merchant Alerts"/>
+
+                    <label class="levelSetMessage" th:text="${levelSetMessage}"></label>
+                </div>
+            </fieldset>
+        </form>
+
+    </div><!--row-->
+
+    <br/>
+    <div class="row">
+        <div class="twelve columns u-full-width" id="footerText">
+            <span>&copy;Copyright 2016 | Nori | All Rights Deserved | Built by Andy and Kat @ The Iron Yard </span><br/>
+        </div>
+    </div><!--row-->
+</div><!--container-->
+</body>
+</html>
