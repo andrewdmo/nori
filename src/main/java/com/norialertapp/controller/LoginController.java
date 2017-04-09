@@ -1,7 +1,7 @@
 package com.norialertapp.controller;
 
 import com.norialertapp.entity.Product;
-import com.norialertapp.entity.Users;
+import com.norialertapp.entity.User;
 import com.norialertapp.service.ProductService;
 import com.norialertapp.service.SearchService;
 import com.norialertapp.service.ShopifyService;
@@ -45,7 +45,7 @@ public class LoginController {
     @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
     public String userLogin(String username, String password, Model model) {
 
-        Users user = userService.findByEmail(username); //username = email
+        User user = userService.findByEmail(username); //username = email
         if (userService.passwordMatch(password, user.getPassword())) {
 
             // load list of products from Shopify
@@ -63,7 +63,7 @@ public class LoginController {
             return "dashboard";
 
         } else {
-            return "error";
+            return "error"; /*add login error*/
         }
 
     }
@@ -73,31 +73,31 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping(value = "/createAccount", method = RequestMethod.GET)
-    public String createAccount(Model model) {
-        return "sign-up";
-    }
-
-    @RequestMapping(value = "/sign-up", method = RequestMethod.POST)
-    public String accountCreated(String firstName, String lastName, String email, String password,
-                                 String confirmPassword, Model model) {
-        Users user = new Users();
-        user.setFirstname(firstName);
-        user.setLastname(lastName);
-        user.setEmail(email);
-        user.setPassword(password);
-        user.setConfirmPassword(confirmPassword);
-
-        // make sure user has not registered in the past
-        if (userService.findByEmail(email) == null)
-            try {
-                userService.saveUser(user);
-                return "dashboard";
-            } catch (Exception e) {
-                return "error";
-            }
-        return null;
-    }
+//    @RequestMapping(value = "/createAcct", method = RequestMethod.GET)
+//    public String createAcct(Model model) {
+//        return "createAcct";
+//    }
+//
+//    @RequestMapping(value = "/createAcct", method = RequestMethod.POST)
+//    public String createAcct(String firstName, String lastName, String email, String password,
+//                             String confirmPassword, Model model) {
+//        User user = new User();
+//        user.setFirstname(firstName);
+//        user.setLastname(lastName);
+//        user.setEmail(email);
+//        user.setPassword(password);
+//        user.setConfirmPassword(confirmPassword);
+//
+//        // make sure user has not registered in the past
+//        if (userService.findByEmail(email) == null)
+//            try {
+//                userService.saveUser(user);
+//                return "dashboard";
+//            } catch (Exception e) {
+//                return "error"; /*add registration error*/
+//            }
+//        return null;
+//    }
 
 
     @RequestMapping(value = "/emailTemplate", method = RequestMethod.GET)

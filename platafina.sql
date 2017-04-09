@@ -154,7 +154,7 @@ CREATE TABLE qty_level (
 ALTER TABLE qty_level OWNER TO katherine_celeste;
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: katherine_celeste
+-- Name: user; Type: TABLE; Schema: public; Owner: katherine_celeste
 --
 
 CREATE TABLE users (

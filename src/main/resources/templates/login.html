@@ -27,7 +27,8 @@
         <div class="container nopad">
             <div class="row u-max-full-width" style="position: relative">
                 <div class="six columns u-pull-left" style="position: absolute">
-                    <img th:src="@{/static/images/seaweed.png}" src="/static/images/seaweed.png" class="bigseaweed"/>
+                    <img th:src="@{../static/images/seaweed.png}" src="../static/images/seaweed.png"
+                         class="bigseaweed"/>
                 </div>
                 <div class="six columns u-pull-right" style="position: relative">
                     <!--<br/>-->
@@ -53,8 +54,8 @@
                                 <input class="button button-primary" type="submit"/>
                                 <br/>
                                 <br/>
-                                <span>Not yet a user? Sign up <a th:href="@{/createAccount}"
-                                                                 href="sign-up.html">here</a></span>
+                                <span>Not yet a user? Sign up <a th:href="@{/createAcct}"
+                                                                 href="createAcct.html">here</a></span>
                             </div><!--row-->
                         </fieldset>
                     </form>

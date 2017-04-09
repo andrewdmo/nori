@@ -1,5 +1,6 @@
 package com.norialertapp.service;
-import com.norialertapp.entity.Users;
+
+import com.norialertapp.entity.User;
 import com.norialertapp.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,17 +20,22 @@ public class UserServiceImpl implements UserService {
 //    private EmailSenderService  emailSenderService;
 
     @Override
-    public Users findByEmail(String email) {
+    public User findByEmail(String email) {
         return userRepo.findByEmail(email);
     }
 
+//    @Override
+//    public void saveUser(User user) {
+//
+//    }
+
     @Override
-    public void saveUser(Users user){
+    public void saveUser(User user) {
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
         user.setEmailVerfiy(false);
-//        Users savedUser =
-                userRepo.save(user);
+//        User savedUser =
+        userRepo.save(user);
 //
 //        String encryptedUserId = EncryptDecryptUtils.encrypt(String.valueOf(savedUser.getId()));
 //        // send email to user activate his account
@@ -37,7 +43,7 @@ public class UserServiceImpl implements UserService {
 //        emailSenderService.sendRegistrationSuccessEmail(user.getFirstname(), user.getEmail(), verifyEmailLink, Constants.ROOT_URL);
     }
 
-    public boolean passwordMatch(String password, String dbPassword){
+    public boolean passwordMatch(String password, String dbPassword) {
         return passwordEncoder.matches(password, dbPassword);
     }
 }

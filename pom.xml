@@ -3,20 +3,26 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.norialertapp</groupId>
-    <artifactId>nori</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
-
-    <name>nori</name>
-    <description>Nori Inventory Alert App</description>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.4.3.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+    <!--<parent>-->
+    <!--<groupId>com.herro</groupId>-->
+    <!--<artifactId>A_DeMo_build</artifactId>-->
+    <!--<version>0.3.0</version>-->
+    <!--<relativePath>../springTest/pom.xml</relativePath>-->
+    <!--</parent>-->
+
+    <groupId>com.norialertapp</groupId>
+    <artifactId>nori</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>nori</name>
+    <description>Nori Inventory Alert App</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -61,12 +67,21 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
+        <!--***CHANGES EVERYTHING: !!***-->
+
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-security</artifactId>-->
+        <!--</dependency>-->
+
+        <!--Original:-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
             <version>4.2.3.BUILD-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
 
     <build>
         <plugins>
@@ -87,6 +102,5 @@
             </snapshots>
         </repository>
     </repositories>
-
 
 </project>

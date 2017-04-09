@@ -1,10 +1,10 @@
 package com.norialertapp.repository;
 
-import com.norialertapp.entity.Users;
+import com.norialertapp.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepo extends JpaRepository<Users, Long> {
-    Users findByEmail(String email);
+public interface UserRepo extends JpaRepository<User, Long> {
+    User findByEmail(String email);
 }
