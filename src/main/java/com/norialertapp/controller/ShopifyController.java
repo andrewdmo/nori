@@ -4,11 +4,9 @@ import com.norialertapp.entity.Level;
 import com.norialertapp.entity.Product;
 import com.norialertapp.entity.ProductImage;
 import com.norialertapp.entity.QtyLevel;
-import com.norialertapp.repository.*;
-import com.norialertapp.service.ProductService;
+import com.norialertapp.repository.QtyLevelRepo;
+import com.norialertapp.repository.QtyTriggerRepo;
 import com.norialertapp.service.ProductServiceImpl;
-import com.norialertapp.service.SearchService;
-import com.norialertapp.service.ShopifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,31 +26,16 @@ import java.util.List;
 public class ShopifyController {
 
     @Autowired
-    public ShopifyService shopifyService;
-
-    @Autowired
-    public ProductRepo productRepo;
-
-    @Autowired
-    public ProductService productService;
-
-    @Autowired
     public ProductServiceImpl productServiceImpl;
 
     @Autowired
     public QtyLevelRepo qtyLevelRepo;
 
-    @Autowired
-    public ImageRepo imageRepo;
-
-    @Autowired
-    LevelRepo levelRepo;
-
-    @Autowired
-    SearchService searchService;
 
     @Autowired
     QtyTriggerRepo qtyTriggerRepo;
+
+//    ---Duplicate:---
 
 //    @RequestMapping(path = {"/", "/index"}, method = RequestMethod.GET)
 //    public String listProducts() {

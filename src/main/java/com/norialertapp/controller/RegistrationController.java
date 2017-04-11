@@ -23,7 +23,6 @@ import java.util.List;
 @Controller
 public class RegistrationController {
 
-
     @Autowired
     private UserService userService;
 
@@ -94,7 +93,6 @@ public class RegistrationController {
 //        }
     }
 }
-
 
 //        model.addAttribute("success", "You will receive an email to activate your account. If you don't find in your Inbox, please check your spam/junk mail as well.");
 //        return "success";

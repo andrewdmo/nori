@@ -467,7 +467,7 @@ COPY qty_level (id, productid) FROM stdin;
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: katherine_celeste
 --
 
-COPY users (id, email, firstname, is_email_verfiy, lastname, password, email_text_id) FROM stdin;
+COPY users (id, email, firstname, is_email_verify, lastname, password, email_text_id) FROM stdin;
 10	kceleste35@gmail.com	Sample	f	User	$2a$10$5A07cgO96x5UmFR1ka2uEeNl14GTGQcr4B3ssiu3aWA2dIfEiSXTS	\N
 \.
 

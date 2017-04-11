@@ -1,6 +1,6 @@
+//---from Kat:---
+//
 //package norialertapp.config;
-//
-//
 //
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,7 @@
 //    @Autowired
 //    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.inMemoryAuthentication()
-//                .withUser("kguzman").password("123456").roles("USER");
+//            .withUser("kguzman").password("123456").roles("USER");
 //    }
 //
 //    //.csrf() is optional, enabled by default, if using WebSecurityConfigurerAdapter constructor
@@ -24,14 +24,14 @@
 //    protected void configure(HttpSecurity http) throws Exception {
 //
 //        http.authorizeRequests()
-//                .antMatchers("/order-creation").permitAll()
-//                .antMatchers("/admin/**").access("hasRole('ROLE_USER')")
-//                .and()
-//                .formLogin().loginPage("/dashboard").failureUrl("/error")
-//                .usernameParameter("username").passwordParameter("password")
-//                .and()
-//                .logout().logoutSuccessUrl("/login?logout")
-//                .and()
-//                .csrf().disable();
+//            .antMatchers("/order-creation").permitAll()
+//            .antMatchers("/admin/**").access("hasRole('ROLE_USER')")
+//            .and()
+//            .formLogin().loginPage("/dashboard").failureUrl("/error")
+//            .usernameParameter("username").passwordParameter("password")
+//            .and()
+//            .logout().logoutSuccessUrl("/login?logout")
+//            .and()
+//            .csrf().disable();
 //    }
 //}

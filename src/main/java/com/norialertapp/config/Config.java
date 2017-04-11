@@ -1,3 +1,5 @@
+//---from Kat:---
+//
 //package norialertapp.config;
 //
 //import java.util.Properties;

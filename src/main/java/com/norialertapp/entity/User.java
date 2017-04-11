@@ -35,7 +35,7 @@ public class User implements Serializable, UserDetails {
     @Transient //don't store in db
     private String confirmPassword;
 
-    private boolean isEmailVerfiy;
+    private boolean isEmailVerify;
 
     public String getConfirmPassword() {
         return confirmPassword;
@@ -117,14 +117,14 @@ public class User implements Serializable, UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return this.isEmailVerfiy;
+        return this.isEmailVerify;
     }
 
-    public boolean isEmailVerfiy() {
-        return isEmailVerfiy;
+    public boolean isEmailVerify() {
+        return isEmailVerify;
     }
 
-    public void setEmailVerfiy(boolean emailVerfiy) {
-        isEmailVerfiy = emailVerfiy;
+    public void setEmailVerify(boolean emailVerify) {
+        isEmailVerify = emailVerify;
     }
 }
