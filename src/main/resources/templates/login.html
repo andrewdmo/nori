@@ -29,15 +29,17 @@
                          class="bigseaweed"/>
                 </div>
                 <div class="six columns u-pull-right" style="position: relative">
-                    <!--<div th:if="${param.error}">-->
-                    <!--Invalid username and password.-->
-                    <!--</div>-->
-                    <!--<div th:if="${param.logout}">-->
-                    <!--You have been logged out.-->
-                    <!--</div>-->
-                    <!--<br/>-->
-                    <form id="userLogin" class="u-pull-right" style="z-index: 2"
-                          th:action="@{/userLogin}" th:method="post" method="post">
+
+                    <!--for Security:-->
+                    <div th:if="${param.error}">
+                        Invalid username and password.
+                    </div>
+                    <div th:if="${param.logout}">
+                        You have been logged out.
+                    </div>
+
+                    <form id="loginForm" class="u-pull-right" style="z-index: 2"
+                          th:action="@{/loginForm}" th:method="post" method="post">
                         <fieldset>
                             <div class="row">
                                 <br/>

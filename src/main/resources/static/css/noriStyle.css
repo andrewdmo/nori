@@ -170,7 +170,7 @@ table tr:nth-child(even) {
     float: right;
 }
 
-.loginform {
+.loginForm {
     max-width: 100%;
     z-index: 2;
     /*float: right;*/

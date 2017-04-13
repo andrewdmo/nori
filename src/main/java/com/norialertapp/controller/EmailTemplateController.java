@@ -23,10 +23,10 @@ public class EmailTemplateController {
     UserRepo userRepo;
 
     @RequestMapping(path = "/emailTextModifications", method = RequestMethod.POST)
-    public String emailTextMods(Model model){
+    public String emailTextMods(Model model) {
         EmailContent content = new EmailContent();
 
-        if(emailContentRepo.findAll()!=null){
+        if (emailContentRepo.findAll() != null) {
             emailContentRepo.deleteAll();
         }
 
@@ -44,19 +44,24 @@ public class EmailTemplateController {
         return "emailTemplate2";
     }
 
+    @RequestMapping(value = "/emailTemplate", method = RequestMethod.GET)
+    public String emailTemplate(Model model) {
+        return "emailTemplate";
+    }
+
     @RequestMapping(path = "/emailTemplate", method = RequestMethod.POST)
-    public String emailTemplate(String toField, String fromField, Long id, String bodyField, String subjectField, Model model){
+    public String emailTemplate(String toField, String fromField, Long id, String bodyField, String subjectField, Model model) {
 
         EmailContent content = emailContentRepo.findOne(id);
 
-            content.setToField(toField);
-            content.setFromField(fromField); // use emailAddress to lookup in other classes
-            content.setBodyField(bodyField);
-            content.setSubjectField(subjectField);
+        content.setToField(toField);
+        content.setFromField(fromField); // use emailAddress to lookup in other classes
+        content.setBodyField(bodyField);
+        content.setSubjectField(subjectField);
 
-            emailContentRepo.save(content);
+        emailContentRepo.save(content);
 
-            model.addAttribute("content", content);
+        model.addAttribute("content", content);
 
         return "emailTemplate3";
     }

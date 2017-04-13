@@ -35,16 +35,16 @@ public class LoginController {
     @Autowired
     private SearchService searchService;
 
-    @RequestMapping(path = {"", "/", "/index", "/login"}/*, method = RequestMethod.GET*/)
-    public String login(Model model) {
+    @RequestMapping(path = {"", "/", "/index", "/login"})
+    public String login() {
 
         return "login";
     }
 
-    //Spring Security sees this & is from _login.html_ form:
+    //Spring Security sees this from _login.html_ form:
 
-    @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
-    public String userLogin(String username, String password, Model model) {
+    @RequestMapping(value = "/loginForm", method = RequestMethod.POST)
+    public String loginForm(String username, String password, Model model) {
 
         User user = userService.findByEmail(username); //username = email
         if (userService.passwordMatch(password, user.getPassword())) {
@@ -67,6 +67,13 @@ public class LoginController {
             return "error"; /*add login error*/
         }
     }
+
+    @ExceptionHandler
+    //add URL request query feedback later:
+    public String error() {
+        return "error";
+    }
+
 //    Duplicate?:
 
 //    @RequestMapping(value = "/login")
@@ -100,15 +107,4 @@ public class LoginController {
 //        return null;
 //    }
 
-
-    @RequestMapping(value = "/emailTemplate", method = RequestMethod.GET)
-    public String emailTemplate(Model model) {
-        return "emailTemplate";
-    }
-
-    @ExceptionHandler
-    //add URL request query feedback later:
-    public String error() {
-        return "error";
-    }
 }
