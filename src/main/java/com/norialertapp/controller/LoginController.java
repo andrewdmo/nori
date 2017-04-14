@@ -35,7 +35,8 @@ public class LoginController {
     @Autowired
     private SearchService searchService;
 
-    @RequestMapping(path = {"", "/", "/index", "/login"})
+
+    @RequestMapping(path = {"", "/", "/index", "/login"}, method = RequestMethod.GET)
     public String login() {
 
         return "login";
@@ -64,7 +65,9 @@ public class LoginController {
             return "dashboard";
 
         } else {
-            return "error"; /*add login error*/
+            return "/login";
+
+//            return "/login?error";
         }
     }
 
