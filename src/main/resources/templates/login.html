@@ -30,20 +30,18 @@
                 </div>
                 <div class="six columns u-pull-right" style="position: relative">
 
-                    <!--for Security:-->
-                    <div th:if="${param.error}">
-                        Invalid username and password.
-                    </div>
-                    <div th:if="${param.logout}">
-                        You have been logged out.
-                    </div>
-
                     <form id="loginForm" class="u-pull-right" style="z-index: 2"
-                          th:action="@{/loginForm}" th:method="post" method="post">
+                          th:action="@{/loginForm}" method="post">
                         <fieldset>
                             <div class="row">
+                                <!--from Security:-->
                                 <br/>
-                                <br/>
+                                <div th:if="${param.error}" class="row" style="color: #901400 ">
+                                    Invalid username and/or password!
+                                </div>
+                                <div th:if="${param.logout}" class="row" style="color: #073763">
+                                    You have been logged out.
+                                </div>
                                 <input type="hidden" name="hidden1"/>
                                 <br/>
                                 <input type="hidden" name="hidden2"/>

@@ -35,11 +35,26 @@ public class LoginController {
     @Autowired
     private SearchService searchService;
 
-
     @RequestMapping(path = {"", "/", "/index", "/login"}, method = RequestMethod.GET)
     public String login() {
-
         return "login";
+    }
+
+    @RequestMapping(path = {"/dashboard"})
+    public String dashboard(Model model) {
+        // load list of products from Shopify
+        List<Product> products = shopifyService.getAndSaveProducts();
+
+        searchService.searchShopifyProductsList(products);
+
+        HashMap<Long, String> qtyLevels = searchService.qtyLevels();
+        HashMap<Long, Integer> qty = searchService.qty();
+
+        model.addAttribute("qtyLevels", qtyLevels);
+        model.addAttribute("qty", qty);
+
+        model.addAttribute("products", productService.listProducts());
+        return "dashboard";
     }
 
     //Spring Security sees this from _login.html_ form:
@@ -65,10 +80,13 @@ public class LoginController {
             return "dashboard";
 
         } else {
-            return "/login";
-
-//            return "/login?error";
+            return "redirect:/login?error";
         }
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    public String logout() {
+        return "redirect:/login?logout";
     }
 
     @ExceptionHandler

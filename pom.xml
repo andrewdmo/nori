@@ -24,6 +24,27 @@
     <name>nori</name>
     <description>Nori Inventory Alert App</description>
 
+    <developers>
+        <developer>
+            <id>andeemor</id>
+            <name>Andy Moretz</name>
+            <email>andeemor A T GMayle</email>
+            <roles>
+                <role>Co-Founder</role>
+                <role>Chief of Connectivity + Responsiveness</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>celeste110</id>
+            <name>Katherine G.</name>
+            <email>kceleste35 A T GMayle</email>
+            <roles>
+                <role>Co-Founder</role>
+                <role>Empress of Logic + Persistence</role>
+            </roles>
+        </developer>
+    </developers>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -55,14 +76,13 @@
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity4</artifactId>
         </dependency>
-
-
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.4.1212.jre7</version>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -77,6 +97,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -103,12 +124,9 @@
 
     <repositories>
         <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/libs-snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
+            <id>spring-snapshot</id>
+            <name>Spring Snapshot Repository</name>
+            <url>https://repo.spring.io/snapshot</url>
         </repository>
         <repository>
             <id>spring-releases</id>

@@ -20,21 +20,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
             .authorizeRequests()
-            .antMatchers("/", "/index", "/createAcct").permitAll()
-//            .anyRequest().authenticated()
+//            .antMatchers("/css/**").permitAll() // Enable css when logged out
+            .antMatchers("/", "/index", "/createAcct", "/login", "/loginForm").permitAll()
+//            .antMatchers("/user/**").hasRole("USER")
+//            .anyRequest().authenticated() //keeps blocking CSS
             .and()
             .formLogin()
             .loginPage("/login")
-            .failureUrl("/login?error");
-//            .permitAll()
-//            .and()
-//            .logout()
-//            .logoutSuccessUrl("/login?logout")
-//            .permitAll();
+            .failureUrl("/login?error")
+            .and()
+            .logout()
+// .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+            .logoutSuccessUrl("/login?logout");
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .inMemoryAuthentication()
             .withUser("test@test").password("test").roles("USER");
