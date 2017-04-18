@@ -20,17 +20,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
             .authorizeRequests()
-//            .antMatchers("/css/**").permitAll() // Enable css when logged out
-            .antMatchers("/", "/index", "/createAcct", "/login", "/loginForm").permitAll()
-//            .antMatchers("/user/**").hasRole("USER")
-//            .anyRequest().authenticated() //keeps blocking CSS
+
+            .antMatchers("/", "/index", "/createAcct", "/loginForm", "/css/**").permitAll()
+            .anyRequest().authenticated() //keeps blocking CSS
             .and()
             .formLogin()
             .loginPage("/login")
+            .permitAll()
             .failureUrl("/login?error")
+            .defaultSuccessUrl("/dashboard")
             .and()
             .logout()
-// .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+            .permitAll()
+// .logoutRequestMatcher(new AntPathRequestMatcher("/logout")) //confirm Logout
             .logoutSuccessUrl("/login?logout");
     }
 

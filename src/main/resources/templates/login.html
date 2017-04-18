@@ -42,9 +42,9 @@
                                 <div th:if="${param.logout}" class="row" style="color: #073763">
                                     You have been logged out.
                                 </div>
-                                <input type="hidden" name="hidden1"/>
+                                <input type="hidden" name="spaceHolder"/>
                                 <br/>
-                                <input type="hidden" name="hidden2"/>
+                                <input type="hidden" name="${_csrf.parameterName}" value="$ {_csrf.token}"/>
                                 <br/>
                                 <input type="email" placeholder="*you@mail.com" name="username" required="required"
                                        id="reqFields"/>

@@ -42,6 +42,7 @@ public class LoginController {
 
     @RequestMapping(path = {"/dashboard"})
     public String dashboard(Model model) {
+
         // load list of products from Shopify
         List<Product> products = shopifyService.getAndSaveProducts();
 
@@ -64,20 +65,7 @@ public class LoginController {
 
         User user = userService.findByEmail(username); //username = email
         if (userService.passwordMatch(password, user.getPassword())) {
-
-            // load list of products from Shopify
-            List<Product> products = shopifyService.getAndSaveProducts();
-
-            searchService.searchShopifyProductsList(products);
-
-            HashMap<Long, String> qtyLevels = searchService.qtyLevels();
-            HashMap<Long, Integer> qty = searchService.qty();
-
-            model.addAttribute("qtyLevels", qtyLevels);
-            model.addAttribute("qty", qty);
-
-            model.addAttribute("products", productService.listProducts());
-            return "dashboard";
+            return "redirect:/dashboard";
 
         } else {
             return "redirect:/login?error";
@@ -94,38 +82,5 @@ public class LoginController {
     public String error() {
         return "error";
     }
-
-//    Duplicate?:
-
-//    @RequestMapping(value = "/login")
-//    public String login(Model model) {
-//        return "login";
-//    }
-
-//    @RequestMapping(value = "/createAcct", method = RequestMethod.GET)
-//    public String createAcct(Model model) {
-//        return "createAcct";
-//    }
-//
-//    @RequestMapping(value = "/createAcct", method = RequestMethod.POST)
-//    public String createAcct(String firstName, String lastName, String email, String password,
-//                             String confirmPassword, Model model) {
-//        User user = new User();
-//        user.setFirstname(firstName);
-//        user.setLastname(lastName);
-//        user.setEmail(email);
-//        user.setPassword(password);
-//        user.setConfirmPassword(confirmPassword);
-//
-//        // make sure user has not registered in the past
-//        if (userService.findByEmail(email) == null)
-//            try {
-//                userService.saveUser(user);
-//                return "dashboard";
-//            } catch (Exception e) {
-//                return "error"; /*add registration error*/
-//            }
-//        return null;
-//    }
 
 }
