@@ -35,7 +35,7 @@ public class LoginController {
     @Autowired
     private SearchService searchService;
 
-    @RequestMapping(path = {"", "/", "/index", "/login"}, method = RequestMethod.GET)
+    @RequestMapping(path = {"", "/", "/index", "/login"}/*, method = RequestMethod.GET*/)
     public String login() {
         return "login";
     }

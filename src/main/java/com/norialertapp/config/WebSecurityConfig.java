@@ -20,14 +20,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
             .authorizeRequests()
-
-            .antMatchers("/", "/index", "/createAcct", "/loginForm", "/css/**").permitAll()
-            .anyRequest().authenticated() //keeps blocking CSS
+            .antMatchers("/css/**", "/", "/index", "/createAcct", "/loginForm").permitAll()
+//            .anyRequest().authenticated() //keeps blocking CSS??
             .and()
             .formLogin()
             .loginPage("/login")
-            .permitAll()
             .failureUrl("/login?error")
+            .permitAll()
             .defaultSuccessUrl("/dashboard")
             .and()
             .logout()
