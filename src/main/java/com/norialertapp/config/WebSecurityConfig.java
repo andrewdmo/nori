@@ -5,13 +5,12 @@ package com.norialertapp.config;
  */
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-@Configuration
+//@Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -20,8 +19,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
             .authorizeRequests()
-            .antMatchers("/css/**", "/", "/index", "/createAcct", "/loginForm").permitAll()
-//            .anyRequest().authenticated() //keeps blocking CSS??
+            .antMatchers("/css/**", "/images/**", "/", "/index", "/createAcct", "/loginForm").permitAll()
+            .anyRequest().authenticated() //keeps blocking CSS??
             .and()
             .formLogin()
             .loginPage("/login")
@@ -30,9 +29,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .defaultSuccessUrl("/dashboard")
             .and()
             .logout()
-            .permitAll()
 // .logoutRequestMatcher(new AntPathRequestMatcher("/logout")) //confirm Logout
-            .logoutSuccessUrl("/login?logout");
+            .logoutSuccessUrl("/login?logout")
+            .permitAll();
+//            .and()
+//            .httpBasic();
     }
 
     @Autowired

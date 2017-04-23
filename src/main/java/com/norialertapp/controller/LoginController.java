@@ -35,7 +35,12 @@ public class LoginController {
     @Autowired
     private SearchService searchService;
 
-    @RequestMapping(path = {"", "/", "/index", "/login"}/*, method = RequestMethod.GET*/)
+    @RequestMapping(path = {"", "/", "/index"}/*, method = RequestMethod.GET*/)
+    public String landing() {
+        return "redirect:/login";
+    }
+
+    @RequestMapping(path = {"/login"})
     public String login() {
         return "login";
     }
@@ -60,7 +65,7 @@ public class LoginController {
 
     //Spring Security sees this from _login.html_ form:
 
-    @RequestMapping(value = "/loginForm", method = RequestMethod.POST)
+    @RequestMapping(path = "/loginForm", method = RequestMethod.POST)
     public String loginForm(String username, String password, Model model) {
 
         User user = userService.findByEmail(username); //username = email
