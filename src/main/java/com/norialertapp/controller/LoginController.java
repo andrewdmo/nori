@@ -24,7 +24,7 @@ import java.util.List;
 public class LoginController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
     ShopifyService shopifyService;
@@ -40,9 +40,23 @@ public class LoginController {
         return "redirect:/login";
     }
 
-    @RequestMapping(path = {"/login"})
+    //login (x2):
+    @RequestMapping(path = {"/login"}, method = RequestMethod.GET)
     public String login() {
         return "login";
+    }
+
+    //Spring Security sees this from _login.html_ form:
+    @RequestMapping(path = {"/login"}, method = RequestMethod.POST)
+    public String login(String username, String password) {
+
+        User user = userService.findByEmail(username); //username = email
+        if (userService.passwordMatch(password, user.getPassword())) {
+            return "redirect:/dashboard";
+
+        } else {
+            return "redirect:/login?error";
+        }
     }
 
     @RequestMapping(path = {"/dashboard"})
@@ -61,20 +75,6 @@ public class LoginController {
 
         model.addAttribute("products", productService.listProducts());
         return "dashboard";
-    }
-
-    //Spring Security sees this from _login.html_ form:
-
-    @RequestMapping(path = "/loginForm", method = RequestMethod.POST)
-    public String loginForm(String username, String password, Model model) {
-
-        User user = userService.findByEmail(username); //username = email
-        if (userService.passwordMatch(password, user.getPassword())) {
-            return "redirect:/dashboard";
-
-        } else {
-            return "redirect:/login?error";
-        }
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
