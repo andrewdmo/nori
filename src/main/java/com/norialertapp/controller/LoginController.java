@@ -51,6 +51,7 @@ public class LoginController {
     public String login(String username, String password) {
 
         User user = userService.findByEmail(username); //username = email
+
         if (userService.passwordMatch(password, user.getPassword())) {
             return "redirect:/dashboard";
 
