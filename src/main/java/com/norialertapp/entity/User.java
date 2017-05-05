@@ -17,17 +17,41 @@ import java.util.List;
 @Table(name = "users")
 public class User implements Serializable, UserDetails {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false, updatable = false)
     private long id;
 
+    @Column
     private String firstname;
 
+    @Column
     private String lastname;
 
+    @Column
+    private String username;
+
+    @Column
     private String password;
+
+    @Column(name = "role"/*, nullable = false*/)
+    @Enumerated(EnumType.STRING)
+    Role role;
+
+    @Column(name = "enabled")
+//    @Override
+    public boolean isEnabled() {
+        return this.isEmailVerify;
+    }
+
+//    public boolean isEmailVerify() {
+//        return isEmailVerify;
+//    }
+
+    public void setEmailVerify(boolean emailVerify) {
+        isEmailVerify = emailVerify;
+    }
+
 
     @OneToOne(cascade = CascadeType.ALL)
     EmailContent emailText;
@@ -45,11 +69,10 @@ public class User implements Serializable, UserDetails {
         this.confirmPassword = confirmPassword;
     }
 
-    public String getEmail() {
-        return email;
-    }
+//    public String getUsername() {
+//        return username;
+//    }
 
-    private String email;
 
     public long getId() {
         return id;
@@ -79,8 +102,8 @@ public class User implements Serializable, UserDetails {
         this.password = password;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override
@@ -97,7 +120,7 @@ public class User implements Serializable, UserDetails {
 
     @Override
     public String getUsername() {
-        return this.email;
+        return this.username;
     }
 
     @Override
@@ -115,16 +138,4 @@ public class User implements Serializable, UserDetails {
         return true;
     }
 
-    @Override
-    public boolean isEnabled() {
-        return this.isEmailVerify;
-    }
-
-    public boolean isEmailVerify() {
-        return isEmailVerify;
-    }
-
-    public void setEmailVerify(boolean emailVerify) {
-        isEmailVerify = emailVerify;
-    }
 }

@@ -54,7 +54,7 @@ public class RegistrationController {
         }
 
         //check if email exists or not
-        User savedUser = userService.findByEmail(user.getEmail());
+        User savedUser = userService.findByEmail(user.getUsername());
         if (savedUser != null) {
             //user is not equal to null means user with this email id is already exist
             model.addAttribute("user", user);

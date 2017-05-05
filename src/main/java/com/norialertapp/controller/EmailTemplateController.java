@@ -30,7 +30,7 @@ public class EmailTemplateController {
             emailContentRepo.deleteAll();
         }
 
-        String email = userRepo.findAll().get(0).getEmail();
+        String email = userRepo.findAll().get(0).getUsername();
 
         content.setToField("");
         content.setFromField(email); // use emailAddress to lookup in other classes

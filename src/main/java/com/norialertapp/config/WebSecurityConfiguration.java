@@ -4,7 +4,6 @@ package com.norialertapp.config;
  * Created by andrewdmo on 4/9/17.
  */
 
-import com.norialertapp.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,12 +11,17 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+//    @Autowired
+//    UserServiceImpl userServiceImpl;
+
     @Autowired
-    UserServiceImpl userServiceImpl;
+    DataSource dataSource;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -31,7 +35,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .loginPage("/login")
             .failureUrl("/login?error")
             .permitAll()
-            .usernameParameter("username")
+            .usernameParameter("email")
             .passwordParameter("password")
             .defaultSuccessUrl("/dashboard")
             .and()
@@ -46,7 +50,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth
 //            .userDetailsService()
 //            .and()
-            .inMemoryAuthentication()
+            .jdbcAuthentication()
+            .dataSource(dataSource)
             .withUser("test@test").password("test").roles("USER");
+//            .and()
+//            .inMemoryAuthentication()
+//            .withUser("test@test").password("test").roles("USER");
+
     }
 }
