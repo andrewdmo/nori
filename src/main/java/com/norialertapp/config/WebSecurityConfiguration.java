@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 import javax.sql.DataSource;
 
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -23,12 +24,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
+//    @Autowired
+//    UserDetailsService userDetailsService;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http
             .authorizeRequests()
-            .antMatchers("/css/**", "/images/**", "/", "/index", "/createAcct", "/loginForm").permitAll()
+            .antMatchers("/css/**", "/images/**", "/js/**", "/", "/index", "/createAcct", "/loginForm").permitAll()
             .anyRequest().authenticated() //keeps blocking CSS??
             .and()
             .formLogin()
@@ -48,7 +52,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
-//            .userDetailsService()
+//            .userDetailsService(userDetailsService)
 //            .and()
             .jdbcAuthentication()
             .dataSource(dataSource)

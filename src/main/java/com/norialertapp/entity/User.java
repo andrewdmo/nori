@@ -17,6 +17,12 @@ import java.util.List;
 @Table(name = "users")
 public class User implements Serializable, UserDetails {
 
+    public User(String username, String password, boolean enabled) {
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)
@@ -34,15 +40,26 @@ public class User implements Serializable, UserDetails {
     @Column
     private String password;
 
+    private boolean enabled;
+
+    @Column(name = "enabled", nullable = false)
+    public boolean isEnabled() {
+        return this.enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+//    older:
+//    @Column(name = "enabled")
+//    public boolean isEnabled() {
+//        return UserServiceImpl.findByEmail(username);
+//    };
+
     @Column(name = "role"/*, nullable = false*/)
     @Enumerated(EnumType.STRING)
     Role role;
 
-    @Column(name = "enabled")
-//    @Override
-    public boolean isEnabled() {
-        return this.isEmailVerify;
-    }
 
 //    public boolean isEmailVerify() {
 //        return isEmailVerify;
