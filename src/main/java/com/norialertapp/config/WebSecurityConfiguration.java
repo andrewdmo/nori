@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.sql.DataSource;
 
@@ -22,10 +23,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //    UserServiceImpl userServiceImpl;
 
     @Autowired
-    DataSource dataSource;
+    private DataSource dataSource;
 
-//    @Autowired
-//    UserDetailsService userDetailsService;
+    @Autowired
+    UserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -33,7 +34,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
             .antMatchers("/css/**", "/images/**", "/js/**", "/", "/index", "/createAcct", "/loginForm").permitAll()
-            .anyRequest().authenticated() //keeps blocking CSS??
+//            .antMatchers("/**").hasRole("USER") //saving for later when Roles ok
+            .anyRequest().authenticated()
             .and()
             .formLogin()
             .loginPage("/login")
@@ -52,8 +54,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
-//            .userDetailsService(userDetailsService)
-//            .and()
+            .userDetailsService(userDetailsService)
+            .and()
             .jdbcAuthentication()
             .dataSource(dataSource)
             .withUser("test@test").password("test").roles("USER");

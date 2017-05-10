@@ -157,7 +157,7 @@ ALTER TABLE qty_level OWNER TO katherine_celeste;
 -- Name: user; Type: TABLE; Schema: public; Owner: katherine_celeste
 --
 
-CREATE TABLE users (
+CREATE TABLE user (
     id bigint NOT NULL,
     email character varying(255),
     firstname character varying(255),
@@ -168,7 +168,7 @@ CREATE TABLE users (
 );
 
 
-ALTER TABLE users OWNER TO katherine_celeste;
+ALTER TABLE user OWNER TO katherine_celeste;
 
 --
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: katherine_celeste
@@ -188,7 +188,7 @@ ALTER TABLE users_id_seq OWNER TO katherine_celeste;
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: katherine_celeste
 --
 
-ALTER SEQUENCE users_id_seq OWNED BY users.id;
+ALTER SEQUENCE users_id_seq OWNED BY user.id;
 
 
 --
@@ -208,7 +208,7 @@ ALTER TABLE variant OWNER TO katherine_celeste;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: katherine_celeste
 --
 
-ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+ALTER TABLE ONLY user ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
 --
@@ -464,10 +464,10 @@ COPY qty_level (id, productid) FROM stdin;
 
 
 --
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: katherine_celeste
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: katherine_celeste
 --
 
-COPY users (id, email, firstname, is_email_verify, lastname, password, email_text_id) FROM stdin;
+COPY user (id, email, firstname, is_email_verify, lastname, password, email_text_id) FROM stdin;
 10	kceleste35@gmail.com	Sample	f	User	$2a$10$5A07cgO96x5UmFR1ka2uEeNl14GTGQcr4B3ssiu3aWA2dIfEiSXTS	\N
 \.
 
@@ -606,7 +606,7 @@ ALTER TABLE ONLY qty_level
 -- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: katherine_celeste
 --
 
-ALTER TABLE ONLY users
+ALTER TABLE ONLY user
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 
 
@@ -646,7 +646,7 @@ ALTER TABLE ONLY line_item
 -- Name: fklj6jwhoy4w16ui0eiwvgct789; Type: FK CONSTRAINT; Schema: public; Owner: katherine_celeste
 --
 
-ALTER TABLE ONLY users
+ALTER TABLE ONLY user
     ADD CONSTRAINT fklj6jwhoy4w16ui0eiwvgct789 FOREIGN KEY (email_text_id) REFERENCES email_content(id);
 
 

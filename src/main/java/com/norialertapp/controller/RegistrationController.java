@@ -39,7 +39,7 @@ public class RegistrationController {
     @RequestMapping(path = "/createAcct", method = RequestMethod.GET)
     public String createAcct(Model model) {
 
-        model.addAttribute("user", new User());
+        model.addAttribute("user", userService );
         return "createAcct";
     }
 

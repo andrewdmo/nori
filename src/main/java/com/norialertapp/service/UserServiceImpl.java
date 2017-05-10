@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
     public void saveUser(User user) {
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
-        user.setEmailVerify(false); //change later
+//        user.setEmailVerify(false); //change later
 //        User savedUser =
         userRepo.save(user);
 //
