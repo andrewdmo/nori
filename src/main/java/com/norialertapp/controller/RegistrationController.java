@@ -39,7 +39,7 @@ public class RegistrationController {
     @RequestMapping(path = "/createAcct", method = RequestMethod.GET)
     public String createAcct(Model model) {
 
-        model.addAttribute("user", userService );
+        model.addAttribute("user", userService);
         return "createAcct";
     }
 
@@ -83,7 +83,7 @@ public class RegistrationController {
             return "dashboard";
 
         } catch (Exception e) {
-            return "error"; /*add login error*/
+            return "error"; /*add specific login error*/
         }
 
 //        {

@@ -13,8 +13,15 @@ public class Authority {
     private String authority;
 
     @Id
+    @Column
+    private String username;
+
     @Column(name = "authority")
     public String getAuthority() {
         return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
     }
 }

@@ -6,10 +6,8 @@ import com.norialertapp.service.ProductService;
 import com.norialertapp.service.SearchService;
 import com.norialertapp.service.ShopifyService;
 import com.norialertapp.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,16 +21,12 @@ import java.util.List;
 @Controller
 public class LoginController {
 
-    @Autowired
     private UserService userService;
 
-    @Autowired
     ShopifyService shopifyService;
 
-    @Autowired
     public ProductService productService;
 
-    @Autowired
     private SearchService searchService;
 
     @RequestMapping(path = {"", "/", "/index"}/*, method = RequestMethod.GET*/)
@@ -83,10 +77,10 @@ public class LoginController {
         return "redirect:/login?logout";
     }
 
-    @ExceptionHandler
-    //add URL request query feedback later:
-    public String error() {
-        return "error";
-    }
+//    @ExceptionHandler
+//    //add URL request query feedback later (https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc):
+//    public String error() {
+//        return "error";
+//    }
 
 }

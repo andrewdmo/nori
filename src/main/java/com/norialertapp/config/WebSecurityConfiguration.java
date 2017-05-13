@@ -5,12 +5,12 @@ package com.norialertapp.config;
  */
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.sql.DataSource;
 
@@ -19,14 +19,9 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
-//    UserServiceImpl userServiceImpl;
 
-    @Autowired
+    @Qualifier("dataSource")
     private DataSource dataSource;
-
-    @Autowired
-    UserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -41,27 +36,28 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .loginPage("/login")
             .failureUrl("/login?error")
             .permitAll()
-            .usernameParameter("email")
-            .passwordParameter("password")
-            .defaultSuccessUrl("/dashboard")
+//            .usernameParameter("email")
+//            .passwordParameter("password")
+//            .defaultSuccessUrl("/dashboard")
             .and()
             .logout()
 // .logoutRequestMatcher(new AntPathRequestMatcher("/logout")) //confirm Logout
             .logoutSuccessUrl("/login?logout")
             .permitAll();
+//            .and()
+//            .exceptionHandling()
+//            .accessDeniedHandler();
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
-            .userDetailsService(userDetailsService)
-            .and()
-            .jdbcAuthentication()
-            .dataSource(dataSource)
+            .inMemoryAuthentication()
             .withUser("test@test").password("test").roles("USER");
+//            .jdbcAuthentication()
+//            .dataSource(dataSource)
 //            .and()
-//            .inMemoryAuthentication()
-//            .withUser("test@test").password("test").roles("USER");
-
+//            .userDetailsService(userDetailsService)
+//            .and()
     }
 }

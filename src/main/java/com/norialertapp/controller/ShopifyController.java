@@ -10,6 +10,7 @@ import com.norialertapp.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -153,6 +154,13 @@ public class ShopifyController {
 
         return "product-detail";
     }
+
+    @ExceptionHandler
+    //add URL request query feedback later (https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc):
+    public String error() {
+        return "error";
+    }
+
 //    @RequestMapping(value = "/{event.id}", method = RequestMethod.GET)
 //    public Event getEvent(@PathVariable("event.id") final Integer eventId) {
 //        return eventService.getEvent(eventId);

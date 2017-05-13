@@ -11,6 +11,7 @@ import com.norialertapp.service.TriggerMailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -99,6 +100,12 @@ public class MailController {
 
 
         return "product-detail";
+    }
+
+    @ExceptionHandler
+    //add URL request query feedback later (https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc):
+    public String error() {
+        return "error";
     }
 }
 

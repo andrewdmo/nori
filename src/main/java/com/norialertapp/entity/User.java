@@ -10,30 +10,52 @@ import java.io.Serializable;
 @Table(name = "users")
 public class User implements Serializable {
 
-    public User(String username, String password, boolean enabled) {
-        this.username = username;
-        this.password = password;
-        this.enabled = enabled;
-    }
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "id", nullable = false, updatable = false)
-//    private long id;
-
+    //put back in later:
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, updatable = false)
+    private long id;
+
+    //    @Id
     @Column
     private String username;
 
     @Column
     private String password;
 
-    //need to instantiate for below:
-    private boolean enabled = false;
+    //need to instantiate:
+    private boolean enabled;
 
     @Column(name = "enabled", nullable = false)
     public boolean isEnabled() {
         return this.enabled;
+    }
+
+    public User(String username, String password, boolean enabled) {
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+    }
+
+    @Column(name = "role"/*, nullable = false*/)
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return this.password;
     }
 
     public void setEnabled(boolean enabled) {
@@ -43,6 +65,15 @@ public class User implements Serializable {
     public boolean getEnabled() {
         return this.enabled;
     }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Role getRole() {
+        return this.role;
+    }
+
 
     // getters & setters below!!
 
@@ -72,30 +103,16 @@ public class User implements Serializable {
 //        isEmailVerify = emailVerify;
 //    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getUsername() {
-        return this.username;
-    }
-
-    @OneToOne(cascade = CascadeType.ALL)
-    EmailContent emailText;
-
+    //    @OneToOne(cascade = CascadeType.ALL)
+//    EmailContent emailText;
+//
     @Transient //don't store in db
     private String confirmPassword;
 
-//    private boolean isEmailVerify;
-
+    //
+////    private boolean isEmailVerify;
+//
     public String getConfirmPassword() {
         return confirmPassword;
     }

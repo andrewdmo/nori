@@ -1,15 +1,16 @@
 package com.norialertapp.controller;
 
-import com.norialertapp.repository.ProductRepo;
-import com.norialertapp.repository.QtyTriggerRepo;
-import com.norialertapp.service.OrderCreatedService;
-import com.norialertapp.service.ShopifyService;
 import com.norialertapp.entity.CatchHook;
 import com.norialertapp.entity.LineItem;
 import com.norialertapp.entity.Product;
 import com.norialertapp.entity.Variant;
+import com.norialertapp.repository.ProductRepo;
+import com.norialertapp.repository.QtyTriggerRepo;
+import com.norialertapp.service.OrderCreatedService;
+import com.norialertapp.service.ShopifyService;
 import com.norialertapp.service.TriggerMailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,43 +47,41 @@ public class ShopifyNotification {
     @RequestMapping(path = "/order")
     public String caughtHook(@RequestBody CatchHook catchHook) throws MessagingException {
 
-            List<LineItem> lineItems = catchHook.getLine_items();
+        List<LineItem> lineItems = catchHook.getLine_items();
 
-            HashMap<Long, Integer> productIDs = new HashMap<>(); // create list of productID's from JSON order
+        HashMap<Long, Integer> productIDs = new HashMap<>(); // create list of productID's from JSON order
 
 
-            for (LineItem lineItem : lineItems) {
-                Integer qty = lineItem.getQuantity(); // get qty from JSON order
-                productIDs.put(lineItem.getProduct_id(), qty);
+        for (LineItem lineItem : lineItems) {
+            Integer qty = lineItem.getQuantity(); // get qty from JSON order
+            productIDs.put(lineItem.getProduct_id(), qty);
+        }
+
+        for (Map.Entry<Long, Integer> product : productIDs.entrySet()) { //iterate through HashMap and add products to list that
+
+            // get current qty...in 3 simple steps:D
+            Product a = productRepo.findOne(product.getKey());
+            List<Variant> variant = a.getVariants();
+            Integer qty = variant.get(0).getInventory_quantity();
+
+            Integer updatedQty;
+
+            // If order canceled, add qty back to db
+            if (catchHook.getCancel_reason() != null) {
+                updatedQty = qty + product.getValue();
+            } else { //else if it's an order, then subtract qty to unpdate db
+                updatedQty = qty - product.getValue();
             }
 
-            for (Map.Entry<Long, Integer> product : productIDs.entrySet()) { //iterate through HashMap and add products to list that
+            Product aProduct = productRepo.getOne(product.getKey());
+            aProduct.getVariants().get(0).setInventory_quantity(updatedQty); // update Product with revised Qty
 
-                // get current qty...in 3 simple steps:D
-                Product a = productRepo.findOne(product.getKey());
-                List<Variant> variant = a.getVariants();
-                Integer qty = variant.get(0).getInventory_quantity();
+            // do comparison and see if you have to send out an email alert
+            triggerMailService.triggerEmail(qtyTriggerRepo.findByProductId(product.getKey()).getQtyTrigger(), product.getKey());
 
-                Integer updatedQty;
+            productRepo.save(aProduct);
 
-                // If order canceled, add qty back to db
-                if(catchHook.getCancel_reason()!=null)
-                {
-                    updatedQty = qty + product.getValue();
-                }
-                else { //else if it's an order, then subtract qty to unpdate db
-                    updatedQty = qty - product.getValue();
-                }
-
-                Product aProduct = productRepo.getOne(product.getKey());
-                aProduct.getVariants().get(0).setInventory_quantity(updatedQty); // update Product with revised Qty
-
-                // do comparison and see if you have to send out an email alert
-                triggerMailService.triggerEmail(qtyTriggerRepo.findByProductId(product.getKey()).getQtyTrigger(),product.getKey());
-
-                productRepo.save(aProduct);
-
-            }
+        }
 
         return "";
     }
@@ -97,7 +96,7 @@ public class ShopifyNotification {
 
         // do comparison and see if you have to send out an email alert
         String qty = qtyTriggerRepo.findByProductId(product.getId()).getQtyTrigger();
-        triggerMailService.triggerEmail(qty,product.getId());
+        triggerMailService.triggerEmail(qty, product.getId());
 
 
         return "";
@@ -106,5 +105,11 @@ public class ShopifyNotification {
     @RequestMapping(path = "/google79ef565d46e8d4f5.html")
     public String googleSiteVerify(HTML html) {
         return "google-site-verification: google79ef565d46e8d4f5.html";
+    }
+
+    @ExceptionHandler
+    //add URL request query feedback later (https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc):
+    public String error() {
+        return "error";
     }
 }
