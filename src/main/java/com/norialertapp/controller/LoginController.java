@@ -1,7 +1,6 @@
 package com.norialertapp.controller;
 
 import com.norialertapp.entity.Product;
-import com.norialertapp.entity.User;
 import com.norialertapp.service.ProductService;
 import com.norialertapp.service.SearchService;
 import com.norialertapp.service.ShopifyService;
@@ -35,24 +34,24 @@ public class LoginController {
     }
 
     //login (x2):
-    @RequestMapping(path = {"/login"}, method = RequestMethod.GET)
+    @RequestMapping(path = {"/login"})
     public String login() {
         return "login";
     }
 
     //Spring Security sees this from _login.html_ form:
-    @RequestMapping(path = {"/login"}, method = RequestMethod.POST)
-    public String login(String username, String password) {
-
-        User user = userService.findByEmail(username); //username = email
-
-        if (userService.passwordMatch(password, user.getPassword())) {
-            return "redirect:/dashboard";
-
-        } else {
-            return "redirect:/login?error";
-        }
-    }
+//    @RequestMapping(path = {"/login"}, method = RequestMethod.POST)
+//    public String login(String username, String password) {
+//
+//        User user = userService.findByEmail(username); //username = email
+//
+//        if (userService.passwordMatch(password, user.getPassword())) {
+//            return "redirect:/dashboard";
+//
+//        } else {
+//            return "redirect:/login?error";
+//        }
+//    }
 
     @RequestMapping(path = {"/dashboard"})
     public String dashboard(Model model) {
