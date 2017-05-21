@@ -7,7 +7,6 @@ import com.norialertapp.repository.QtyLevelRepo;
 import com.norialertapp.service.ProductService;
 import com.norialertapp.service.SearchService;
 import com.norialertapp.service.ShopifyService;
-import com.norialertapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,8 +23,9 @@ import java.util.*;
 @Controller
 public class DashboardController {
 
-    @Autowired
-    UserService userService;
+    //forms error cycle:
+//    @Autowired
+//    UserService userService;
 
     @Autowired
     ShopifyService shopifyService;

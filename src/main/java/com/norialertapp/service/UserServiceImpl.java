@@ -3,36 +3,44 @@ package com.norialertapp.service;
 import com.norialertapp.entity.User;
 import com.norialertapp.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
  * Created by katherine_celeste on 10/8/16.
  */
+
 @Service
 public class UserServiceImpl implements UserService {
 
+
+    // below 2 (or 1) form error cycle:
 //    private final UserService userService;
-//
+
 //    @Autowired
-//    public CurrentUserDetailsService(UserService userService) {
+//    public UserServiceImpl(UserService userService) {
 //        this.userService = userService;
 //    }
 
     @Autowired
     private UserRepo userRepo;
 
-    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
+    //moved to WebSecConfig + @Bean & as method:
+//    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
 //    @Autowired
 //    private EmailSenderService  emailSenderService;
 
-    @Override
+    //    @Override
     public User findByEmail(String email) {
         return userRepo.findByUsername(email);
     }
 
 
-    @Override
+    //    @Override
     public void saveUser(User user) {
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);

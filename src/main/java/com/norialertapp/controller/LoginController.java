@@ -4,7 +4,6 @@ import com.norialertapp.entity.Product;
 import com.norialertapp.service.ProductService;
 import com.norialertapp.service.SearchService;
 import com.norialertapp.service.ShopifyService;
-import com.norialertapp.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +19,7 @@ import java.util.List;
 @Controller
 public class LoginController {
 
-    private UserService userService;
+//    private UserService userService;
 
     ShopifyService shopifyService;
 
