@@ -1,11 +1,13 @@
 package com.norialertapp.service;
 
 import com.norialertapp.entity.User;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by katherine_celeste on 10/8/16.
  */
 
+@Service
 public interface UserService {
 
     User findByEmail(String email);
@@ -14,5 +16,6 @@ public interface UserService {
 
 //    boolean passwordMatch(String password, String dbPassword);
 
-    boolean isEnabled();
+//    turned off to match Impl
+//    boolean isEnabled();
 }

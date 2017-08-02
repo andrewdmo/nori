@@ -34,13 +34,13 @@ public class UserServiceImpl implements UserService {
 //    @Autowired
 //    private EmailSenderService  emailSenderService;
 
-    //    @Override
+    @Override
     public User findByEmail(String email) {
         return userRepo.findByUsername(email);
     }
 
 
-    //    @Override
+    @Override
     public void saveUser(User user) {
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
@@ -52,6 +52,10 @@ public class UserServiceImpl implements UserService {
 //        // send email to user activate his account
 //        String verifyEmailLink = Constants.ROOT_URL + "activate" + "?token=" + encryptedUserId;
 //        emailSenderService.sendRegistrationSuccessEmail(user.getFirstname(), user.getEmail(), verifyEmailLink, Constants.ROOT_URL);
+    }
+
+    boolean isEnabled(User user) {
+        return user.getEnabled();
     }
 
     public boolean passwordMatch(String password, String dbPassword) {

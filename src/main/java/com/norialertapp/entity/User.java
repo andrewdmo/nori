@@ -13,7 +13,7 @@ public class User implements Serializable {
 
     //put back in later:
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, updatable = false)
     private long id;
 
